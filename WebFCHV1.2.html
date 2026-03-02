@@ -56,6 +56,13 @@
             color: var(--texto);
             line-height: 1.7;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
 
         h1,
@@ -66,6 +73,7 @@
         h6 {
             font-family: 'Poppins', sans-serif;
             line-height: 1.2;
+            word-wrap: break-word;
         }
 
         /* ═══════════════════════════════
@@ -898,22 +906,23 @@
            ═══════════════════════════════ */
         @media (max-width: 1024px) {
             .triada-grid {
-                grid-template-columns: 1fr;
-                max-width: 480px;
-                margin: 0 auto;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
             }
 
             .platform-grid {
                 grid-template-columns: 1fr;
+                gap: 3rem;
             }
 
             .platform-img {
                 order: -1;
-                max-height: 400px;
+                max-height: 450px;
             }
 
             .audience-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
             .metrics-grid {
@@ -925,9 +934,18 @@
                 max-width: 500px;
                 margin: 0 auto 3rem;
             }
+
+            .journal-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
         }
 
         @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+
             .navbar-links {
                 display: none;
             }
@@ -941,31 +959,97 @@
             }
 
             .section {
-                padding: 4rem 1.2rem;
+                padding: 4rem 1.5rem;
+            }
+
+            .triada-grid {
+                grid-template-columns: 1fr;
+                max-width: 100%;
             }
 
             .metrics-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 1rem;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .footer-buttons,
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+
+            .btn-hero,
+            .btn-rosa,
+            .btn-outline-white {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
             }
 
             .footer-bottom {
                 flex-direction: column;
                 text-align: center;
+                gap: 1.5rem;
+            }
+
+            .journal-grid {
+                grid-template-columns: 1fr;
             }
         }
 
         @media (max-width: 480px) {
             .hero h1 {
-                font-size: 1.7rem;
+                font-size: clamp(1.8rem, 8vw, 2.22rem);
             }
 
             .hero p {
                 font-size: 0.95rem;
+                padding: 0 0.5rem;
             }
 
             .metrics-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .navbar-logo span {
+                font-size: 1rem;
+            }
+        }
+
+        .footer-buttons,
+        .hero-buttons,
+        .button-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+
+            .footer-buttons,
+            .hero-buttons,
+            .button-group {
+                flex-direction: column;
+                width: 100%;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+
+            .btn-hero,
+            .btn-rosa,
+            .btn-outline-white,
+            .btn-cta-nav {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
             }
         }
 
@@ -1273,7 +1357,7 @@
             <h1>Consciencia que se convierte en transformación.</h1>
             <p>Creamos espacios y experiencias que ayudan a personas y organizaciones a reconectar con su propósito y
                 traducir claridad en acción.</p>
-            <div class="footer-buttons" style="justify-content: center; gap: 1rem; margin-top: 1rem;">
+            <div class="button-group" style="margin-top: 1rem;">
                 <a href="#experiencias" class="btn-hero">Explorar experiencias</a>
                 <a href="#proposito" class="btn-outline-white" style="padding: 1rem 2rem; border-radius: 50px;">
                     Conocer la Fundación
@@ -1364,7 +1448,7 @@
                     <li><i class="ph-fill ph-check-circle" style="color:var(--verde);"></i> Herramientas aplicables
                         desde el día 1</li>
                 </ul>
-                <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                <div class="button-group">
                     <a href="#cta-salto" class="btn-hero" style="padding: 1.2rem 3rem;">Quiero dar el salto</a>
                     <a href="#modulos-detalle" class="btn-outline-white"
                         style="color: var(--violeta-soft); border-color: var(--violeta-soft); padding: 1.1rem 2.5rem;">Ver
@@ -1821,7 +1905,7 @@
                     <h2 class="section-title">Si sentís que llegó el momento</h2>
                     <p style="font-size:1.2rem; color:var(--texto-light); margin-bottom:3rem;">Sumate a la próxima
                         cohorte y empezá a construir el cambio con estructura.</p>
-                    <div style="display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap;">
+                    <div class="button-group">
                         <a href="https://wa.me/5491100000000" class="btn-hero" style="padding: 1.2rem 4rem;">Quiero dar
                             el salto</a>
                         <a href="https://wa.me/5491100000000"
