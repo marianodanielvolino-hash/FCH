@@ -1080,6 +1080,38 @@
                 margin-bottom: 1rem;
             }
         }
+
+        /* Acordeón para Módulos en Móvil */
+        @media (max-width: 768px) {
+            .module-content-mobile {
+                display: none;
+                margin-top: 1rem;
+                padding-top: 1rem;
+                border-top: 1px solid rgba(0, 0, 0, 0.05);
+            }
+
+            .module-card-premium.open .module-content-mobile {
+                display: block;
+            }
+
+            .module-card-premium {
+                cursor: pointer;
+            }
+
+            .module-card-premium::after {
+                content: '▼';
+                position: absolute;
+                right: 1.5rem;
+                top: 1.5rem;
+                font-size: 0.7rem;
+                opacity: 0.3;
+                transition: transform 0.3s;
+            }
+
+            .module-card-premium.open::after {
+                transform: rotate(180deg);
+            }
+        }
     </style>
 </head>
 
@@ -1371,35 +1403,50 @@
                             interno para tomar decisiones con verdad.</p>
                     </div>
                     <div class="module-grid-5 stagger">
-                        <div class="module-card-premium reveal" style="--i:0">
+                        <div class="module-card-premium reveal" style="--i:0"
+                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
                             <div style="font-size:1.8rem; margin-bottom:0.5rem;">🌀</div>
                             <h4 style="font-size:1rem;">Punto Cero</h4>
-                            <p style="font-size:0.8rem; line-height:1.4;">Donde estás realmente y qué estás evitando
-                                mirar.</p>
+                            <div class="module-content-mobile">
+                                <p style="font-size:0.8rem; line-height:1.4;">Donde estás realmente y qué estás evitando
+                                    mirar.</p>
+                            </div>
                         </div>
-                        <div class="module-card-premium reveal" style="--i:1">
+                        <div class="module-card-premium reveal" style="--i:1"
+                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
                             <div style="font-size:1.8rem; margin-bottom:0.5rem;">🪞</div>
                             <h4 style="font-size:1rem;">Historia Invisible</h4>
-                            <p style="font-size:0.8rem; line-height:1.4;">Patrones y creencias que gobiernan tus
-                                decisiones.</p>
+                            <div class="module-content-mobile">
+                                <p style="font-size:0.8rem; line-height:1.4;">Patrones y creencias que gobiernan tus
+                                    decisiones.</p>
+                            </div>
                         </div>
-                        <div class="module-card-premium reveal" style="--i:2">
+                        <div class="module-card-premium reveal" style="--i:2"
+                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
                             <div style="font-size:1.8rem; margin-bottom:0.5rem;">🔥</div>
                             <h4 style="font-size:1rem;">Lo que Te Frena</h4>
-                            <p style="font-size:0.8rem; line-height:1.4;">Miedo, postergación y mecanismos de
-                                autosabotaje.</p>
+                            <div class="module-content-mobile">
+                                <p style="font-size:0.8rem; line-height:1.4;">Miedo, postergación y mecanismos de
+                                    autosabotaje.</p>
+                            </div>
                         </div>
-                        <div class="module-card-premium reveal" style="--i:3">
+                        <div class="module-card-premium reveal" style="--i:3"
+                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
                             <div style="font-size:1.8rem; margin-bottom:0.5rem;">🧭</div>
                             <h4 style="font-size:1rem;">Norte y Prioridad</h4>
-                            <p style="font-size:0.8rem; line-height:1.4;">Definir qué es lo que importa y qué es lo que
-                                sobra.</p>
+                            <div class="module-content-mobile">
+                                <p style="font-size:0.8rem; line-height:1.4;">Definir qué es lo que importa y qué es lo
+                                    que sobra.</p>
+                            </div>
                         </div>
-                        <div class="module-card-premium reveal" style="--i:4">
+                        <div class="module-card-premium reveal" style="--i:4"
+                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
                             <div style="font-size:1.8rem; margin-bottom:0.5rem;">🚀</div>
                             <h4 style="font-size:1rem;">Declaración</h4>
-                            <p style="font-size:0.8rem; line-height:1.4;">Una decisión concreta, medible y poderosa de
-                                cambio.</p>
+                            <div class="module-content-mobile">
+                                <p style="font-size:0.8rem; line-height:1.4;">Una decisión concreta, medible y poderosa
+                                    de cambio.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1415,35 +1462,50 @@
                             hacer, sostener y responder.</p>
                     </div>
                     <div class="module-grid-5 stagger">
-                        <div class="module-card-premium reveal" style="--i:0">
+                        <div class="module-card-premium reveal" style="--i:0"
+                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
                             <div style="font-size:1.8rem; margin-bottom:0.5rem;">🎭</div>
                             <h4 style="font-size:1rem;">Cambiar el Personaje</h4>
-                            <p style="font-size:0.8rem; line-height:1.4;">De reaccionar automáticamente a elegir tu
-                                respuesta.</p>
+                            <div class="module-content-mobile">
+                                <p style="font-size:0.8rem; line-height:1.4;">De reaccionar automáticamente a elegir tu
+                                    respuesta.</p>
+                            </div>
                         </div>
-                        <div class="module-card-premium reveal" style="--i:1">
+                        <div class="module-card-premium reveal" style="--i:1"
+                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
                             <div style="font-size:1.8rem; margin-bottom:0.5rem;">⚙️</div>
                             <h4 style="font-size:1rem;">Sistema de Acción</h4>
-                            <p style="font-size:0.8rem; line-height:1.4;">Gestión de energía, hábitos y disciplina
-                                consciente.</p>
+                            <div class="module-content-mobile">
+                                <p style="font-size:0.8rem; line-height:1.4;">Gestión de energía, hábitos y disciplina
+                                    consciente.</p>
+                            </div>
                         </div>
-                        <div class="module-card-premium reveal" style="--i:2">
+                        <div class="module-card-premium reveal" style="--i:2"
+                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
                             <div style="font-size:1.8rem; margin-bottom:0.5rem;">🗣️</div>
                             <h4 style="font-size:1rem;">Conversaciones</h4>
-                            <p style="font-size:0.8rem; line-height:1.4;">Decir lo pendiente con claridad, firmeza y
-                                empatía.</p>
+                            <div class="module-content-mobile">
+                                <p style="font-size:0.8rem; line-height:1.4;">Decir lo pendiente con claridad, firmeza y
+                                    empatía.</p>
+                            </div>
                         </div>
-                        <div class="module-card-premium reveal" style="--i:3">
+                        <div class="module-card-premium reveal" style="--i:3"
+                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
                             <div style="font-size:1.8rem; margin-bottom:0.5rem;">🎯</div>
                             <h4 style="font-size:1rem;">Movimiento</h4>
-                            <p style="font-size:0.8rem; line-height:1.4;">Acciones inteligentes y estratégicas, no
-                                impulsivas.</p>
+                            <div class="module-content-mobile">
+                                <p style="font-size:0.8rem; line-height:1.4;">Acciones inteligentes y estratégicas, no
+                                    impulsivas.</p>
+                            </div>
                         </div>
-                        <div class="module-card-premium reveal" style="--i:4">
+                        <div class="module-card-premium reveal" style="--i:4"
+                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
                             <div style="font-size:1.8rem; margin-bottom:0.5rem;">🏛️</div>
                             <h4 style="font-size:1rem;">Compromiso Público</h4>
-                            <p style="font-size:0.8rem; line-height:1.4;">Sostener tu verdad y decisiones frente al
-                                grupo.</p>
+                            <div class="module-content-mobile">
+                                <p style="font-size:0.8rem; line-height:1.4;">Sostener tu verdad y decisiones frente al
+                                    grupo.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1460,35 +1522,50 @@
                             proyectar un nuevo nivel de impacto.</p>
                     </div>
                     <div class="module-grid-5 stagger">
-                        <div class="module-card-premium reveal" style="--i:0">
+                        <div class="module-card-premium reveal" style="--i:0"
+                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
                             <div style="font-size:1.8rem; margin-bottom:0.5rem;">👑</div>
                             <h4 style="font-size:1rem;">Liderarte Primero</h4>
-                            <p style="font-size:0.8rem; line-height:1.4;">Coherencia interna y autogestión emocional
-                                continua.</p>
+                            <div class="module-content-mobile">
+                                <p style="font-size:0.8rem; line-height:1.4;">Coherencia interna y autogestión emocional
+                                    continua.</p>
+                            </div>
                         </div>
-                        <div class="module-card-premium reveal" style="--i:1">
+                        <div class="module-card-premium reveal" style="--i:1"
+                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
                             <div style="font-size:1.8rem; margin-bottom:0.5rem;">🤝</div>
                             <h4 style="font-size:1rem;">Relaciones que Elevan</h4>
-                            <p style="font-size:0.8rem; line-height:1.4;">Rediseñar vínculos alineados a tu nueva etapa
-                                vital.</p>
+                            <div class="module-content-mobile">
+                                <p style="font-size:0.8rem; line-height:1.4;">Rediseñar vínculos alineados a tu nueva
+                                    etapa vital.</p>
+                            </div>
                         </div>
-                        <div class="module-card-premium reveal" style="--i:2">
+                        <div class="module-card-premium reveal" style="--i:2"
+                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
                             <div style="font-size:1.8rem; margin-bottom:0.5rem;">🧩</div>
                             <h4 style="font-size:1rem;">Proyecto con Sentido</h4>
-                            <p style="font-size:0.8rem; line-height:1.4;">Ordenar visión laboral o personal con
-                                propósito.</p>
+                            <div class="module-content-mobile">
+                                <p style="font-size:0.8rem; line-height:1.4;">Ordenar visión laboral o personal con
+                                    propósito.</p>
+                            </div>
                         </div>
-                        <div class="module-card-premium reveal" style="--i:3">
+                        <div class="module-card-premium reveal" style="--i:3"
+                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
                             <div style="font-size:1.8rem; margin-bottom:0.5rem;">🌐</div>
                             <h4 style="font-size:1rem;">Comunidad Activa</h4>
-                            <p style="font-size:0.8rem; line-height:1.4;">Construir una red de sostén y colaboración
-                                consciente.</p>
+                            <div class="module-content-mobile">
+                                <p style="font-size:0.8rem; line-height:1.4;">Construir una red de sostén y colaboración
+                                    consciente.</p>
+                            </div>
                         </div>
-                        <div class="module-card-premium reveal" style="--i:4">
+                        <div class="module-card-premium reveal" style="--i:4"
+                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
                             <div style="font-size:1.8rem; margin-bottom:0.5rem;">📈</div>
                             <h4 style="font-size:1rem;">Plan 90 Días</h4>
-                            <p style="font-size:0.8rem; line-height:1.4;">Hoja de ruta concreta para proyectar tu
-                                futuro.</p>
+                            <div class="module-content-mobile">
+                                <p style="font-size:0.8rem; line-height:1.4;">Hoja de ruta concreta para proyectar tu
+                                    futuro.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
