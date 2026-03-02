@@ -105,9 +105,96 @@
             color: var(--texto);
         }
 
-        .navbar-logo .leaf {
-            font-size: 1.6rem;
-            color: var(--verde);
+        /* ═══════════════════════════════
+           ANIMATED LOGO FCH
+           ═══════════════════════════════ */
+        .fch-logo-container {
+            width: 40px;
+            height: 40px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fch-logo-animated {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+
+        .fch-petal {
+            transform-origin: 50% 90%;
+            fill-opacity: 0.8;
+            mix-blend-mode: multiply;
+            transition: all 0.5s ease;
+        }
+
+        @keyframes open-cyan {
+
+            0%,
+            100% {
+                transform: rotate(0deg) scale(1);
+            }
+
+            50% {
+                transform: rotate(0deg) translateY(-5px) scale(1.1);
+            }
+        }
+
+        @keyframes open-purple {
+
+            0%,
+            100% {
+                transform: rotate(-15deg) scale(0.95);
+            }
+
+            50% {
+                transform: rotate(-35deg) scale(1.05);
+            }
+        }
+
+        @keyframes open-pink {
+
+            0%,
+            100% {
+                transform: rotate(-30deg) scale(0.9);
+            }
+
+            50% {
+                transform: rotate(-65deg) scale(1);
+            }
+        }
+
+        @keyframes open-yellow {
+
+            0%,
+            100% {
+                transform: rotate(20deg) scale(0.95);
+            }
+
+            50% {
+                transform: rotate(45deg) scale(1.05);
+            }
+        }
+
+        .p-cyan {
+            animation: open-cyan 5s ease-in-out infinite;
+        }
+
+        .p-purple {
+            animation: open-purple 5s ease-in-out infinite;
+            animation-delay: 0.3s;
+        }
+
+        .p-pink {
+            animation: open-pink 5s ease-in-out infinite;
+            animation-delay: 0.6s;
+        }
+
+        .p-yellow {
+            animation: open-yellow 5s ease-in-out infinite;
+            animation-delay: 0.1s;
         }
 
         .navbar-logo span {
@@ -1123,7 +1210,22 @@
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
             <a href="#" class="navbar-logo" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">
-                <i class="ph-fill ph-leaf leaf"></i>
+                <div class="fch-logo-container">
+                    <svg viewBox="0 0 100 100" class="fch-logo-animated">
+                        <defs>
+                            <path id="petal"
+                                d="M50 90 C30 90 15 65 15 40 C15 15 50 5 50 5 C50 5 85 15 85 40 C85 65 70 90 50 90 Z" />
+                        </defs>
+                        <!-- Petalo Cyan (Top) -->
+                        <use href="#petal" class="fch-petal p-cyan" fill="#5DC1FF" />
+                        <!-- Petalo Púrpura -->
+                        <use href="#petal" class="fch-petal p-purple" fill="#AC5CFF" />
+                        <!-- Petalo Rosa (Izquierda) -->
+                        <use href="#petal" class="fch-petal p-pink" fill="#FF76E2" />
+                        <!-- Petalo Amarillo (Derecha) -->
+                        <use href="#petal" class="fch-petal p-yellow" fill="#FFF647" />
+                    </svg>
+                </div>
                 <span>FCH</span>
             </a>
 
