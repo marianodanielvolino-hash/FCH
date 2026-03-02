@@ -881,6 +881,92 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* ═══════════════════════════════
+           DIAGNOSTIC WIDGET & NEW SECTIONS
+           ═══════════════════════════════ */
+        .widget-fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: var(--violeta-mid);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(58, 16, 120, 0.3);
+            z-index: 1000;
+            border: none;
+            transition: all 0.3s;
+        }
+
+        .widget-fab:hover {
+            transform: scale(1.1);
+            background: var(--rosa);
+        }
+
+        .widget-panel {
+            position: fixed;
+            top: 0;
+            right: -450px;
+            width: 400px;
+            height: 100vh;
+            background: white;
+            z-index: 2000;
+            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1);
+            padding: 3rem 2rem;
+            transition: right 0.4s ease;
+            overflow-y: auto;
+        }
+
+        .widget-panel.open {
+            right: 0;
+        }
+
+        .journal-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .journal-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: 0.3s;
+        }
+
+        .journal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            .journal-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .widget-panel {
+                width: 100%;
+                top: auto;
+                bottom: -100%;
+                right: 0;
+                height: 80vh;
+                transition: bottom 0.4s;
+            }
+
+            .widget-panel.open {
+                bottom: 0;
+                right: 0;
+            }
+        }
     </style>
 </head>
 
@@ -1138,6 +1224,85 @@
     </section>
 
     <!-- ═══════════════════════════════════════
+         NUEVA SECCIÓN: JOURNAL & MANIFIESTO
+         ═══════════════════════════════════════ -->
+    <section class="section section-light" id="journal">
+        <div class="section-inner">
+            <div class="triada-intro reveal">
+                <span class="section-tag">Pensamiento FCH</span>
+                <h2 class="section-title">El Journal</h2>
+                <p class="section-subtitle">Exploraciones sobre consciencia, tecnología y el futuro humano.</p>
+            </div>
+
+            <div class="journal-grid stagger">
+                <div class="journal-card reveal" style="--i:0">
+                    <div style="height:180px; background:var(--violeta-soft); opacity:0.2;"></div>
+                    <div style="padding:1.5rem;">
+                        <span style="font-size:0.7rem; color:var(--rosa); font-weight:700;">MANIFESTO</span>
+                        <h3 style="font-size:1.1rem; margin:0.5rem 0;">Despertar en la Matrix</h3>
+                        <p style="font-size:0.9rem; color:var(--texto-light);">Cómo mantener la soberanía personal en un
+                            mundo hiper-digitalizado.</p>
+                    </div>
+                </div>
+                <div class="journal-card reveal" style="--i:1">
+                    <div style="height:180px; background:var(--amarillo); opacity:0.2;"></div>
+                    <div style="padding:1.5rem;">
+                        <span style="font-size:0.7rem; color:var(--rosa); font-weight:700;">ACCIÓN</span>
+                        <h3 style="font-size:1.1rem; margin:0.5rem 0;">Liderazgo del Futuro</h3>
+                        <p style="font-size:0.9rem; color:var(--texto-light);">Por qué la empatía es la habilidad
+                            técnica más importante de esta década.</p>
+                    </div>
+                </div>
+                <div class="journal-card reveal" style="--i:2">
+                    <div style="height:180px; background:var(--verde); opacity:0.2;"></div>
+                    <div style="padding:1.5rem;">
+                        <span style="font-size:0.7rem; color:var(--rosa); font-weight:700;">TECNOLOGÍA</span>
+                        <h3 style="font-size:1.1rem; margin:0.5rem 0;">IA con Alma</h3>
+                        <p style="font-size:0.9rem; color:var(--texto-light);">Hacia una inteligencia artificial que
+                            potencie nuestra humanidad, no que la reemplace.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         DIAGNOSTIC WIDGET HTML
+         ═══════════════════════════════════════ -->
+    <button class="widget-fab" onclick="toggleWidget()" aria-label="Diagnóstico">
+        <i class="ph-bold ph-lightning"></i>
+    </button>
+
+    <div class="widget-panel" id="diagnostic-panel">
+        <button onclick="toggleWidget()"
+            style="position:absolute; top:1rem; right:1rem; border:none; background:none; font-size:1.5rem; cursor:pointer;">&times;</button>
+        <h2 style="font-family:'Poppins'; color:var(--violeta-deep);">Diagnóstico FCH</h2>
+        <p style="font-size:0.9rem; color:var(--texto-light); margin-bottom:2rem;">Descubrí tu nivel actual de conexión
+            y madurez digital.</p>
+
+        <div id="diagnostic-form">
+            <div class="diagnostic-q" style="margin-bottom:1.5rem;">
+                <p style="font-weight:600; margin-bottom:0.5rem;">1. ¿Con qué frecuencia sentís que operás en 'piloto
+                    automático'?</p>
+                <select style="width:100%; padding:0.8rem; border-radius:8px; border:1px solid #ddd;">
+                    <option>Casi siempre</option>
+                    <option>Frecuentemente</option>
+                    <option>A veces</option>
+                    <option>Casi nunca</option>
+                </select>
+            </div>
+            <button onclick="submitDiagnostic()" class="btn-hero" style="width:100%; border:none; padding:1rem;">Obtener
+                Resultado</button>
+        </div>
+        <div id="diagnostic-result"
+            style="display:none; margin-top:2rem; padding:1rem; background:var(--fondo-claro); border-radius:12px;">
+            <p style="font-weight:700; color:var(--violeta-mid); mb-1;">Resultado: Nivel Explorador</p>
+            <p style="font-size:0.85rem;">Estás listo para profundizar en tu propósito. Te recomendamos nuestra charla
+                de "Despertar en la Matrix".</p>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
          SECCIÓN 7: CTA FINAL / FOOTER
          ═══════════════════════════════════════ -->
     <footer class="section section-dark" id="cta-final">
@@ -1242,6 +1407,16 @@
                 }
             });
         });
+
+        // ─── Diagnostic Widget Logic ───
+        function toggleWidget() {
+            document.getElementById('diagnostic-panel').classList.toggle('open');
+        }
+
+        function submitDiagnostic() {
+            document.getElementById('diagnostic-form').style.display = 'none';
+            document.getElementById('diagnostic-result').style.display = 'block';
+        }
     </script>
 
 </body>
