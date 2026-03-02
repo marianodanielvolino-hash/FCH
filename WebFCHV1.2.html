@@ -1280,26 +1280,40 @@
         <p style="font-size:0.9rem; color:var(--texto-light); margin-bottom:2rem;">Descubrí tu nivel actual de conexión
             y madurez digital.</p>
 
-        <div id="diagnostic-form">
-            <div class="diagnostic-q" style="margin-bottom:1.5rem;">
-                <p style="font-weight:600; margin-bottom:0.5rem;">1. ¿Con qué frecuencia sentís que operás en 'piloto
-                    automático'?</p>
-                <select style="width:100%; padding:0.8rem; border-radius:8px; border:1px solid #ddd;">
-                    <option>Casi siempre</option>
-                    <option>Frecuentemente</option>
-                    <option>A veces</option>
-                    <option>Casi nunca</option>
-                </select>
+        <div id="diagnostic-content">
+            <div id="question-container">
+                <!-- Questions will be injected here by JS -->
             </div>
-            <button onclick="submitDiagnostic()" class="btn-hero" style="width:100%; border:none; padding:1rem;">Obtener
-                Resultado</button>
+
+            <div class="widget-controls" style="display:flex; gap:1rem; margin-top:2rem;">
+                <button id="prev-btn" onclick="prevQuestion()" class="btn-outline-white"
+                    style="flex:1; color:var(--texto); border-color:#ddd; display:none;">Anterior</button>
+                <button id="next-btn" onclick="nextQuestion()" class="btn-hero"
+                    style="flex:2; border:none;">Siguiente</button>
+            </div>
+
+            <div id="progress-bar-container"
+                style="width:100%; height:6px; background:#eee; border-radius:10px; margin-top:1.5rem; overflow:hidden;">
+                <div id="progress-bar" style="width:0%; height:100%; background:var(--rosa); transition:width 0.3s;">
+                </div>
+            </div>
+            <p id="progress-text"
+                style="font-size:0.75rem; color:var(--texto-muted); text-align:center; margin-top:0.5rem;">Pregunta 1 de
+                15</p>
         </div>
+
         <div id="diagnostic-result"
-            style="display:none; margin-top:2rem; padding:1rem; background:var(--fondo-claro); border-radius:12px;">
-            <p style="font-weight:700; color:var(--violeta-mid); mb-1;">Resultado: Nivel Explorador</p>
-            <p style="font-size:0.85rem;">Estás listo para profundizar en tu propósito. Te recomendamos nuestra charla
-                de "Despertar en la Matrix".</p>
+            style="display:none; margin-top:2rem; padding:2rem; background:var(--fondo-claro); border-radius:12px; text-align:center; animation:fadeInUp 0.6s ease-out;">
+            <div style="font-size:3rem; margin-bottom:1rem;" id="result-icon">✨</div>
+            <h3 id="result-title" style="font-family:'Poppins'; color:var(--violeta-deep); margin-bottom:1rem;">
+                Resultado: Nivel Explorador</h3>
+            <p id="result-desc"
+                style="font-size:0.95rem; line-height:1.6; color:var(--texto-light); margin-bottom:2rem;">Estás listo
+                para profundizar en tu propósito. Te recomendamos nuestra charla de "Despertar en la Matrix".</p>
+            <button onclick="resetDiagnostic()" class="btn-outline-white"
+                style="color:var(--violeta-mid); border-color:var(--violeta-mid); width:100%;">Reiniciar Test</button>
         </div>
+    </div>
     </div>
 
     <!-- ═══════════════════════════════════════
@@ -1408,14 +1422,137 @@
             });
         });
 
-        // ─── Diagnostic Widget Logic ───
+        // ─── Diagnostic Widget Logic (Ontological Coaching) ───
+        let currentStep = 0;
+        const answers = [];
+        const questions = [
+            { q: "1. ¿Con qué frecuencia distinguís tus juicios de los hechos objetivos?", category: "Lenguaje" },
+            { q: "2. En tus conversaciones difíciles, ¿solés hacer pedidos claros o esperás que el otro adivine?", category: "Lenguaje" },
+            { q: "3. ¿Sentís que tenés el 'permiso' interno para decir NO cuando es necesario?", category: "Lenguaje" },
+            { q: "4. ¿Tus estados de ánimo suelen dominar tus acciones o sos capaz de gestionarlos?", category: "Emoción" },
+            { q: "5. ¿Cómo es tu relación con la incertidumbre? ¿Te genera parálisis o curiosidad?", category: "Emoción" },
+            { q: "6. ¿En qué medida te permitís expresar lo que sentís de manera asertiva?", category: "Emoción" },
+            { q: "7. ¿Qué tan consciente sos de tu respiración y postura corporal en momentos de estrés?", category: "Cuerpo" },
+            { q: "8. ¿Sentís que habitás tu cuerpo con plenitud o vivís mayormente 'en tu cabeza'?", category: "Cuerpo" },
+            { q: "9. ¿Qué tanto espacio le das al silencio y al descanso físico en tu semana?", category: "Cuerpo" },
+            { q: "10. ¿Con qué frecuencia cuestionás tus propias creencias 'limitantes'?", category: "Observador" },
+            { q: "11. ¿Qué tan abierto estás a escuchar perspectivas que contradicen la tuya sin juzgar?", category: "Observador" },
+            { q: "12. ¿Qué tan seguido buscás feedback constructivo para ampliar tu mirada?", category: "Observador" },
+            { q: "13. Al enfrentar un problema, ¿te sentís protagonista de la solución o víctima de las circunstancias?", category: "Compromiso" },
+            { q: "14. ¿Sentís que tus promesas son confiables para los demás y para vos mismo?", category: "Compromiso" },
+            { q: "15. ¿Tus acciones diarias están alineadas con tus valores más profundos?", category: "Compromiso" }
+        ];
+
+        const options = [
+            { text: "Casi nunca / Nunca", val: 1 },
+            { text: "A veces", val: 2 },
+            { text: "Frecuentemente", val: 3 },
+            { text: "Casi siempre / Siempre", val: 4 }
+        ];
+
         function toggleWidget() {
-            document.getElementById('diagnostic-panel').classList.toggle('open');
+            const panel = document.getElementById('diagnostic-panel');
+            panel.classList.toggle('open');
+            if (panel.classList.contains('open') && answers.length === 0) {
+                renderQuestion();
+            }
         }
 
-        function submitDiagnostic() {
-            document.getElementById('diagnostic-form').style.display = 'none';
-            document.getElementById('diagnostic-result').style.display = 'block';
+        function renderQuestion() {
+            const container = document.getElementById('question-container');
+            const q = questions[currentStep];
+
+            container.innerHTML = `
+                <div class="diagnostic-q" style="animation: fadeInUp 0.4s ease-out;">
+                    <span style="font-size:0.7rem; color:var(--violeta-soft); font-weight:700; text-transform:uppercase;">Dimension: ${q.category}</span>
+                    <p style="font-weight:600; margin:0.5rem 0 1.5rem; font-size:1.1rem; line-height:1.4;">${q.q}</p>
+                    <div style="display:flex; flex-direction:column; gap:0.8rem;">
+                        ${options.map(opt => `
+                            <button onclick="selectOption(${opt.val})" class="opt-btn ${answers[currentStep] === opt.val ? 'selected' : ''}" 
+                                style="text-align:left; padding:1rem; border:1px solid #ddd; border-radius:10px; background:white; cursor:pointer; transition:0.2s; font-family:'Lato';">
+                                ${opt.text}
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            // Style for selected option
+            const style = document.createElement('style');
+            style.id = 'opt-style';
+            style.innerHTML = `
+                .opt-btn:hover { border-color: var(--violeta-soft); background: var(--fondo-claro); }
+                .opt-btn.selected { border-color: var(--rosa); background: rgba(232, 67, 147, 0.05); font-weight: 600; color: var(--rosa); }
+            `;
+            if (!document.getElementById('opt-style')) document.head.appendChild(style);
+
+            updateProgress();
+        }
+
+        function selectOption(val) {
+            answers[currentStep] = val;
+            renderQuestion();
+            setTimeout(() => nextQuestion(), 300);
+        }
+
+        function nextQuestion() {
+            if (answers[currentStep] === undefined) return;
+            if (currentStep < questions.length - 1) {
+                currentStep++;
+                renderQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentStep > 0) {
+                currentStep--;
+                renderQuestion();
+            }
+        }
+
+        function updateProgress() {
+            const percent = ((currentStep + 1) / questions.length) * 100;
+            document.getElementById('progress-bar').style.width = `${percent}%`;
+            document.getElementById('progress-text').innerText = `Pregunta ${currentStep + 1} de ${questions.length}`;
+            document.getElementById('prev-btn').style.display = currentStep > 0 ? 'block' : 'none';
+            document.getElementById('next-btn').innerText = currentStep === questions.length - 1 ? 'Finalizar' : 'Siguiente';
+            document.getElementById('next-btn').onclick = currentStep === questions.length - 1 ? showResult : nextQuestion;
+        }
+
+        function showResult() {
+            const totalScore = answers.reduce((a, b) => a + b, 0);
+            document.getElementById('diagnostic-content').style.display = 'none';
+            const resultDiv = document.getElementById('diagnostic-result');
+            resultDiv.style.display = 'block';
+
+            let title, desc, icon;
+            if (totalScore <= 25) {
+                title = "Iniciador del Camino";
+                desc = "Estás en un momento ideal para comenzar a observar tus procesos internos. Sentís que operás en automático y es hora de reconectar con lo esencial. Te recomendamos nuestra charla de 'Despertar en la Matrix'.";
+                icon = "🌱";
+            } else if (totalScore <= 45) {
+                title = "Explorador Consciente";
+                desc = "Vas por buen camino, reconociendo tus emociones y lenguaje. Hay áreas grises por iluminar para dar el salto hacia una mayor soberanía personal. Te recomendamos nuestros 'Retiros Inmersivos'.";
+                icon = "🧭";
+            } else {
+                title = "Líder en Evolución";
+                desc = "Vivís con una alta frecuencia de consciencia y alineación. Tu desafío ahora es sostener este estado y acompañar a otros en su despertar. Consultá por nuestros 'Programas B2B' y mentorías personalizadas.";
+                icon = "🔥";
+            }
+
+            document.getElementById('result-title').innerText = `Resultado: ${title}`;
+            document.getElementById('result-desc').innerText = desc;
+            document.getElementById('result-icon').innerText = icon;
+        }
+
+        function resetDiagnostic() {
+            currentStep = 0;
+            answers.length = 0;
+            document.getElementById('diagnostic-content').style.display = 'block';
+            document.getElementById('diagnostic-result').style.display = 'none';
+            renderQuestion();
         }
     </script>
 
