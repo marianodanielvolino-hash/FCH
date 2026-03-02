@@ -1293,7 +1293,7 @@
          ═══════════════════════════════════════ -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="#" class="navbar-logo" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">
+            <a href="index.html" class="navbar-logo">
                 <div class="fch-logo-container">
                     <svg viewBox="0 0 100 100" class="fch-logo-animated">
                         <defs>
@@ -1314,17 +1314,17 @@
             </a>
 
             <ul class="navbar-links">
-                <li><a href="#proposito">Propósito</a></li>
-                <li><a href="#el-salto">El Salto</a></li>
-                <li><a href="#experiencias">Experiencias</a></li>
-                <li><a href="#alianzas">Alianzas</a></li>
-                <li><a href="#somos">Quiénes Somos</a></li>
+                <li><a href="#estructura">Estructura</a></li>
+                <li><a href="#modulos-detalle">Módulos</a></li>
+                <li><a href="#valor">Beneficios</a></li>
+                <li><a href="#preguntas">FAQs</a></li>
             </ul>
 
             <div style="display:flex; gap:1rem; align-items:center;">
-                <a href="https://donar.fundacionfch.org" class="btn-cta-nav"
-                    style="background:var(--rosa); color:white; border:none;">Donar</a>
-                <a href="#cta-final" class="btn-cta-nav">Participar</a>
+                <a href="index.html" class="btn-cta-nav"
+                    style="background:transparent; color:var(--texto); border: 2px solid var(--texto);">Volver a la
+                    Fundación</a>
+                <a href="#cta-salto" class="btn-cta-nav">Dar el Salto</a>
             </div>
 
             <button class="mobile-toggle" onclick="openMobileMenu()" aria-label="Abrir menú">
@@ -1338,447 +1338,508 @@
         <button class="mobile-close" onclick="closeMobileMenu()" aria-label="Cerrar menú">
             <i class="ph-bold ph-x"></i>
         </button>
-        <a href="#proposito" onclick="closeMobileMenu()">Propósito</a>
-        <a href="#el-salto" onclick="closeMobileMenu()">El Salto</a>
-        <a href="#experiencias" onclick="closeMobileMenu()">Experiencias</a>
-        <a href="#alianzas" onclick="closeMobileMenu()">Alianzas</a>
-        <a href="#somos" onclick="closeMobileMenu()">Quiénes Somos</a>
-        <a href="https://donar.fundacionfch.org" onclick="closeMobileMenu()" style="color: var(--rosa);">Donar</a>
-        <a href="#cta-final" onclick="closeMobileMenu()" style="color: var(--amarillo);">Participar</a>
+        <a href="#estructura" onclick="closeMobileMenu()">Estructura</a>
+        <a href="#modulos-detalle" onclick="closeMobileMenu()">Módulos</a>
+        <a href="#valor" onclick="closeMobileMenu()">Beneficios</a>
+        <a href="#preguntas" onclick="closeMobileMenu()">FAQs</a>
+        <a href="index.html" onclick="closeMobileMenu()" style="color: var(--violeta-soft);">Volver a la Fundación</a>
+        <a href="#cta-salto" onclick="closeMobileMenu()" style="color: var(--amarillo);">Dar el Salto</a>
     </div>
 
-    <!-- ═══════════════════════════════════════
-         SECCIÓN 1: HERO
-         ═══════════════════════════════════════ -->
-    <section class="hero" id="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content reveal">
-            <h1>Consciencia que se convierte en transformación.</h1>
-            <p>Creamos espacios y experiencias que ayudan a personas y organizaciones a reconectar con su propósito y
-                traducir claridad en acción.</p>
-            <div class="button-group" style="margin-top: 1rem;">
-                <a href="#experiencias" class="btn-hero">Explorar experiencias</a>
-                <a href="#proposito" class="btn-outline-white" style="padding: 1rem 2rem; border-radius: 50px;">
-                    Conocer la Fundación
-                </a>
-            </div>
-        </div>
-    </section>
 
-    <!-- ═══════════════════════════════════════
-         SECCIÓN 2: LA METODOLOGÍA (Tríada FCH)
-         ═══════════════════════════════════════ -->
-    <!-- ═══════════════════════════════════════
-          NUEVA SECCIÓN: CÓMO TRABAJAMOS (Claridad Operativa)
-          ═══════════════════════════════════════ -->
-    <section class="section section-white" id="como-trabajamos">
-        <div class="section-inner">
-            <div class="triada-intro reveal">
-                <span class="section-tag">Proceso de Transformación</span>
-                <h2 class="section-title">Cómo trabajamos</h2>
-                <p class="section-subtitle">Un camino estructurado desde el primer contacto hasta la acción tangible.
-                </p>
-            </div>
-
-            <div class="triada-grid stagger" style="margin-top: 3rem;">
-                <div class="triada-card reveal" style="--i:0; border-top: 4px solid var(--violeta-soft);">
-                    <div class="triada-icon" style="background:rgba(107, 78, 191, 0.1); color:var(--violeta-soft);">
-                        <i class="ph-light ph-magnifying-glass"></i>
-                    </div>
-                    <h3>1. Diagnóstico / Encuentro</h3>
-                    <p><strong>Qué es:</strong> Una primera sesión para entender dónde estás y cuál es el bloqueo real.
-                    </p>
-                    <p style="font-size:0.85rem; margin-top:1rem; border-top:1px solid #eee; padding-top:1rem;">
-                        <strong>Para quién:</strong> Líderes y personas en búsqueda de claridad inicial.
-                    </p>
-                </div>
-
-                <div class="triada-card reveal" style="--i:1; border-top: 4px solid var(--rosa);">
-                    <div class="triada-icon" style="background:rgba(232, 67, 147, 0.1); color:var(--rosa);">
-                        <i class="ph-light ph-mountains"></i>
-                    </div>
-                    <h3>2. Experiencia / Proceso</h3>
-                    <p><strong>Qué es:</strong> Inmersión profunda (retiro o workshop) donde ocurre la ruptura de
-                        patrones.</p>
-                    <p style="font-size:0.85rem; margin-top:1rem; border-top:1px solid #eee; padding-top:1rem;">
-                        <strong>Para quién:</strong> Equipos y personas listos para el trabajo interno intenso.
-                    </p>
-                </div>
-
-                <div class="triada-card reveal" style="--i:2; border-top: 4px solid var(--verde);">
-                    <div class="triada-icon" style="background:rgba(0, 184, 148, 0.1); color:var(--verde);">
-                        <i class="ph-light ph-rocket-launch"></i>
-                    </div>
-                    <h3>3. Integración / Acción</h3>
-                    <p><strong>Qué es:</strong> Plan de acción concreto y seguimiento para que lo vivido no se quede en
-                        el retiro.</p>
-                    <p style="font-size:0.85rem; margin-top:1rem; border-top:1px solid #eee; padding-top:1rem;">
-                        <strong>Para quién:</strong> Quienes buscan resultados medibles en su vida y trabajo.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- ═══════════════════════════════════════
-         SECCIÓN 3: PLATAFORMA DE TRANSFORMACIÓN
-         ═══════════════════════════════════════ -->
     <!-- ═══════════════════════════════════════
           SECCIÓN: EL SALTO DE TU VIDA (LANDING SECTION)
           ═══════════════════════════════════════ -->
     <section id="el-salto">
-        <div class="el-salto-hero section-inner" style="align-items: center; justify-content: center; text-align: center; flex-direction: column;">
-            <div class="el-salto-hero-content reveal" style="max-width: 800px; text-align: center;">
-                <span class="section-tag" style="margin: 0 auto; margin-bottom: 1rem;">PLATAFORMA DE TRANSFORMACIÓN EN MOVIMIENTO</span>
-                <h2 style="font-size: clamp(2.5rem, 6vw, 4rem); color: var(--violeta-deep); margin-bottom: 1rem;">El Salto de Tu Vida</h2>
-                <p style="font-size: 1.25rem; color: var(--texto-light); margin: 0 auto 2.5rem; line-height: 1.4;">Un proceso presencial en Palermo para pasar de la claridad a la acción, con estructura, comunidad y seguimiento real.</p>
-                <div class="button-group" style="justify-content: center;">
-                    <a href="el-salto.html" class="btn-hero" style="padding: 1.2rem 3rem;">Conocer el programa completo</a>
-                </div>
-            </div>
-            <div class="el-salto-hero-img reveal" style="--i:1; width: 100%; max-width: 900px; margin-top: 3rem;">
-                <img src="img/elsalto-hero.png" alt="Espacio de transformación en Palermo" style="border-radius:20px; box-shadow: 0 10px 40px rgba(58,16,120,0.1);">
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════
-         SECCIÓN 4: A QUIÉN VA DIRIGIDO / QUÉ HACEMOS
-         ═══════════════════════════════════════ -->
-    <section class="section section-light" id="experiencias">
-        <div class="section-inner">
-            <div class="triada-intro reveal">
-                <span class="section-tag">Qué hacemos</span>
-                <h2 class="section-title">Experiencias transformadoras</h2>
-            </div>
-            <div class="triada-grid stagger">
-                <div class="triada-card reveal" style="--i:0;">
-                    <div class="triada-icon rosa-bg"><i class="ph-fill ph-user"></i></div>
-                    <h3>Procesos personales</h3>
-                    <p>Espacios diseñados para quienes atraviesan momentos de búsqueda, transición o toma de decisiones
-                        importantes.</p>
-                </div>
-                <div class="triada-card reveal" style="--i:1;">
-                    <div class="triada-icon amarillo-bg"><i class="ph-fill ph-users-three"></i></div>
-                    <h3>Encuentros para equipos</h3>
-                    <p>Instancias que fortalecen cultura, confianza y visión compartida.</p>
-                </div>
-                <div class="triada-card reveal" style="--i:2;">
-                    <div class="triada-icon verde-bg"><i class="ph-fill ph-crown"></i></div>
-                    <h3>Espacios de liderazgo</h3>
-                    <p>Procesos para líderes que desean integrar consciencia, responsabilidad e impacto.</p>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 3rem;">
-                <a href="#cta-final" class="btn-rosa">Quiero saber más</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════
-          SECCIÓN: ENTENDIENDO LA TRANSFORMACIÓN
-          ═══════════════════════════════════════ -->
-    <section class="section section-white">
-        <div class="section-inner">
-            <div class="platform-grid" style="grid-template-columns: 1fr 1fr; align-items: start;">
-                <div class="platform-img reveal">
-                    <img src="img/transformacion-img.png" alt="Transformación"
-                        style="border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
-                </div>
-                <div class="reveal">
-                    <h2 class="section-title">Del sentir al hacer</h2>
-                    <p style="font-size: 1.1rem; color: var(--texto-light); margin-bottom: 2rem;">La transformación real
-                        ocurre cuando lo que comprendemos internamente se traduce en decisiones y acciones externas.</p>
-                    <ul class="audience-list">
-                        <li><i class="ph-fill ph-check-circle"></i> <span>Generar claridad.</span></li>
-                        <li><i class="ph-fill ph-check-circle"></i> <span>Fortalecer coherencia.</span></li>
-                        <li><i class="ph-fill ph-check-circle"></i> <span>Activar compromiso.</span></li>
-                        <li><i class="ph-fill ph-check-circle"></i> <span>Sostener el cambio en el tiempo.</span></li>
-                    </ul>
-                    <p style="margin-top: 2rem; font-style: italic;">No buscamos soluciones rápidas. Acompañamos
-                        procesos reales.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════
-         SECCIÓN 5: MÉTRICAS DE IMPACTO
-         ═══════════════════════════════════════ -->
-    <section class="section section-dark" id="impacto">
-        <div class="section-inner">
-            <div class="triada-intro reveal" style="margin-bottom: 3rem;">
-                <span class="section-tag section-tag-light">Resultados</span>
-                <h2 class="section-title" style="color: var(--blanco);">Transformación con sentido</h2>
-                <p class="section-subtitle-light" style="margin: 0 auto; max-width: 700px;">El impacto de nuestros
-                    procesos se refleja en mayor claridad, equipos más alineados y liderazgos más responsables. Creemos
-                    que cada proceso individual aporta a una transformación colectiva más amplia.</p>
-            </div>
-            <div class="metrics-grid stagger">
-                <div class="metric-item reveal" style="--i:0">
-                    <div class="metric-number rosa-t">+500</div>
-                    <div class="metric-label">Personas acompañadas</div>
-                </div>
-                <div class="metric-item reveal" style="--i:1">
-                    <div class="metric-number amarillo-t">+50</div>
-                    <div class="metric-label">Experiencias realizadas</div>
-                </div>
-                <div class="metric-item reveal" style="--i:2">
-                    <div class="metric-number verde-t">98%</div>
-                    <div class="metric-label">Satisfacción promedio</div>
-                </div>
-                <div class="metric-item reveal" style="--i:3">
-                    <div class="metric-number white-t">100%</div>
-                    <div class="metric-label">Compromiso aplicado</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════
-         SECCIÓN 6: VALIDACIÓN INSTITUCIONAL
-         ═══════════════════════════════════════ -->
-    <!-- ═══════════════════════════════════════
-          NUEVA SECCIÓN: ALIANZAS Y FINANCIAMIENTO
-          ═══════════════════════════════════════ -->
-    <section class="section section-light" id="alianzas">
-        <div class="section-inner">
-            <div class="triada-intro reveal">
-                <span class="section-tag">Institucional</span>
-                <h2 class="section-title">Alianzas para impulsar transformación con impacto</h2>
-                <p class="section-subtitle" style="margin: 0 auto;">Fundación Consciencia Humana trabaja junto a
-                    organizaciones, empresas e instituciones que buscan promover liderazgo consciente, cultura
-                    responsable y transformación sostenible.</p>
-                <div style="margin-top:2.5rem; display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap;">
-                    <a href="https://wa.me/5491100000000" class="btn-hero"
-                        style="background:var(--violeta-mid);">Solicitar reunión institucional</a>
-                    <a href="https://donar.fundacionfch.org" class="btn-hero">Apoyar con una Donación</a>
-                </div>
-            </div>
-
-            <div class="platform-grid" style="margin-top: 5rem; align-items: start;">
-                <div class="reveal">
-                    <h3 style="font-family:'Poppins'; color:var(--violeta-deep); margin-bottom:1.5rem;">Nuestra
-                        Propuesta Institucional</h3>
-                    <p style="margin-bottom:1.5rem; color:var(--texto-light);">Trabajamos con aliados que desean
-                        incorporar una dimensión más consciente en sus equipos y proyectos mediante:</p>
-                    <ul class="platform-features">
-                        <li><i class="ph-fill ph-check-circle"></i> <span>Diseño de programas formativos</span></li>
-                        <li><i class="ph-fill ph-check-circle"></i> <span>Encuentros estratégicos para equipos</span>
-                        </li>
-                        <li><i class="ph-fill ph-check-circle"></i> <span>Espacios de liderazgo consciente</span></li>
-                        <li><i class="ph-fill ph-check-circle"></i> <span>Experiencias presenciales o híbridas</span>
-                        </li>
-                        <li><i class="ph-fill ph-check-circle"></i> <span>Procesos de acompañamiento adaptados</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="reveal">
-                    <h3 style="font-family:'Poppins'; color:var(--violeta-deep); margin-bottom:1.5rem;">Modalidades de
-                        Vinculación</h3>
-                    <div style="display:grid; gap:1rem;">
-                        <div
-                            style="padding:1.5rem; background:white; border-radius:12px; border-left:4px solid var(--rosa);">
-                            <h4 style="font-size:1rem; margin-bottom:0.5rem;">Alianzas estratégicas</h4>
-                            <p style="font-size:0.9rem; color:var(--texto-light);">Co-diseño de programas o iniciativas
-                                conjuntas con impacto social.</p>
-                        </div>
-                        <div
-                            style="padding:1.5rem; background:white; border-radius:12px; border-left:4px solid var(--amarillo);">
-                            <h4 style="font-size:1rem; margin-bottom:0.5rem;">Patrocinio de experiencias</h4>
-                            <p style="font-size:0.9rem; color:var(--texto-light);">Apoyo financiero o logístico para
-                                programas abiertos o comunitarios.</p>
-                        </div>
-                        <div
-                            style="padding:1.5rem; background:white; border-radius:12px; border-left:4px solid var(--verde);">
-                            <h4 style="font-size:1rem; margin-bottom:0.5rem;">Implementación interna</h4>
-                            <p style="font-size:0.9rem; color:var(--texto-light);">Diseño y facilitación de procesos
-                                dentro de la propia organización.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="metrics-grid stagger"
-                style="margin-top: 5rem; background:white; padding:3rem; border-radius:24px; box-shadow:0 10px 40px rgba(0,0,0,0.05);">
-                <div class="reveal" style="text-align:left;">
-                    <h3 style="font-family:'Poppins'; color:var(--violeta-deep); margin-bottom:1.5rem;">Impacto
-                        Compartido</h3>
-                    <ul class="audience-list">
-                        <li><i class="ph-fill ph-arrow-up-right"></i> <span>Mayor claridad en la toma de
-                                decisiones.</span></li>
-                        <li><i class="ph-fill ph-arrow-up-right"></i> <span>Equipos más alineados y
-                                comprometidos.</span></li>
-                        <li><i class="ph-fill ph-arrow-up-right"></i> <span>Cultura institucional fortalecida.</span>
-                        </li>
-                        <li><i class="ph-fill ph-arrow-up-right"></i> <span>Liderazgos con coherencia y
-                                responsabilidad.</span></li>
-                    </ul>
-                </div>
-                <div class="reveal" style="text-align:left;">
-                    <h3 style="font-family:'Poppins'; color:var(--violeta-deep); margin-bottom:1.5rem;">Criterios de
-                        Colaboración</h3>
-                    <p style="font-size:0.95rem; color:var(--texto-light); margin-bottom:1.5rem;">Priorizamos alianzas
-                        con organizaciones que compartan valores de ética, responsabilidad social y busquen un impacto
-                        real.</p>
-                    <div
-                        style="padding:1rem; background:var(--fondo-claro); border-radius:10px; font-size:0.9rem; font-style:italic;">
-                        "El impacto sostenible comienza por el desarrollo interno de las personas."
-                    </div>
-                </div>
-            </div>
-
-            <div class="reveal" style="text-align:center; margin-top:5rem;">
-                <h3 style="font-family:'Poppins'; color:var(--violeta-deep); margin-bottom:1rem;">¿Cómo iniciar una
-                    alianza?</h3>
-                <p style="max-width:600px; margin:0 auto 2rem; color:var(--texto-light);">El primer paso es una reunión
-                    institucional para comprender objetivos y analizar líneas de trabajo conjunto.</p>
-                <a href="https://wa.me/5491100000000" class="btn-rosa">Coordinar reunión institucional</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="section section-white" id="somos">
-        <div class="section-inner">
-            <div class="triada-intro reveal" style="margin-bottom: 3rem;">
-                <span class="section-tag">El Equipo</span>
-                <h2 class="section-title">Un equipo comprometido con la consciencia aplicada</h2>
-                <p class="section-subtitle" style="margin: 0 auto;">Fundación Consciencia Humana está integrada por
-                    personas que combinan experiencia en liderazgo, acompañamiento humano y diseño de procesos de
-                    transformación. Nos une una misma intención: construir espacios donde la profundidad y la acción se
-                    encuentren.</p>
-            </div>
-
-            <div class="validation-grid stagger" style="justify-content: center;">
-                <div class="validation-card reveal" style="--i:0; max-width: 500px; margin: 0 auto;">
-                    <div class="validation-logo gcba">FCH</div>
-                    <div class="validation-info">
-                        <h4>Acompañamiento Profesional</h4>
-                        <p>Facilitadores con más de 15 años de trayectoria en desarrollo humano.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════
-         NUEVA SECCIÓN: JOURNAL & MANIFIESTO
-         ═══════════════════════════════════════ -->
-    <section class="section section-light" id="journal">
-        <div class="section-inner">
-            <div class="triada-intro reveal">
-                <span class="section-tag">Pensamiento FCH</span>
-                <h2 class="section-title">El Journal</h2>
-                <p class="section-subtitle">Exploraciones sobre consciencia, tecnología y el futuro humano.</p>
-            </div>
-
-            <div class="journal-grid stagger">
-                <div class="journal-card reveal" style="--i:0">
-                    <div style="height:180px; background:var(--violeta-soft); opacity:0.2;"></div>
-                    <div style="padding:1.5rem;">
-                        <span style="font-size:0.7rem; color:var(--rosa); font-weight:700;">MANIFESTO</span>
-                        <h3 style="font-size:1.1rem; margin:0.5rem 0;">Despertar en la Matrix</h3>
-                        <p style="font-size:0.9rem; color:var(--texto-light);">Cómo mantener la soberanía personal en un
-                            mundo hiper-digitalizado.</p>
-                    </div>
-                </div>
-                <div class="journal-card reveal" style="--i:1">
-                    <div style="height:180px; background:var(--amarillo); opacity:0.2;"></div>
-                    <div style="padding:1.5rem;">
-                        <span style="font-size:0.7rem; color:var(--rosa); font-weight:700;">ACCIÓN</span>
-                        <h3 style="font-size:1.1rem; margin:0.5rem 0;">Liderazgo del Futuro</h3>
-                        <p style="font-size:0.9rem; color:var(--texto-light);">Por qué la empatía es la habilidad
-                            técnica más importante de esta década.</p>
-                    </div>
-                </div>
-                <div class="journal-card reveal" style="--i:2">
-                    <div style="height:180px; background:var(--verde); opacity:0.2;"></div>
-                    <div style="padding:1.5rem;">
-                        <span style="font-size:0.7rem; color:var(--rosa); font-weight:700;">TECNOLOGÍA</span>
-                        <h3 style="font-size:1.1rem; margin:0.5rem 0;">IA con Alma</h3>
-                        <p style="font-size:0.9rem; color:var(--texto-light);">Hacia una inteligencia artificial que
-                            potencie nuestra humanidad, no que la reemplace.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════
-         DIAGNOSTIC WIDGET HTML
-         ═══════════════════════════════════════ -->
-    <button class="widget-fab" onclick="toggleWidget()" aria-label="Diagnóstico">
-        <i class="ph-bold ph-lightning"></i>
-    </button>
-
-    <div class="widget-panel" id="diagnostic-panel">
-        <button onclick="toggleWidget()"
-            style="position:absolute; top:1rem; right:1rem; border:none; background:none; font-size:1.5rem; cursor:pointer;">&times;</button>
-        <h2 style="font-family:'Poppins'; color:var(--violeta-deep);">Diagnóstico FCH</h2>
-        <p style="font-size:0.9rem; color:var(--texto-light); margin-bottom:2rem;">Descubrí tu nivel actual de conexión
-            y madurez digital.</p>
-
-        <div id="diagnostic-content">
-            <div id="question-container">
-                <!-- Questions will be injected here by JS -->
-            </div>
-
-            <div class="widget-controls" style="display:flex; gap:1rem; margin-top:2rem;">
-                <button id="prev-btn" onclick="prevQuestion()" class="btn-outline-white"
-                    style="flex:1; color:var(--texto); border-color:#ddd; display:none;">Anterior</button>
-                <button id="next-btn" onclick="nextQuestion()" class="btn-hero"
-                    style="flex:2; border:none;">Siguiente</button>
-            </div>
-
-            <div id="progress-bar-container"
-                style="width:100%; height:6px; background:#eee; border-radius:10px; margin-top:1.5rem; overflow:hidden;">
-                <div id="progress-bar" style="width:0%; height:100%; background:var(--rosa); transition:width 0.3s;">
-                </div>
-            </div>
-            <p id="progress-text"
-                style="font-size:0.75rem; color:var(--texto-muted); text-align:center; margin-top:0.5rem;">Pregunta 1 de
-                15</p>
-        </div>
-
-        <div id="diagnostic-result"
-            style="display:none; margin-top:2rem; padding:2rem; background:var(--fondo-claro); border-radius:12px; text-align:center; animation:fadeInUp 0.6s ease-out;">
-            <div style="font-size:3rem; margin-bottom:1rem;" id="result-icon">✨</div>
-            <h3 id="result-title" style="font-family:'Poppins'; color:var(--violeta-deep); margin-bottom:1rem;">
-                Resultado: Nivel Explorador</h3>
-            <p id="result-desc"
-                style="font-size:0.95rem; line-height:1.6; color:var(--texto-light); margin-bottom:2rem;">Estás listo
-                para profundizar en tu propósito. Te recomendamos nuestra charla de "Despertar en la Matrix".</p>
-            <button onclick="resetDiagnostic()" class="btn-outline-white"
-                style="color:var(--violeta-mid); border-color:var(--violeta-mid); width:100%;">Reiniciar Test</button>
-        </div>
-    </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════
-          NUEVA SECCIÓN: SUMATE AL EQUIPO
-          ═══════════════════════════════════════ -->
-    <section class="section section-light" id="sumate">
-        <div class="section-inner">
-            <div class="triada-intro reveal" style="max-width: 800px; margin: 0 auto; text-align: center;">
-                <span class="section-tag">Colaboración</span>
-                <h2 class="section-title">Sumate a Fundación Consciencia Humana</h2>
-                <p class="section-subtitle" style="margin: 0 auto 2.5rem;">
-                    Buscamos personas comprometidas con construir espacios de transformación reales: con criterio,
-                    sensibilidad y capacidad de llevar las ideas a la acción.
-                    Si querés colaborar, proponer, aportar tiempo profesional o acompañar proyectos desde tu lugar,
-                    queremos conocerte.
+        <!-- BLOQUE 1: HERO -->
+        <div class="el-salto-hero section-inner">
+            <div class="el-salto-hero-content reveal">
+                <span class="section-tag">PLATAFORMA DE TRANSFORMACIÓN EN MOVIMIENTO</span>
+                <h1 style="font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--violeta-deep); margin-bottom: 1rem;">El
+                    Salto de Tu Vida</h1>
+                <p
+                    style="font-size: 1.25rem; color: var(--texto-light); max-width: 550px; line-height: 1.4; margin-bottom: 2rem;">
+                    Un proceso presencial en Palermo para pasar de la claridad a la acción, con estructura, comunidad y
+                    seguimiento real.
                 </p>
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
-                    <a href="https://wa.me/5491100000000" class="btn-rosa" target="_blank" rel="noopener"
-                        style="padding: 1.2rem 3rem; font-size: 1.1rem;">Sumate acá</a>
-                    <span style="font-size: 0.8rem; color: var(--texto-muted);">Te toma 2 minutos. Nos llega directo al
-                        equipo.</span>
+                <ul class="el-salto-bullets">
+                    <li><i class="ph-fill ph-check-circle" style="color:var(--verde);"></i> 3 módulos · 5 encuentros
+                        cada uno</li>
+                    <li><i class="ph-fill ph-check-circle" style="color:var(--verde);"></i> Grupo reducido · dinámica
+                        práctica</li>
+                    <li><i class="ph-fill ph-check-circle" style="color:var(--verde);"></i> Herramientas aplicables
+                        desde el día 1</li>
+                </ul>
+                <div class="button-group">
+                    <a href="#cta-salto" class="btn-hero" style="padding: 1.2rem 3rem;">Quiero dar el salto</a>
+                    <a href="#modulos-detalle" class="btn-outline-white"
+                        style="color: var(--violeta-soft); border-color: var(--violeta-soft); padding: 1.1rem 2.5rem;">Ver
+                        módulos</a>
+                </div>
+                <div class="scroll-indicator">
+                    <i class="ph ph-caret-double-down" style="font-size: 1.5rem; color: var(--violeta-mid);"></i>
+                </div>
+            </div>
+            <div class="el-salto-hero-img reveal" style="--i:1">
+                <img src="img/elsalto-hero.png" alt="Espacio de transformación en Palermo">
+            </div>
+        </div>
+
+        <!-- BLOQUE 2: "No es..." -->
+        <div class="section section-white" id="no-es">
+            <div class="section-inner">
+                <div class="triada-intro reveal">
+                    <h2 class="section-title">Esto no es lo de siempre</h2>
+                </div>
+                <div class="triada-grid stagger">
+                    <div class="triada-card reveal" style="padding: 2.5rem; border-top: 4px solid var(--rosa);">
+                        <div style="font-size:2.5rem; margin-bottom:1rem;">🚫</div>
+                        <h3 style="font-size:1.2rem;">No es un retiro</h3>
+                        <p>No depende de “desconectar un finde”. Es formación constante en tu entorno real.</p>
+                    </div>
+                    <div class="triada-card reveal"
+                        style="--i:1; padding: 2.5rem; border-top: 4px solid var(--amarillo);">
+                        <div style="font-size:2.5rem; margin-bottom:1rem;">🚫</div>
+                        <h3 style="font-size:1.2rem;">No es terapia grupal</h3>
+                        <p>Es un proceso con guía y estructura orientado al movimiento y la acción.</p>
+                    </div>
+                    <div class="triada-card reveal"
+                        style="--i:2; padding: 2.5rem; border-top: 4px solid var(--violeta-soft);">
+                        <div style="font-size:2.5rem; margin-bottom:1rem;">🚫</div>
+                        <h3 style="font-size:1.2rem;">No es motivación</h3>
+                        <p>No buscamos el “high” pasajero. Es práctica, decisiones duras y sostén real.</p>
+                    </div>
+                </div>
+                <div style="text-align:center; margin-top:3.5rem;">
+                    <p style="font-size:1.2rem; font-weight:600; color:var(--violeta-mid);">Es un sistema de encuentros
+                        para transformar lo que entendés… en lo que hacés.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- BLOQUE 3: Qué te llevás -->
+        <div class="section section-light" id="valor">
+            <div class="section-inner">
+                <div class="triada-intro reveal">
+                    <h2 class="section-title">Lo que te llevás del programa</h2>
+                </div>
+                <div class="grid-2x3 stagger">
+                    <div class="reveal" style="background:white; padding:2rem; border-radius:20px; --i:0;">
+                        <div style="font-size:2rem; margin-bottom:1rem;">🧭</div>
+                        <h4 style="margin-bottom:0.5rem;">Claridad para decidir</h4>
+                        <p style="font-size:0.9rem; color:var(--texto-light);">Aprenderás a silenciar el ruido externo y
+                            conectar con tu verdad para elegir con seguridad.</p>
+                    </div>
+                    <div class="reveal" style="background:white; padding:2rem; border-radius:20px; --i:1;">
+                        <div style="font-size:2rem; margin-bottom:1rem;">⚙️</div>
+                        <h4 style="margin-bottom:0.5rem;">Sistema de acción</h4>
+                        <p style="font-size:0.9rem; color:var(--texto-light);">Hábitos y disciplina consciente para
+                            sostener tus cambios más allá del encuentro.</p>
+                    </div>
+                    <div class="reveal" style="background:white; padding:2rem; border-radius:20px; --i:2;">
+                        <div style="font-size:2rem; margin-bottom:1rem;">🗣️</div>
+                        <h4 style="margin-bottom:0.5rem;">Conversaciones valientes</h4>
+                        <p style="font-size:0.9rem; color:var(--texto-light);">Herramientas para decir lo pendiente,
+                            marcar límites claros y rediseñar vínculos.</p>
+                    </div>
+                    <div class="reveal" style="background:white; padding:2rem; border-radius:20px; --i:3;">
+                        <div style="font-size:2rem; margin-bottom:1rem;">🤝</div>
+                        <h4 style="margin-bottom:0.5rem;">Comunidad que acompaña</h4>
+                        <p style="font-size:0.9rem; color:var(--texto-light);">Una red de pares que atraviesa el proceso
+                            junto a vos, sosteniendo el compromiso mutuo.</p>
+                    </div>
+                    <div class="reveal" style="background:white; padding:2rem; border-radius:20px; --i:4;">
+                        <div style="font-size:2rem; margin-bottom:1rem;">🎯</div>
+                        <h4 style="margin-bottom:0.5rem;">Enfoque en prioridades</h4>
+                        <p style="font-size:0.9rem; color:var(--texto-light);">Dejar de dispersar energía en lo urgente
+                            para poner el foco en lo que realmente importa.</p>
+                    </div>
+                    <div class="reveal" style="background:white; padding:2rem; border-radius:20px; --i:5;">
+                        <div style="font-size:2rem; margin-bottom:1rem;">📈</div>
+                        <h4 style="margin-bottom:0.5rem;">Plan 90 días</h4>
+                        <p style="font-size:0.9rem; color:var(--texto-light);">Una hoja de ruta concreta para ejecutar
+                            tus objetivos una vez terminado el programa.</p>
+                    </div>
+                </div>
+                <div style="text-align:center; margin-top:2.5rem;">
+                    <a href="#modulos-detalle"
+                        style="color:var(--violeta-mid); font-weight:700; text-decoration:none;">Ver cómo se estructura
+                        →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- BLOQUE 4: Estructura (Resumen) -->
+        <div class="section section-white" id="estructura">
+            <div class="section-inner">
+                <div class="triada-intro reveal">
+                    <h2 class="section-title">Estructura del programa</h2>
+                    <p class="section-subtitle">Tres etapas progresivas. Cinco encuentros por módulo. Un camino claro,
+                        sin improvisación.</p>
+                </div>
+                <div class="triada-grid stagger" style="margin-top: 3rem;">
+                    <div class="pill-card reveal" style="--i:0; border-color: var(--violeta-deep);">
+                        <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">🌑 Módulo I — Despertar</h3>
+                        <p style="font-size:0.9rem;">(5 encuentros) &rarr; enfoque en <strong>claridad interna</strong>.
+                        </p>
+                    </div>
+                    <div class="pill-card reveal" style="--i:1; border-color: var(--rosa);">
+                        <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">⚡ Módulo II — Protagonista</h3>
+                        <p style="font-size:0.9rem;">(5 encuentros) &rarr; enfoque en <strong>acción sostenida</strong>.
+                        </p>
+                    </div>
+                    <div class="pill-card reveal" style="--i:2; border-color: var(--amarillo);">
+                        <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">🌅 Módulo III — Expansión</h3>
+                        <p style="font-size:0.9rem;">(5 encuentros) &rarr; enfoque en <strong>impacto real</strong>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BLOQUE 5: Módulos (WOW) -->
+        <div class="section section-light" id="modulos-detalle">
+            <div class="section-inner">
+                <!-- Módulo I DETALLE -->
+                <div class="reveal" style="margin-bottom: 5rem;">
+                    <div style="margin-bottom: 2rem;">
+                        <div style="display:flex; align-items:center; gap:1rem; margin-bottom:0.5rem;">
+                            <div style="width:12px; height:12px; border-radius:50%; background:var(--violeta-deep);">
+                            </div>
+                            <h3 style="font-size:1.8rem; color:var(--violeta-deep);">MÓDULO I — DESPERTAR</h3>
+                        </div>
+                        <p style="font-style:italic; color:var(--texto-light); font-size:1.1rem;">Ordenar el mundo
+                            interno para tomar decisiones con verdad.</p>
+                    </div>
+                    <div class="module-grid-5 stagger">
+                        <div class="module-card-premium reveal" style="--i:0"
+                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
+                            <div style="font-size:1.8rem; margin-bottom:0.5rem;">🌀</div>
+                            <h4 style="font-size:1rem;">Punto Cero</h4>
+                            <div class="module-content-mobile">
+                                <p style="font-size:0.8rem; line-height:1.4;">Donde estás realmente y qué estás evitando
+                                    mirar.</p>
+                            </div>
+                        </div>
+                        <div class="module-card-premium reveal" style="--i:1"
+                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
+                            <div style="font-size:1.8rem; margin-bottom:0.5rem;">🪞</div>
+                            <h4 style="font-size:1rem;">Historia Invisible</h4>
+                            <div class="module-content-mobile">
+                                <p style="font-size:0.8rem; line-height:1.4;">Patrones y creencias que gobiernan tus
+                                    decisiones.</p>
+                            </div>
+                        </div>
+                        <div class="module-card-premium reveal" style="--i:2"
+                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
+                            <div style="font-size:1.8rem; margin-bottom:0.5rem;">🔥</div>
+                            <h4 style="font-size:1rem;">Lo que Te Frena</h4>
+                            <div class="module-content-mobile">
+                                <p style="font-size:0.8rem; line-height:1.4;">Miedo, postergación y mecanismos de
+                                    autosabotaje.</p>
+                            </div>
+                        </div>
+                        <div class="module-card-premium reveal" style="--i:3"
+                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
+                            <div style="font-size:1.8rem; margin-bottom:0.5rem;">🧭</div>
+                            <h4 style="font-size:1rem;">Norte y Prioridad</h4>
+                            <div class="module-content-mobile">
+                                <p style="font-size:0.8rem; line-height:1.4;">Definir qué es lo que importa y qué es lo
+                                    que sobra.</p>
+                            </div>
+                        </div>
+                        <div class="module-card-premium reveal" style="--i:4"
+                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
+                            <div style="font-size:1.8rem; margin-bottom:0.5rem;">🚀</div>
+                            <h4 style="font-size:1rem;">Declaración</h4>
+                            <div class="module-content-mobile">
+                                <p style="font-size:0.8rem; line-height:1.4;">Una decisión concreta, medible y poderosa
+                                    de cambio.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Módulo II DETALLE -->
+                <div class="reveal" style="margin-bottom: 5rem;">
+                    <div style="margin-bottom: 2rem;">
+                        <div style="display:flex; align-items:center; gap:1rem; margin-bottom:0.5rem;">
+                            <div style="width:12px; height:12px; border-radius:50%; background:var(--rosa);"></div>
+                            <h3 style="font-size:1.8rem; color:var(--rosa);">MÓDULO II — PROTAGONISTA DE CAMBIO</h3>
+                        </div>
+                        <p style="font-style:italic; color:var(--texto-light); font-size:1.1rem;">Pasar de comprender… a
+                            hacer, sostener y responder.</p>
+                    </div>
+                    <div class="module-grid-5 stagger">
+                        <div class="module-card-premium reveal" style="--i:0"
+                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
+                            <div style="font-size:1.8rem; margin-bottom:0.5rem;">🎭</div>
+                            <h4 style="font-size:1rem;">Cambiar el Personaje</h4>
+                            <div class="module-content-mobile">
+                                <p style="font-size:0.8rem; line-height:1.4;">De reaccionar automáticamente a elegir tu
+                                    respuesta.</p>
+                            </div>
+                        </div>
+                        <div class="module-card-premium reveal" style="--i:1"
+                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
+                            <div style="font-size:1.8rem; margin-bottom:0.5rem;">⚙️</div>
+                            <h4 style="font-size:1rem;">Sistema de Acción</h4>
+                            <div class="module-content-mobile">
+                                <p style="font-size:0.8rem; line-height:1.4;">Gestión de energía, hábitos y disciplina
+                                    consciente.</p>
+                            </div>
+                        </div>
+                        <div class="module-card-premium reveal" style="--i:2"
+                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
+                            <div style="font-size:1.8rem; margin-bottom:0.5rem;">🗣️</div>
+                            <h4 style="font-size:1rem;">Conversaciones</h4>
+                            <div class="module-content-mobile">
+                                <p style="font-size:0.8rem; line-height:1.4;">Decir lo pendiente con claridad, firmeza y
+                                    empatía.</p>
+                            </div>
+                        </div>
+                        <div class="module-card-premium reveal" style="--i:3"
+                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
+                            <div style="font-size:1.8rem; margin-bottom:0.5rem;">🎯</div>
+                            <h4 style="font-size:1rem;">Movimiento</h4>
+                            <div class="module-content-mobile">
+                                <p style="font-size:0.8rem; line-height:1.4;">Acciones inteligentes y estratégicas, no
+                                    impulsivas.</p>
+                            </div>
+                        </div>
+                        <div class="module-card-premium reveal" style="--i:4"
+                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
+                            <div style="font-size:1.8rem; margin-bottom:0.5rem;">🏛️</div>
+                            <h4 style="font-size:1rem;">Compromiso Público</h4>
+                            <div class="module-content-mobile">
+                                <p style="font-size:0.8rem; line-height:1.4;">Sostener tu verdad y decisiones frente al
+                                    grupo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Módulo III DETALLE -->
+                <div class="reveal" style="margin-bottom: 2rem;">
+                    <div style="margin-bottom: 2rem;">
+                        <div style="display:flex; align-items:center; gap:1rem; margin-bottom:0.5rem;">
+                            <div style="width:12px; height:12px; border-radius:50%; background:var(--amarillo-hover);">
+                            </div>
+                            <h3 style="font-size:1.8rem; color:var(--amarillo-hover);">MÓDULO III — EXPANSIÓN</h3>
+                        </div>
+                        <p style="font-style:italic; color:var(--texto-light); font-size:1.1rem;">Consolidar identidad y
+                            proyectar un nuevo nivel de impacto.</p>
+                    </div>
+                    <div class="module-grid-5 stagger">
+                        <div class="module-card-premium reveal" style="--i:0"
+                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
+                            <div style="font-size:1.8rem; margin-bottom:0.5rem;">👑</div>
+                            <h4 style="font-size:1rem;">Liderarte Primero</h4>
+                            <div class="module-content-mobile">
+                                <p style="font-size:0.8rem; line-height:1.4;">Coherencia interna y autogestión emocional
+                                    continua.</p>
+                            </div>
+                        </div>
+                        <div class="module-card-premium reveal" style="--i:1"
+                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
+                            <div style="font-size:1.8rem; margin-bottom:0.5rem;">🤝</div>
+                            <h4 style="font-size:1rem;">Relaciones que Elevan</h4>
+                            <div class="module-content-mobile">
+                                <p style="font-size:0.8rem; line-height:1.4;">Rediseñar vínculos alineados a tu nueva
+                                    etapa vital.</p>
+                            </div>
+                        </div>
+                        <div class="module-card-premium reveal" style="--i:2"
+                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
+                            <div style="font-size:1.8rem; margin-bottom:0.5rem;">🧩</div>
+                            <h4 style="font-size:1rem;">Proyecto con Sentido</h4>
+                            <div class="module-content-mobile">
+                                <p style="font-size:0.8rem; line-height:1.4;">Ordenar visión laboral o personal con
+                                    propósito.</p>
+                            </div>
+                        </div>
+                        <div class="module-card-premium reveal" style="--i:3"
+                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
+                            <div style="font-size:1.8rem; margin-bottom:0.5rem;">🌐</div>
+                            <h4 style="font-size:1rem;">Comunidad Activa</h4>
+                            <div class="module-content-mobile">
+                                <p style="font-size:0.8rem; line-height:1.4;">Construir una red de sostén y colaboración
+                                    consciente.</p>
+                            </div>
+                        </div>
+                        <div class="module-card-premium reveal" style="--i:4"
+                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
+                            <div style="font-size:1.8rem; margin-bottom:0.5rem;">📈</div>
+                            <h4 style="font-size:1rem;">Plan 90 Días</h4>
+                            <div class="module-content-mobile">
+                                <p style="font-size:0.8rem; line-height:1.4;">Hoja de ruta concreta para proyectar tu
+                                    futuro.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align:center; margin-top:3rem;">
+                    <p style="font-size:0.9rem; color:var(--texto-muted); font-style:italic;">Cada encuentro incluye
+                        dinámica práctica + integración + compromiso semanal.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- BLOQUE 6: Modalidad -->
+        <div class="section section-white" id="modalidad">
+            <div class="section-inner">
+                <div class="triada-intro reveal">
+                    <h2 class="section-title">Modalidad</h2>
+                </div>
+                <div class="metrics-grid stagger" style="margin-top:2rem;">
+                    <div class="reveal" style="text-align:center; --i:0">
+                        <div style="font-size:3rem; margin-bottom:0.5rem;">📍</div>
+                        <h4 style="color:var(--violeta-deep);">Presencial en Palermo</h4>
+                        <p style="font-size:0.85rem; color:var(--texto-light);">Espacios de encuentro real.</p>
+                    </div>
+                    <div class="reveal" style="text-align:center; --i:1">
+                        <div style="font-size:3rem; margin-bottom:0.5rem;">👥</div>
+                        <h4 style="color:var(--violeta-deep);">Grupo reducido</h4>
+                        <p style="font-size:0.85rem; color:var(--texto-light);">Calidad y profundidad de intercambio.
+                        </p>
+                    </div>
+                    <div class="reveal" style="text-align:center; --i:2">
+                        <div style="font-size:3rem; margin-bottom:0.5rem;">📅</div>
+                        <h4 style="color:var(--violeta-deep);">Semanales</h4>
+                        <p style="font-size:0.85rem; color:var(--texto-light);">Consistencia en el tiempo.</p>
+                    </div>
+                    <div class="reveal" style="text-align:center; --i:3">
+                        <div style="font-size:3rem; margin-bottom:0.5rem;">🛠️</div>
+                        <h4 style="color:var(--violeta-deep);">Herramientas</h4>
+                        <p style="font-size:0.85rem; color:var(--texto-light);">Cero teoría eterna, 100% práctica.</p>
+                    </div>
+                </div>
+                <p
+                    style="text-align:center; margin-top:3rem; font-style:italic; color:var(--texto-light); font-size:1.1rem;">
+                    El foco es llevar el cambio a tu vida real, no dejarlo en una idea.
+                </p>
+            </div>
+        </div>
+
+        <!-- BLOQUE 7: Opcional 1 a 1 -->
+        <div class="section section-light" id="opcional">
+            <div class="section-inner">
+                <div class="platform-grid" style="align-items: center;">
+                    <div class="reveal">
+                        <span
+                            style="font-size:0.7rem; padding:0.4rem 1rem; background:var(--blanco); border-radius:30px; font-weight:700; color:var(--violeta-mid); box-shadow:0 4px 15px rgba(0,0,0,0.05);">OPCIONAL
+                            · CUPOS LIMITADOS</span>
+                        <h2 class="section-title" style="margin-top:1.5rem;">Opcional: acompañamiento 1 a 1</h2>
+                        <p style="color:var(--texto-light); font-size:1.1rem; margin-bottom: 1.5rem;">
+                            Si en algún punto necesitás profundizar de forma individual, podés sumar encuentros 1 a 1
+                            como instancia complementaria.
+                        </p>
+                        <p style="color:var(--texto-light);">
+                            En algunos casos, estos encuentros pueden realizarse en entornos naturales (<strong>Sakura
+                                Escobar</strong>).
+                        </p>
+                    </div>
+                    <div class="platform-img reveal">
+                        <img src="img/platform-connection.png" alt="Acompañamiento individual">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BLOQUE 8: Para quién es / no es -->
+        <div class="section section-white" id="perfil">
+            <div class="section-inner">
+                <div class="triada-intro reveal">
+                    <h2 class="section-title">¿Es para vos?</h2>
+                </div>
+                <div class="audience-grid stagger">
+                    <div class="audience-card reveal" style="background:#f0fff4; border:1px solid #c6f6d5; --i:0;">
+                        <h3 style="color:#2f855a; margin-bottom:1rem;">✅ Sí, si...</h3>
+                        <ul class="audience-list">
+                            <li><i class="ph-bold ph-check" style="color:#48bb78;"></i> <span>Estás en transición o
+                                    decisión importante.</span></li>
+                            <li><i class="ph-bold ph-check" style="color:#48bb78;"></i> <span>Querés orden, enfoque y
+                                    sostén real.</span></li>
+                            <li><i class="ph-bold ph-check" style="color:#48bb78;"></i> <span>Te sirve trabajar en grupo
+                                    con compromiso.</span></li>
+                        </ul>
+                    </div>
+                    <div class="audience-card reveal" style="background:#fff5f5; border:1px solid #fed7d7; --i:1;">
+                        <h3 style="color:#c53030; margin-bottom:1rem;">🚫 No, si...</h3>
+                        <ul class="audience-list">
+                            <li><i class="ph-bold ph-x" style="color:#f56565;"></i> <span>Buscás una solución inmediata
+                                    sin proceso.</span></li>
+                            <li><i class="ph-bold ph-x" style="color:#f56565;"></i> <span>No querés llevar nada a la
+                                    práctica.</span></li>
+                            <li><i class="ph-bold ph-x" style="color:#f56565;"></i> <span>No estás dispuesto a
+                                    incomodarte un poco.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BLOQUE 9: FAQS -->
+        <div class="section section-light" id="preguntas">
+            <div class="section-inner" style="max-width:800px;">
+                <div class="triada-intro reveal">
+                    <h2 class="section-title">Preguntas frecuentes</h2>
+                </div>
+                <div class="reveal">
+                    <div class="faq-item" onclick="this.classList.toggle('open')">
+                        <div class="faq-q"><span>1. ¿Tengo que hacer los 3 módulos?</span> <i class="ph ph-plus"></i>
+                        </div>
+                        <p class="faq-a">No necesariamente. Podés empezar por el Módulo I y decidir el camino según tu
+                            proceso y necesidades actuales.</p>
+                    </div>
+                    <div class="faq-item" onclick="this.classList.toggle('open')">
+                        <div class="faq-q"><span>2. ¿Necesito experiencia previa?</span> <i class="ph ph-plus"></i>
+                        </div>
+                        <p class="faq-a">No. Solo apertura mental, honestidad y un compromiso real con tu propio proceso
+                            de transformación.</p>
+                    </div>
+                    <div class="faq-item" onclick="this.classList.toggle('open')">
+                        <div class="faq-q"><span>3. ¿Qué pasa si falto a un encuentro?</span> <i class="ph ph-plus"></i>
+                        </div>
+                        <p class="faq-a">Se trabaja con material de integración diseñado para sostener la continuidad y
+                            que no pierdas el hilo del grupo.</p>
+                    </div>
+                    <div class="faq-item" onclick="this.classList.toggle('open')">
+                        <div class="faq-q"><span>4. ¿Es confidencial lo que se comparte?</span> <i
+                                class="ph ph-plus"></i></div>
+                        <p class="faq-a">Absolutamente. Cuidamos el espacio y el respeto del grupo mediante un
+                            compromiso mutuo de confidencialidad desde el día uno.</p>
+                    </div>
+                    <div class="faq-item" onclick="this.classList.toggle('open')">
+                        <div class="faq-q"><span>5. ¿Cómo sé si este programa es para mí?</span> <i
+                                class="ph ph-plus"></i></div>
+                        <p class="faq-a">Podés solicitar la breve charla diagnóstica previa para confirmar si el
+                            programa se alinea con tu momento actual.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BLOQUE 10: CTA Final -->
+        <div class="section section-white" id="cta-salto">
+            <div class="section-inner" style="text-align:center;">
+                <div class="reveal">
+                    <h2 class="section-title">Si sentís que llegó el momento</h2>
+                    <p style="font-size:1.2rem; color:var(--texto-light); margin-bottom:3rem;">Sumate a la próxima
+                        cohorte y empezá a construir el cambio con estructura.</p>
+                    <div class="button-group">
+                        <a href="https://wa.me/5491100000000" class="btn-hero" style="padding: 1.2rem 4rem;">Quiero dar
+                            el salto</a>
+                        <a href="https://wa.me/5491100000000"
+                            style="color:var(--violeta-mid); font-weight:700; text-decoration:none; display:flex; align-items:center; gap:0.5rem;">
+                            Quiero una conversación previa <i class="ph ph-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- ═══════════════════════════════════════
          SECCIÓN 7: CTA FINAL / FOOTER
