@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitácora de Consciencia | Fundación Consciencia Humana</title>
+    <meta name="description"
+        content="Reflexiones para evolucionar. Un espacio de profundidad con evidencia científica y aplicación práctica para líderes y buscadores de sentido.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'studio-base': '#F9F8F6',
+                        'obsidian': '#1A1A1A',
+                        'fch-violet': '#3A1078',
+                        'fch-pink': '#E84393'
+                    },
+                    fontFamily: {
+                        'display': ['Cormorant Garamond', 'serif'],
+                        'sans': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .category-pill.active {
+            background-color: #1A1A1A;
+            color: #F9F8F6;
+        }
+
+        .article-card:hover h2 {
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 4px;
+        }
+
+        /* Header blur effect */
+        .glass-header {
+            background: rgba(249, 248, 246, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+
+<body class="bg-studio-base text-obsidian font-sans selection:bg-fch-pink selection:text-white">
+
+    <!-- NAVIGATION (Simplified & Elegant) -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-header border-b border-black/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div
+                    class="w-8 h-8 flex items-center justify-center rounded-lg bg-obsidian text-studio-base transition-transform group-hover:scale-110">
+                    <span class="font-bold text-sm">CH</span>
+                </div>
+                <span class="font-semibold tracking-tight text-lg">Consciencia Humana</span>
+            </a>
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="text-sm font-medium hover:text-fch-pink transition-colors">Inicio</a>
+                <a href="#articulos" class="text-sm font-medium hover:text-fch-pink transition-colors">Bitácora</a>
+                <a href="el-salto.html" class="text-sm font-medium hover:text-fch-pink transition-colors">El Salto</a>
+                <a href="index.html#contacto"
+                    class="px-5 py-2.5 bg-obsidian text-studio-base rounded-full text-sm font-semibold hover:bg-neutral-800 transition-all">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="pt-32 pb-24">
+
+        <!-- HERO EDITORIAL -->
+        <section class="max-w-7xl mx-auto px-6 mb-20 reveal">
+            <div class="max-w-3xl">
+                <span
+                    class="inline-block px-3 py-1 rounded-full border border-black/10 text-[10px] font-bold tracking-[0.2em] uppercase mb-6 text-black/60">
+                    Reflexiones para Evolucionar
+                </span>
+                <h1 class="font-display italic text-6xl md:text-8xl leading-[0.9] mb-8 tracking-tighter">
+                    Bitácora de Consciencia
+                </h1>
+                <p class="text-xl md:text-2xl font-light leading-relaxed text-black/70 mb-10 max-w-2xl">
+                    Un espacio para cuestionar lo automático, activar claridad y entrenar una nueva forma de hacer y
+                    ser.
+                </p>
+                <div class="flex flex-wrap gap-4 text-sm font-medium">
+                    <span class="flex items-center gap-2"><i class="ph ph-sparkle text-fch-pink"></i> Lecturas
+                        breves</span>
+                    <span class="flex items-center gap-2"><i class="ph ph-brain text-fch-pink"></i> Evidencia
+                        científica</span>
+                    <span class="flex items-center gap-2"><i class="ph ph-compass text-fch-pink"></i> Aplicación
+                        práctica</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ARTÍCULO DESTACADO (FEATURED) -->
+        <section class="max-w-7xl mx-auto px-6 mb-24 reveal">
+            <div
+                class="bg-white rounded-[2rem] border border-black/5 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-700 group">
+                <div class="grid md:grid-cols-2">
+                    <div class="h-[400px] md:h-auto bg-neutral-100 overflow-hidden relative">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-fch-violet/20 to-fch-pink/10 mix-blend-multiply">
+                        </div>
+                        <img src="img/bitacora-featured.png" alt="Agotamiento de viejas estructuras"
+                            class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80"
+                            onerror="this.src='https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2070&auto=format&fit=crop'">
+                    </div>
+                    <div class="p-8 md:p-16 flex flex-col justify-center">
+                        <div class="flex items-center gap-3 mb-6">
+                            <span
+                                class="text-[10px] font-bold tracking-widest uppercase py-1 px-3 bg-fch-pink text-white rounded-full">Destacado</span>
+                            <span class="text-sm text-black/40 font-medium">6 min de lectura</span>
+                        </div>
+                        <h2 class="font-display text-4xl md:text-5xl leading-tight mb-6">El agotamiento de viejas
+                            estructuras de hacer y ser</h2>
+                        <p class="text-lg text-black/60 font-light leading-relaxed mb-8">
+                            Cuando funcionar ya no alcanza y el sistema interno pide actualización. No es debilidad, es
+                            una señal evolutiva de saturación.
+                        </p>
+                        <button onclick="openArticle('agotamiento-estructuras')"
+                            class="flex items-center gap-3 font-semibold text-lg hover:gap-5 transition-all w-fit">
+                            Leer reflexión <i class="ph ph-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FILTROS -->
+        <section id="articulos"
+            class="max-w-7xl mx-auto px-6 mb-12 flex flex-col md:flex-row md:items-center justify-between gap-6 reveal">
+            <div class="flex flex-wrap gap-2">
+                <button
+                    class="category-pill active px-6 py-2 rounded-full border border-black/10 text-sm font-medium transition-all hover:bg-obsidian hover:text-studio-base"
+                    onclick="filterArticles('Todos', this)">Todos</button>
+                <button
+                    class="category-pill px-6 py-2 rounded-full border border-black/10 text-sm font-medium transition-all hover:bg-obsidian hover:text-studio-base"
+                    onclick="filterArticles('Bienestar', this)">Bienestar</button>
+                <button
+                    class="category-pill px-6 py-2 rounded-full border border-black/10 text-sm font-medium transition-all hover:bg-obsidian hover:text-studio-base"
+                    onclick="filterArticles('Neurociencia', this)">Neurociencia</button>
+                <button
+                    class="category-pill px-6 py-2 rounded-full border border-black/10 text-sm font-medium transition-all hover:bg-obsidian hover:text-studio-base"
+                    onclick="filterArticles('Liderazgo', this)">Liderazgo</button>
+                <button
+                    class="category-pill px-6 py-2 rounded-full border border-black/10 text-sm font-medium transition-all hover:bg-obsidian hover:text-studio-base"
+                    onclick="filterArticles('Sentido', this)">Sentido</button>
+            </div>
+            <div class="relative group">
+                <i
+                    class="ph ph-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-black/30 group-focus-within:text-black transition-colors"></i>
+                <input type="text" placeholder="Buscar reflexión..."
+                    class="bg-white/50 border border-black/10 rounded-full py-3 pl-12 pr-6 text-sm focus:outline-none focus:ring-1 focus:ring-black w-full md:w-64 transition-all">
+            </div>
+        </section>
+
+        <!-- GRID PRINCIPAL -->
+        <section class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24 reveal"
+            id="articles-grid">
+            <!-- Artículos Dinámicos -->
+        </section>
+
+        <!-- CLAVES PRÁCTICAS -->
+        <section class="bg-obsidian text-studio-base py-24 mb-24">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <span
+                            class="inline-block px-3 py-1 rounded-full border border-white/20 text-[10px] font-bold tracking-[0.2em] uppercase mb-6 text-white/60">
+                            Herramientas para aplicar hoy
+                        </span>
+                        <h2 class="font-display text-5xl md:text-6xl mb-10 italic">Pequeños ajustes, grandes cambios.
+                        </h2>
+                        <div class="grid gap-6">
+                            <div
+                                class="flex items-start gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group">
+                                <i class="ph ph-compass text-3xl text-fch-pink"></i>
+                                <div>
+                                    <h3 class="font-semibold text-xl mb-2">Ejercicio 3 preguntas semanales</h3>
+                                    <p class="text-white/60 font-light italic">¿Qué me drenó? ¿Qué hice bien? ¿Qué
+                                        ajuste hoy?</p>
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-start gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group">
+                                <i class="ph ph-gear text-3xl text-fch-pink"></i>
+                                <div>
+                                    <h3 class="font-semibold text-xl mb-2">Plan Si–Entonces</h3>
+                                    <p class="text-white/60 font-light italic">Si me siento desbordado, entonces hago
+                                        una pausa de 30s.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-studio-base/5 p-12 rounded-[3rem] border border-white/10 text-center">
+                        <i class="ph ph-quotes text-5xl text-fch-pink mb-8 mx-auto"></i>
+                        <p class="font-display text-3xl md:text-4xl leading-snug mb-8">
+                            "No resolvemos los problemas de hoy con el mismo nivel de pensamiento con el que fueron
+                            creados."
+                        </p>
+                        <p class="text-white/40 font-medium tracking-widest text-xs uppercase">— Albert Einstein /
+                            Consciencia Humana</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA FINAL -->
+        <section class="max-w-3xl mx-auto px-6 text-center reveal">
+            <h2 class="text-3xl font-semibold mb-6">¿Te resonó lo que leíste?</h2>
+            <p class="text-lg text-black/60 font-light mb-10 leading-relaxed">
+                Podés seguir explorando o iniciar un proceso más profundo a través de nuestras experiencias y
+                acompañamientos personalizados.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="index.html#experiencias"
+                    class="px-8 py-4 bg-obsidian text-studio-base rounded-full font-semibold hover:bg-neutral-800 transition-all w-full sm:w-auto">
+                    Explorar Experiencias
+                </a>
+                <a href="index.html#contacto"
+                    class="px-8 py-4 border border-black/10 rounded-full font-semibold hover:bg-black/5 transition-all w-full sm:w-auto">
+                    Iniciar Conversación
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white border-t border-black/5 py-16">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 flex items-center justify-center rounded-lg bg-obsidian text-studio-base">
+                    <span class="font-bold">CH</span>
+                </div>
+                <div>
+                    <span class="font-bold block leading-none">Bitácora de Consciencia</span>
+                    <span class="text-xs text-black/40">Escritura para entrenar una nueva forma de estar en el
+                        mundo.</span>
+                </div>
+            </div>
+            <div class="flex gap-8 text-sm font-medium">
+                <a href="index.html" class="hover:text-fch-pink transition-colors">Web Principal</a>
+                <a href="#" class="hover:text-fch-pink transition-colors">Privacidad</a>
+                <a href="index.html#contacto" class="hover:text-fch-pink transition-colors">Contacto</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL PARA ARTÍCULOS (Simulación de página interna) -->
+    <div id="article-modal"
+        class="fixed inset-0 z-[100] bg-studio-base overflow-y-auto hidden opacity-0 transition-opacity duration-500">
+        <div class="max-w-3xl mx-auto px-6 py-32 relative">
+            <button onclick="closeArticle()"
+                class="fixed top-8 left-8 md:left-32 p-3 bg-white rounded-full border border-black/10 hover:bg-black/5 transition-all">
+                <i class="ph ph-arrow-left text-xl"></i>
+            </button>
+            <div id="article-content" class="reveal visible">
+                <!-- Content will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const articles = [
+            {
+                id: 'agotamiento-estructuras',
+                title: 'El agotamiento de viejas estructuras de hacer y ser',
+                excerpt: 'Cuando funcionar ya no alcanza y el sistema interno pide actualización: menos piloto automático, más diseño consciente.',
+                category: 'Bienestar',
+                time: '6 min',
+                icon: 'ph-flame',
+                content: `
+                    <div class="mb-12">
+                        <span class="text-xs font-bold tracking-widest uppercase bg-fch-pink text-white px-3 py-1 rounded-full mb-6 inline-block">Bienestar</span>
+                        <h1 class="font-display text-5xl md:text-7xl italic mb-8">El agotamiento de viejas estructuras de hacer y ser</h1>
+                        <p class="text-2xl font-light text-black/70 italic leading-relaxed mb-8">Hay un tipo de cansancio que no se resuelve con vacaciones.</p>
+                    </div>
+                    <div class="prose prose-lg max-w-none text-black/80 font-light space-y-6 leading-relaxed">
+                        <p>Es el agotamiento que aparece cuando seguís haciendo “lo correcto” pero internamente algo se vacía. Muchos sistemas de trabajo, liderazgo y vida personal fueron diseñados bajo una lógica de rendimiento constante. Más velocidad. Más resultados. Más control.</p>
+                        <p>Desde la neurociencia sabemos que el cerebro no está preparado para vivir en modo alerta sostenida. Cuando el estrés se vuelve crónico, disminuye la capacidad de regulación emocional, aumenta la irritabilidad y baja la claridad cognitiva. Es biológico.</p>
+                        <blockquote class="border-l-4 border-fch-pink pl-6 italic text-2xl font-display my-12 text-black/90">
+                            "El problema no es trabajar mucho. El problema es trabajar desde estructuras que ya no están alineadas con nuestras necesidades psicológicas básicas."
+                        </blockquote>
+                        <p>Por eso el agotamiento puede ser una señal evolutiva. No necesariamente indica fracaso. Indica desalineación.</p>
+                        <div class="bg-black/5 p-8 rounded-[2rem] my-12 border border-black/5">
+                            <h3 class="font-bold text-xl mb-4">Preguntate:</h3>
+                            <ul class="space-y-4">
+                                <li class="flex gap-3"><i class="ph ph-check-circle text-fch-pink mt-1"></i> ¿Qué parte de mi forma actual de trabajar me está costando demasiado?</li>
+                                <li class="flex gap-3"><i class="ph ph-check-circle text-fch-pink mt-1"></i> ¿Qué hábito sostenía antes que hoy ya no representa quién soy?</li>
+                            </ul>
+                        </div>
+                        <p class="font-medium text-xl mt-12">Reflexión final: ¿Estás agotado… o estás listo para evolucionar tu estructura?</p>
+                    </div>
+                `
+            },
+            {
+                id: 'carencia-sentido',
+                title: 'La carencia de sentido que muchas veces no sabemos nombrar',
+                excerpt: 'Cuando todo “está bien”, pero algo no encaja: cómo reconstruir significado desde microdecisiones y valores vivos.',
+                category: 'Sentido',
+                time: '6 min',
+                icon: 'ph-compass',
+                content: `
+                    <div class="mb-12">
+                        <span class="text-xs font-bold tracking-widest uppercase bg-obsidian text-white px-3 py-1 rounded-full mb-6 inline-block">Sentido</span>
+                        <h1 class="font-display text-5xl md:text-7xl italic mb-8">La carencia de sentido que no sabemos nombrar</h1>
+                        <p class="text-2xl font-light text-black/70 italic leading-relaxed">Cuando todo “está bien” pero algo no encaja.</p>
+                    </div>
+                    <div class="prose prose-lg max-w-none text-black/80 font-light space-y-6 leading-relaxed">
+                        <p>No siempre la falta de sentido se siente como tristeza. A veces aparece como vacío, apatía o desmotivación sin causa clara. Podés tener trabajo, vínculos, estabilidad… y aun así sentir que algo no termina de resonar.</p>
+                        <p>La psicología positiva define el sentido como la percepción de que lo que hacemos está conectado con algo más grande que nosotros. El sentido no aparece en teorías. Aparece cuando los valores se ponen en acción.</p>
+                         <div class="bg-black/5 p-8 rounded-[2rem] my-12 border border-black/5">
+                            <h3 class="font-bold text-xl mb-4">Ejercicio Micro-Sentido:</h3>
+                             <p class="mb-4">Recordá tres momentos recientes donde te sentiste vivo. ¿Qué valor estaba presente ahí?</p>
+                            <ul class="grid grid-cols-2 gap-4">
+                                <li class="p-4 bg-white rounded-xl text-center font-bold text-obsidian shadow-sm">Libertad</li>
+                                <li class="p-4 bg-white rounded-xl text-center font-bold text-obsidian shadow-sm">Aprendizaje</li>
+                                <li class="p-4 bg-white rounded-xl text-center font-bold text-obsidian shadow-sm">Servicio</li>
+                                <li class="p-4 bg-white rounded-xl text-center font-bold text-obsidian shadow-sm">Creatividad</li>
+                            </ul>
+                        </div>
+                        <p class="font-medium text-xl">Reflexión final: ¿Qué pequeño ajuste podrías hacer esta semana para vivir con 10% más coherencia?</p>
+                    </div>
+                `
+            },
+            {
+                id: 'exito-loop',
+                title: 'El loop de éxito externo sin disfrute interno',
+                excerpt: 'Metas, logro, vacío, siguiente meta. Cómo sostener ambición sin perder vitalidad: éxito con coherencia.',
+                category: 'Bienestar',
+                time: '5 min',
+                icon: 'ph-trend-up',
+                content: `
+                    <div class="mb-12">
+                        <span class="text-xs font-bold tracking-widest uppercase bg-fch-pink text-white px-3 py-1 rounded-full mb-6 inline-block">Bienestar</span>
+                        <h1 class="font-display text-5xl md:text-7xl italic mb-8">Éxito externo sin disfrute interno</h1>
+                        <p class="text-2xl font-light text-black/70 italic leading-relaxed">Objetivo. Esfuerzo. Logro. Y luego… vacío.</p>
+                    </div>
+                    <div class="prose prose-lg max-w-none text-black/80 font-light space-y-6 leading-relaxed">
+                        <p>Este patrón es frecuente en culturas orientadas al rendimiento. El logro externo se convierte en la única métrica válida. Pero el cerebro se adapta rápido a las recompensas. Lo que antes generaba satisfacción, luego se vuelve estándar.</p>
+                        <p>La psicología positiva señala que el logro es solo una parte del bienestar. Sin relaciones, sentido y emociones positivas, el éxito pierde vitalidad.</p>
+                         <div class="bg-obsidian text-white p-8 rounded-[2rem] my-12">
+                            <h3 class="font-bold text-xl mb-6 text-fch-pink">Reencuadre Consciente:</h3>
+                            <p class="text-xl italic font-display">En lugar de “todavía no llegué”, probá con <span class="text-fch-pink underline underline-offset-8">“ya estoy construyendo”</span>.</p>
+                        </div>
+                        <p class="font-medium text-xl">Reflexión final: ¿Tu éxito te está expandiendo… o te está drenando?</p>
+                    </div>
+                `
+            },
+            {
+                id: 'reaccionar-elegir',
+                title: 'La diferencia entre reaccionar y elegir',
+                excerpt: 'Entre estímulo y respuesta hay un espacio. Entrenarlo cambia tus vínculos, tus decisiones y tu paz.',
+                category: 'Neurociencia',
+                time: '6 min',
+                icon: 'ph-mirror',
+                content: `
+                    <div class="mb-12">
+                        <span class="text-xs font-bold tracking-widest uppercase bg-fch-violet text-white px-3 py-1 rounded-full mb-6 inline-block">Neurociencia</span>
+                        <h1 class="font-display text-5xl md:text-7xl italic mb-8">Reaccionar o Elegir</h1>
+                        <p class="text-2xl font-light text-black/70 italic leading-relaxed">El espacio invisible que cambia tu vida.</p>
+                    </div>
+                    <div class="prose prose-lg max-w-none text-black/80 font-light space-y-6 leading-relaxed">
+                        <p>Entre estímulo y respuesta hay un espacio. La reacción es automática. La elección es entrenada. Cuando alguien te desafía o presiona, el sistema emocional se activa. Eso es biología.</p>
+                        <p>Pero la regulación emocional permite intervenir en ese proceso mediante la reinterpretación cognitiva: cambiar el significado de la situación antes de responder.</p>
+                        <div class="grid md:grid-cols-2 gap-6 my-12">
+                            <div class="p-6 rounded-2xl border border-black/10">
+                                <span class="text-xs font-bold text-black/40 uppercase block mb-2">Reacción</span>
+                                <p class="font-medium">"Me están atacando."</p>
+                            </div>
+                            <div class="p-6 rounded-2xl bg-fch-pink text-white">
+                                <span class="text-xs font-bold text-white/60 uppercase block mb-2">Elección (Entrenada)</span>
+                                <p class="font-medium">"Esto es información. Puedo responder con firmeza."</p>
+                            </div>
+                        </div>
+                        <p class="font-medium text-xl">Reflexión final: ¿Estás reaccionando… o estás diseñando tu respuesta?</p>
+                    </div>
+                `
+            },
+            {
+                id: 'autoobservacion',
+                title: 'El poder de la autoobservación y la autocorrección',
+                excerpt: 'Conciencia aplicada: observar sin juicio, ajustar sin culpa. El circuito silencioso del crecimiento real.',
+                category: 'Liderazgo',
+                time: '4 min',
+                icon: 'ph-eye',
+                content: `
+                    <div class="mb-12">
+                        <span class="text-xs font-bold tracking-widest uppercase bg-fch-violet text-white px-3 py-1 rounded-full mb-6 inline-block">Liderazgo</span>
+                        <h1 class="font-display text-5xl md:text-7xl italic mb-8">Autoobservación Consciente</h1>
+                        <p class="text-2xl font-light text-black/70 italic leading-relaxed">La práctica silenciosa del crecimiento.</p>
+                    </div>
+                    <div class="prose prose-lg max-w-none text-black/80 font-light space-y-6 leading-relaxed">
+                        <p>Autoobservación no es crítica constante. Es conciencia aplicada. Cuando observás tus patrones sin juicio, ganás libertad. Cuando corregís con intención, ganás dirección.</p>
+                        <p>El cerebro aprende por feedback. La autoobservación funciona como sensor. La autocorrección, como ajuste de rumbo. Es un ciclo de mejora 1% diaria.</p>
+                         <div class="bg-black border border-black p-8 rounded-[2rem] my-12 text-studio-base">
+                            <h3 class="font-bold text-xl mb-4 text-fch-pink">Feedback Semanal:</h3>
+                            <ol class="space-y-4 font-display text-2xl">
+                                <li>1. ¿Qué hice bien?</li>
+                                <li>2. ¿Qué me drenó energía?</li>
+                                <li>3. ¿Qué ajusto la próxima vez?</li>
+                            </ol>
+                        </div>
+                        <p class="font-medium text-xl italic">"No digas soy así. Decí estoy entrenando."</p>
+                    </div>
+                `
+            }
+        ];
+
+        function renderArticles(filter = 'Todos') {
+            const grid = document.getElementById('articles-grid');
+            grid.innerHTML = '';
+
+            const filtered = filter === 'Todos' ? articles : articles.filter(a => a.category === filter);
+
+            filtered.forEach(a => {
+                const card = `
+                    <div class="article-card reveal bg-white p-8 rounded-[2rem] border border-black/5 flex flex-col justify-between hover:shadow-xl hover:-translate-y-2 transition-all duration-500 cursor-pointer" onclick="openArticle('${a.id}')">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="w-12 h-12 rounded-2xl bg-studio-base flex items-center justify-center">
+                                    <i class="${a.icon} text-2xl text-obsidian"></i>
+                                </div>
+                                <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-black/40">${a.category}</span>
+                            </div>
+                            <h2 class="font-display text-3xl leading-tight mb-4">${a.title}</h2>
+                            <p class="text-black/50 font-light leading-relaxed mb-8 line-clamp-3">${a.excerpt}</p>
+                        </div>
+                        <div class="flex items-center justify-between text-xs font-semibold">
+                            <span class="text-fch-pink">${a.time} lectura</span>
+                            <span class="flex items-center gap-2">Leer reflexión <i class="ph ph-plus"></i></span>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += card;
+            });
+
+            // Re-trigger scroll reveal
+            setTimeout(checkReveal, 100);
+        }
+
+        function filterArticles(cat, btn) {
+            document.querySelectorAll('.category-pill').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderArticles(cat);
+        }
+
+        function openArticle(id) {
+            const article = articles.find(a => a.id === id);
+            const modal = document.getElementById('article-modal');
+            const content = document.getElementById('article-content');
+
+            content.innerHTML = article.content;
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.add('opacity-100');
+                document.body.style.overflow = 'hidden';
+            }, 10);
+        }
+
+        function closeArticle() {
+            const modal = document.getElementById('article-modal');
+            modal.classList.remove('opacity-100');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }, 500);
+        }
+
+        function checkReveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(r => {
+                const top = r.getBoundingClientRect().top;
+                if (top < window.innerHeight * 0.85) {
+                    r.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkReveal);
+        window.addEventListener('load', () => {
+            renderArticles();
+            checkReveal();
+        });
+    </script>
+</body>
+
+</html>
