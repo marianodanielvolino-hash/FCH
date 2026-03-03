@@ -235,110 +235,200 @@
         }
 
         /* ═══════════════════════════════
-           BITÁCORA SECTION STYLES
+           BITÁCORA SECTION STYLES (EVOLVED)
            ═══════════════════════════════ */
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Outfit:wght@300;400;600&display=swap');
 
         .bitacora-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
         }
 
         .bitacora-card {
             background: white;
-            padding: 2.5rem;
-            border-radius: 2rem;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 3rem;
+            border-radius: 2.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.04);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(145deg, #ffffff, #f9f9f9);
+        }
+
+        .bitacora-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--rosa), var(--violeta-soft));
+            opacity: 0;
+            transition: opacity 0.4s;
         }
 
         .bitacora-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(58, 16, 120, 0.1);
-            border-color: var(--violeta-soft);
+            transform: translateY(-12px);
+            box-shadow: 0 30px 60px rgba(58, 16, 120, 0.08);
+            border-color: rgba(107, 78, 191, 0.2);
+        }
+
+        .bitacora-card:hover::before {
+            opacity: 1;
+        }
+
+        .bitacora-card .section-tag {
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: inline-block;
         }
 
         .bitacora-card h3 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.85rem;
-            line-height: 1.2;
+            font-size: 2.2rem;
+            line-height: 1.1;
             margin-bottom: 1.5rem;
             font-style: italic;
+            font-weight: 400;
+            color: var(--violeta-deep);
         }
 
-        .category-pill {
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            font-size: 0.8rem;
+        .bitacora-card p {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--texto-light);
+            font-weight: 300;
+        }
+
+        .card-meta {
+            margin-top: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
             font-weight: 600;
-            transition: all 0.3s;
-            background: transparent;
-            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--texto-muted);
         }
 
-        .category-pill.active {
-            background: var(--violeta-deep);
-            color: white;
-            border-color: var(--violeta-deep);
+        .read-action {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--rosa);
+            transition: gap 0.3s;
         }
 
-        /* Modal Bitácora */
+        .bitacora-card:hover .read-action {
+            gap: 0.8rem;
+        }
+
+        /* Modal Bitácora Evolved */
         #bitacora-modal {
             display: none;
             position: fixed;
             inset: 0;
-            z-index: 2000;
-            background: #FDF9F3;
+            z-index: 3000;
+            background: #ffffff;
             overflow-y: auto;
             opacity: 0;
-            transition: opacity 0.5s ease;
+            transform: scale(1.05);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         #bitacora-modal.open {
             display: block;
             opacity: 1;
+            transform: scale(1);
+        }
+
+        #modal-article-body {
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+            animation-delay: 0.3s;
+        }
+
+        .modal-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: var(--rosa);
+            width: 0%;
+            z-index: 3100;
+            transition: width 0.1s;
         }
 
         .modal-content-inner {
-            max-width: 800px;
+            max-width: 750px;
             margin: 0 auto;
-            padding: 8rem 2rem 4rem;
+            padding: 10rem 2rem 6rem;
         }
 
         .bitacora-article-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
-            line-height: 1;
-            margin-bottom: 2rem;
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            line-height: 0.95;
+            margin-bottom: 3rem;
             font-style: italic;
+            text-align: center;
+            color: var(--violeta-deep);
         }
 
         .bitacora-prose {
-            font-size: 1.15rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
             line-height: 1.8;
-            color: var(--texto);
+            color: #333;
             font-weight: 300;
         }
 
         .bitacora-prose p {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .bitacora-prose p:first-of-type::first-letter {
+            font-family: 'Cormorant Garamond', serif;
+            float: left;
+            font-size: 5rem;
+            line-height: 0.8;
+            padding-right: 1rem;
+            color: var(--violeta-soft);
+            font-style: italic;
         }
 
         .bitacora-prose blockquote {
-            border-left: 4px solid var(--rosa);
-            padding-left: 2rem;
-            margin: 3rem 0;
+            border-left: none;
+            padding: 4rem 2rem;
+            margin: 4rem 0;
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-style: italic;
             color: var(--violeta-deep);
+            text-align: center;
+            position: relative;
+        }
+
+        .bitacora-prose blockquote::before {
+            content: '“';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 6rem;
+            opacity: 0.1;
+            color: var(--rosa);
         }
 
         .btn-cta-nav {
@@ -1363,6 +1453,226 @@
                 transform: rotate(180deg);
             }
         }
+
+        /* ═══════════════════════════════
+           CUADERNO DE REFLEXIÓN STYLES
+           ═══════════════════════════════ */
+        .cuaderno-section {
+            background-color: var(--fondo-claro);
+            padding: 8rem 2rem;
+            position: relative;
+        }
+
+        .cuaderno-wizard {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 2rem;
+            padding: 4rem;
+            box-shadow: 0 40px 100px rgba(58, 16, 120, 0.08);
+            position: relative;
+            min-height: 500px;
+        }
+
+        .step-container {
+            display: none;
+            animation: cuadernoFadeIn 0.5s ease-out;
+        }
+
+        .step-container.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cuaderno-progress-wrapper {
+            margin-bottom: 3rem;
+        }
+
+        .cuaderno-progress-bar {
+            height: 6px;
+            background: #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .cuaderno-progress-fill {
+            height: 100%;
+            background: var(--rosa);
+            width: 0%;
+            transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .question-item {
+            margin-bottom: 2.5rem;
+        }
+
+        .question-text {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            color: var(--violeta-deep);
+            display: block;
+        }
+
+        .rating-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 0.5rem;
+            position: relative;
+        }
+
+        .rating-option {
+            flex: 1;
+            text-align: center;
+        }
+
+        .rating-option input {
+            display: none;
+        }
+
+        .rating-label {
+            display: block;
+            padding: 1rem 0.5rem;
+            background: #f9f9f9;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            color: var(--texto-light);
+            font-weight: 500;
+        }
+
+        .rating-option input:checked+.rating-label {
+            background: var(--violeta-mid);
+            color: white;
+            border-color: var(--violeta-mid);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(78, 49, 170, 0.2);
+        }
+
+        .rating-scale-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--texto-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .cuaderno-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        /* Results Styles */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .result-card {
+            padding: 1.5rem;
+            border-radius: 1.2rem;
+            background: #fff;
+            border: 1px solid #eee;
+            text-align: center;
+        }
+
+        .status-pill {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-top: 1rem;
+        }
+
+        .status-green {
+            background: #E8F5E9;
+            color: #2E7D32;
+        }
+
+        .status-yellow {
+            background: #FFF3E0;
+            color: #EF6C00;
+        }
+
+        .status-red {
+            background: #FFEBEE;
+            color: #C62828;
+        }
+
+        .diagnosis-box {
+            background: var(--violeta-deep);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .plan-box {
+            background: var(--fondo-warm);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            margin-top: 2rem;
+            border: 1px dashed var(--violeta-soft);
+        }
+
+        .plan-input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .plan-input-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--texto);
+        }
+
+        .plan-input-group input {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-family: inherit;
+        }
+
+        @keyframes cuadernoFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cuaderno-wizard {
+                padding: 2rem;
+            }
+
+            .rating-label {
+                font-size: 0.8rem;
+                padding: 0.8rem 0.2rem;
+            }
+
+            .rating-scale-labels {
+                display: none;
+            }
+        }
     </style>
 </head>
 
@@ -1444,8 +1754,8 @@
                 listos para evolucionar.</p>
             <div class="button-group" style="margin-top: 1rem;">
                 <a href="#cta-final" class="btn-hero">Quiero comenzar mi proceso</a>
-                <a href="#conversacion" class="btn-outline-white" style="padding: 1rem 2rem; border-radius: 50px;">
-                    Conocer nuestra mirada
+                <a href="#cuaderno" class="btn-outline-white" style="padding: 1rem 2rem; border-radius: 50px;">
+                    Cuaderno de Reflexión
                 </a>
             </div>
         </div>
@@ -1476,63 +1786,122 @@
             <div class="bitacora-grid reveal" id="bitacora-grid">
                 <div class="bitacora-card reveal" onclick="openBitacoraModal('agotamiento')">
                     <div>
-                        <span class="section-tag" style="font-size:0.6rem; opacity:0.5;">Bienestar</span>
+                        <span class="section-tag" style="color:var(--rosa);">Bienestar</span>
                         <h3>El agotamiento de viejas estructuras de hacer y ser</h3>
-                        <p style="font-size:0.95rem; color:var(--texto-light); font-weight:300;">Cuando funcionar ya no
-                            alcanza y el sistema interno pide actualización: menos piloto automático, más diseño.</p>
+                        <p>Cuando funcionar ya no alcanza y el sistema interno pide actualización: menos piloto
+                            automático, más diseño.</p>
                     </div>
-                    <div
-                        style="margin-top:2rem; font-weight:700; font-size:0.8rem; display:flex; align-items:center; gap:0.5rem;">
-                        Leer reflexión <i class="ph-bold ph-arrow-right"></i>
+                    <div class="card-meta">
+                        <span>4 min de lectura</span>
+                        <div class="read-action">Leer reflexión <i class="ph-bold ph-arrow-right"></i></div>
                     </div>
                 </div>
+
                 <div class="bitacora-card reveal" onclick="openBitacoraModal('sentido')">
                     <div>
-                        <span class="section-tag" style="font-size:0.6rem; opacity:0.5;">Sentido</span>
-                        <h3>La carencia de sentido que muchas veces no sabemos nombrar</h3>
-                        <p style="font-size:0.95rem; color:var(--texto-light); font-weight:300;">Cuando todo “está
-                            bien”, pero algo no encaja: cómo reconstruir significado desde microdecisiones.</p>
+                        <span class="section-tag" style="color:var(--amarillo-hover);">Sentido</span>
+                        <h3>La carencia de sentido que no sabemos nombrar</h3>
+                        <p>Cuando todo “está bien”, pero algo no encaja: reconstruir significado desde microdecisiones
+                            con intención.</p>
                     </div>
-                    <div
-                        style="margin-top:2rem; font-weight:700; font-size:0.8rem; display:flex; align-items:center; gap:0.5rem;">
-                        Leer reflexión <i class="ph-bold ph-arrow-right"></i>
+                    <div class="card-meta">
+                        <span>5 min de lectura</span>
+                        <div class="read-action">Leer reflexión <i class="ph-bold ph-arrow-right"></i></div>
                     </div>
                 </div>
+
                 <div class="bitacora-card reveal" onclick="openBitacoraModal('exito')">
                     <div>
-                        <span class="section-tag" style="font-size:0.6rem; opacity:0.5;">Bienestar</span>
+                        <span class="section-tag" style="color:var(--rosa);">Bienestar</span>
                         <h3>El loop de éxito externo sin disfrute interno</h3>
-                        <p style="font-size:0.95rem; color:var(--texto-light); font-weight:300;">Metas, logro, vacío,
-                            meta. Cómo sostener ambición sin perder vitalidad: éxito con coherencia.</p>
+                        <p>Metas, logro, vacío, meta. Cómo sostener ambición sin perder vitalidad: éxito con coherencia
+                            profunda.</p>
                     </div>
-                    <div
-                        style="margin-top:2rem; font-weight:700; font-size:0.8rem; display:flex; align-items:center; gap:0.5rem;">
-                        Leer reflexión <i class="ph-bold ph-arrow-right"></i>
+                    <div class="card-meta">
+                        <span>3 min de lectura</span>
+                        <div class="read-action">Leer reflexión <i class="ph-bold ph-arrow-right"></i></div>
                     </div>
                 </div>
+
                 <div class="bitacora-card reveal" onclick="openBitacoraModal('reaccionar')">
                     <div>
-                        <span class="section-tag" style="font-size:0.6rem; opacity:0.5;">Neurociencia</span>
+                        <span class="section-tag" style="color:var(--violeta-soft);">Neurociencia</span>
                         <h3>La diferencia entre reaccionar y elegir</h3>
-                        <p style="font-size:0.95rem; color:var(--texto-light); font-weight:300;">Entre estímulo y
-                            respuesta hay un espacio. Entrenarlo cambia tus vínculos y tu paz.</p>
+                        <p>Entre estímulo y respuesta hay un espacio. Entrenarlo cambia tus vínculos, tu paz y tu
+                            capacidad de influir.</p>
                     </div>
-                    <div
-                        style="margin-top:2rem; font-weight:700; font-size:0.8rem; display:flex; align-items:center; gap:0.5rem;">
-                        Leer reflexión <i class="ph-bold ph-arrow-right"></i>
+                    <div class="card-meta">
+                        <span>4 min de lectura</span>
+                        <div class="read-action">Leer reflexión <i class="ph-bold ph-arrow-right"></i></div>
                     </div>
                 </div>
+
                 <div class="bitacora-card reveal" onclick="openBitacoraModal('autoobservacion')">
                     <div>
-                        <span class="section-tag" style="font-size:0.6rem; opacity:0.5;">Liderazgo</span>
+                        <span class="section-tag" style="color:var(--verde);">Liderazgo</span>
                         <h3>El poder de la autoobservación y la autocorrección</h3>
-                        <p style="font-size:0.95rem; color:var(--texto-light); font-weight:300;">Conciencia aplicada:
-                            observar sin juicio, ajustar sin culpa. El circuito del crecimiento real.</p>
+                        <p>Observar sin juicio, ajustar sin culpa. El circuito del crecimiento real basado en feedback
+                            interno.</p>
                     </div>
-                    <div
-                        style="margin-top:2rem; font-weight:700; font-size:0.8rem; display:flex; align-items:center; gap:0.5rem;">
-                        Leer reflexión <i class="ph-bold ph-arrow-right"></i>
+                    <div class="card-meta">
+                        <span>3 min de lectura</span>
+                        <div class="read-action">Leer reflexión <i class="ph-bold ph-arrow-right"></i></div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+          SECCIÓN: CUADERNO DE REFLEXIÓN (WIZARD)
+          ═══════════════════════════════════════ -->
+    <section class="section cuaderno-section" id="cuaderno">
+        <div class="section-inner">
+            <div class="triada-intro reveal" style="text-align: center; margin-bottom: 4rem;">
+                <span class="section-tag">Herramienta de Diagnóstico</span>
+                <h2 class="section-title"
+                    style="font-family:'Cormorant Garamond', serif; font-style: italic; font-size: 3.5rem;">Cuaderno de
+                    Reflexión</h2>
+                <p class="section-subtitle" style="margin: 0 auto;">10 minutos. 20 preguntas. Un diagnóstico claro para
+                    ordenar tu próximo paso. No etiqueta. No juzga. Da claridad.</p>
+            </div>
+
+            <div class="cuaderno-wizard" id="cuaderno-wizard">
+                <!-- Step 0: Intro -->
+                <div class="step-container active" id="step-0">
+                    <div style="text-align:center;">
+                        <i class="ph-bold ph-notebook"
+                            style="font-size: 4rem; color: var(--violeta-soft); margin-bottom: 2rem; display: block;"></i>
+                        <h3 style="margin-bottom:1.5rem; font-size:1.8rem;">Instrucciones de uso</h3>
+                        <p style="margin-bottom: 2rem; color: var(--texto-light);">Respondé cada ítem basándote en tu
+                            realidad actual, del 1 al 5.</p>
+
+                        <div
+                            style="background: var(--fondo-claro); padding: 2rem; border-radius: 1rem; margin-bottom: 3rem; text-align: left;">
+                            <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Escala de valoración:</strong>
+                            </p>
+                            <ul style="list-style:none; padding:0; font-size: 0.9rem; display:grid; gap:0.5rem;">
+                                <li><strong>1:</strong> Nunca / Muy en desacuerdo</li>
+                                <li><strong>2:</strong> Rara vez</li>
+                                <li><strong>3:</strong> A veces</li>
+                                <li><strong>4:</strong> Frecuentemente</li>
+                                <li><strong>5:</strong> Siempre / Muy de acuerdo</li>
+                            </ul>
+                        </div>
+
+                        <button class="btn-hero" onclick="startCuaderno()" style="width: 100%; border:none;">Empezar
+                            ahora</button>
+                        <p style="font-size:0.75rem; color: var(--texto-muted); margin-top: 1.5rem;">Anónimo / Sin
+                            juicios / Para uso personal</p>
+                    </div>
+                </div>
+
+                <!-- Wizard Steps (D1-D5) will be generated by JS -->
+                <div id="wizard-steps-content"></div>
+
+                <!-- Results Step -->
+                <div class="step-container" id="step-results">
+                    <div id="cuaderno-results-content"></div>
                 </div>
             </div>
         </div>
@@ -2072,11 +2441,40 @@
                     <span class="section-tag" style="color:var(--rosa);">Bienestar</span>
                     <h1 class="bitacora-article-title">El agotamiento de viejas estructuras de hacer y ser</h1>
                     <div class="bitacora-prose">
-                        <p style="font-size:1.5rem; font-style:italic; color:var(--texto-light); margin-bottom:3rem;">Hay un tipo de cansancio que no se resuelve con vacaciones.</p>
-                        <p>Es el agotamiento que aparece cuando seguís haciendo “lo correcto” pero internamente algo se vacía. Muchos sistemas de trabajo, liderazgo y vida personal fueron diseñados bajo una lógica de rendimiento constante. Más velocidad. Más resultados. Más control.</p>
-                        <blockquote>"El problema no es trabajar mucho. El problema es trabajar desde estructuras que ya no están alineadas con nuestras necesidades básicas."</blockquote>
-                        <p>Desde la neurociencia sabemos que el cerebro no está preparado para vivir en modo alerta sostenida. El cansancio crónico puede ser el inicio de una transformación consciente.</p>
-                        <p style="font-weight:700; margin-top:4rem;">Reflexión final: ¿Estás agotado… o estás listo para evolucionar tu estructura?</p>
+                        <p style="font-size:1.5rem; font-style:italic; color:var(--texto-light); margin-bottom:3rem;">Cuando funcionar ya no alcanza</p>
+                        <p>Hay un tipo de cansancio que no se resuelve con vacaciones. No mejora con un fin de semana largo ni con una agenda más ordenada. Es un agotamiento más profundo, silencioso, que aparece cuando seguís haciendo “lo correcto”, cumpliendo expectativas, alcanzando objetivos… pero internamente algo empieza a vaciarse.</p>
+                        <p>Durante mucho tiempo, muchos sistemas de trabajo, liderazgo y vida personal fueron diseñados bajo una lógica clara: rendimiento constante. Más velocidad. Más resultados. Más control. Más crecimiento. Más eficiencia. Durante un tiempo funciona. Incluso puede generar satisfacción y reconocimiento. El problema aparece cuando ese modo deja de ser una etapa y se convierte en una identidad permanente.</p>
+                        <p>El cuerpo y el cerebro no están diseñados para vivir en alerta sostenida. Desde la neurociencia sabemos que el estrés agudo es adaptativo: nos activa, nos enfoca, nos prepara para resolver. Pero cuando el estrés se vuelve crónico, comienza a erosionar los sistemas que sostienen nuestra claridad mental y estabilidad emocional.</p>
+                        <p>La amígdala se vuelve más reactiva, la corteza prefrontal —responsable de la regulación emocional y la toma de decisiones complejas— pierde eficiencia, y el sistema nervioso se instala en un estado de vigilancia constante.</p>
+                        <p>La Organización Mundial de la Salud describe el burnout como un fenómeno ocupacional vinculado al estrés crónico en el trabajo no gestionado adecuadamente. Sus manifestaciones incluyen agotamiento emocional, distanciamiento mental del trabajo y sensación de ineficacia. No es debilidad. No es falta de carácter. Es saturación fisiológica y psicológica.</p>
+                        <blockquote>"Muchas personas no están agotadas por la cantidad de trabajo, sino por la estructura desde la cual trabajan. Es decir, por las reglas internas que gobiernan su manera de hacer."</blockquote>
+                        <p>La Teoría de la Autodeterminación, desarrollada por Edward Deci y Richard Ryan, plantea que existen tres necesidades psicológicas básicas para el bienestar sostenido: autonomía (sentir que elegimos), competencia (sentir que crecemos) y conexión (sentir que pertenecemos). Cuando estas tres dimensiones están presentes, la motivación es más saludable y sostenible. Cuando se erosionan, aparece desgaste incluso si los resultados externos son positivos.</p>
+                        <p style="font-size:1.5rem; text-align:center; margin:2rem 0; font-family:'Cormorant Garamond', serif; font-style:italic;">Podés tener éxito y estar vacío al mismo tiempo.</p>
+                        <p>Las viejas estructuras suelen priorizar el logro por encima del sentido. Inflan el resultado y descuidan la experiencia. Premian la velocidad y minimizan la pausa. Valoran la disponibilidad permanente y desvalorizan el límite. Durante un tiempo, esas estructuras pueden generar crecimiento externo. Pero si no evolucionan, empiezan a desconectarse de la identidad actual de la persona.</p>
+                        <p>Y ahí aparece el agotamiento como señal evolutiva.</p>
+                        <p>El problema no es que algo esté mal en vos. El problema puede ser que estás intentando sostener una versión de funcionamiento que fue útil en otra etapa, pero ya no representa quién sos hoy. La psicología positiva amplía esta mirada. Martin Seligman, a través del modelo PERMA, plantea que el bienestar no depende únicamente del logro (Accomplishment), sino también de emociones positivas (Positive Emotion), compromiso genuino (Engagement), relaciones significativas (Relationships) y sentido (Meaning).</p>
+                        <p>El agotamiento entonces puede ser una invitación. No para abandonar responsabilidades, sino para rediseñar estructuras. Rediseñar no significa romper todo. Significa revisar:</p>
+                        <ul style="margin-bottom:2rem; list-style:none; padding-left:1rem; border-left:2px solid var(--violeta-soft);">
+                            <li>• Revisar cómo definís éxito.</li>
+                            <li>• Revisar cómo gestionás tus límites.</li>
+                            <li>• Revisar qué conversaciones estás evitando.</li>
+                            <li>• Revisar qué expectativas ya no querés seguir sosteniendo.</li>
+                        </ul>
+                        <p>Preguntate con honestidad: ¿Qué parte de mi forma actual de trabajar me está costando demasiado? ¿Qué hábito sostenía antes que hoy ya no representa quién soy? ¿Qué estoy haciendo por inercia que podría hacer por elección?</p>
+                        <div style="background:var(--fondo-claro); padding:2rem; border-radius:15px; margin:2rem 0;">
+                            <p style="margin-bottom:0.5rem;"><strong>A veces el cambio no es externo. Es interno:</strong></p>
+                            <ul style="list-style:none; padding:0;">
+                                <li>• Pasar de disponibilidad total a disponibilidad clara.</li>
+                                <li>• Pasar de control excesivo a delegación consciente.</li>
+                                <li>• Pasar de urgencia permanente a prioridades definidas.</li>
+                                <li>• Pasar de aprobación externa a coherencia interna.</li>
+                            </ul>
+                        </div>
+                        <p>Desde la neuroplasticidad sabemos que el cerebro puede reorganizarse a lo largo de toda la vida. Nuevas rutinas generan nuevas conexiones neuronales. Pequeños ajustes sostenidos generan cambios reales.</p>
+                        <p>También es importante comprender que el agotamiento sostenido puede distorsionar la percepción. Antes de tomar decisiones drásticas en estado de agotamiento, puede ser útil recuperar primero energía básica: descanso real, movimiento físico, reducción de estímulos, conversaciones honestas.</p>
+                        <blockquote>"El cansancio crónico puede ser el inicio de una transformación consciente si lo interpretás como información y no como fracaso."</blockquote>
+                        <p>A veces, el agotamiento es el final de una identidad funcional que necesita actualización. No estás obligado a seguir haciendo las cosas exactamente como siempre las hiciste. Podés redefinir tus reglas, tus ritmos y qué significa “hacerlo bien”.</p>
+                        <p style="font-weight:700; margin-top:4rem; border-top:1px solid #eee; padding-top:2rem;">Reflexión final: ¿Estás agotado… o estás listo para evolucionar tu estructura?</p>
                     </div>
                 `
             },
@@ -2089,11 +2487,20 @@
                     <span class="section-tag" style="color:var(--amarillo-hover);">Sentido</span>
                     <h1 class="bitacora-article-title">La carencia de sentido que muchas veces no sabemos nombrar</h1>
                     <div class="bitacora-prose">
-                        <p>No siempre la falta de sentido se siente como tristeza. A veces aparece como vacío, apatía o desmotivación sin causa clara. Podés tener trabajo, vínculos, estabilidad… y aun así sentir que algo no termina de resonar.</p>
-                        <p>La psicología positiva define el sentido como la percepción de que lo que hacemos está conectado con algo más grande que nosotros. Cuando esa conexión se debilita, la energía también lo hace.</p>
-                        <blockquote>"El sentido no aparece en teorías. Aparece cuando los valores se ponen en acción."</blockquote>
-                        <p>No se trata de encontrar sentido. Se trata de construirlo en microdecisiones diarias.</p>
-                        <p style="font-weight:700; margin-top:4rem;">Reflexión final: ¿Qué pequeño ajuste podrías hacer esta semana para vivir con 10% más coherencia?</p>
+                        <p style="font-size:1.5rem; font-style:italic; color:var(--texto-light); margin-bottom:3rem;">Cuando todo “está bien” pero algo no encaja</p>
+                        <p>No siempre la falta de sentido se siente como tristeza. A veces no duele de forma explícita. Se manifiesta como una sensación de vacío liviano pero persistente. Una especie de “esto debería alcanzarme… pero no me alcanza”.</p>
+                        <p>Podés tener trabajo, estabilidad económica, vínculos saludables, incluso reconocimiento. Desde afuera, todo parece ordenado. Y sin embargo, internamente algo no termina de resonar. Esa experiencia es más común de lo que parece.</p>
+                        <p>La psicología positiva define el sentido (meaning) como la percepción de que lo que hacemos está conectado con algo más grande que nosotros mismos. Martin Seligman incluye el sentido como uno de los cinco pilares del bienestar en el modelo PERMA. Sin sentido, incluso el logro pierde profundidad.</p>
+                        <blockquote>"El problema es que la carencia de sentido no siempre es evidente. A veces aparece como desmotivación difusa, irritabilidad o sensación de estar 'haciendo lo que toca' en lugar de 'hacer lo que importa'."</blockquote>
+                        <p>Desde la Teoría de la Autodeterminación, el sentido se fortalece cuando se satisfacen tres necesidades psicológicas básicas: autonomía, competencia y conexión. Si no elegís lo que hacés, no sentís que crecés o no te sentís parte de algo, la energía interna disminuye.</p>
+                        <p>Muchas personas intentan resolver esta sensación agregando objetivos: más cursos, más proyectos. Pero si no están alineados con los valores personales, el vacío solo se desplaza.</p>
+                        <p>El sentido no aparece en teorías abstractas. Aparece cuando los valores se ponen en acción concreta. Muchas veces el sentido se construye más que se encuentra. Se construye en microdecisiones diarias que reflejan coherencia.</p>
+                        <p style="text-align:center; font-family:'Cormorant Garamond', serif; font-size:1.8rem; font-style:italic; margin:2rem 0;">Coherencia es cuando lo que hacés conversa con lo que valorás.</p>
+                        <p>También es importante entender que el sentido puede cambiar con el tiempo. Lo que era significativo a los 25 puede no serlo a los 40. La carencia de sentido muchas veces es simplemente desactualización interna. No es que no tengas propósito; es que quizás usás uno que ya no te representa.</p>
+                        <blockquote>"No se trata de encontrar sentido como quien encuentra un objeto perdido. Se trata de construir sentido como quien construye una práctica."</blockquote>
+                        <p>El sentido no se mide por la magnitud de la acción, sino por la alineación interna. Una pregunta poderosa es: <strong>Si nadie estuviera mirando, ¿seguiría haciendo esto?</strong> Esa pregunta suele revelar si la motivación es autónoma o controlada.</p>
+                        <p>No hace falta transformar toda tu vida para empezar a sentir más coherencia. A veces basta con introducir una práctica que refleje un valor olvidado. La coherencia no se logra en un salto. Se construye en un 10% más cada semana.</p>
+                        <p style="font-weight:700; margin-top:4rem; border-top:1px solid #eee; padding-top:2rem;">Reflexión final: ¿Qué pequeño ajuste podrías hacer esta semana para vivir con 10% más coherencia?</p>
                     </div>
                 `
             },
@@ -2106,10 +2513,18 @@
                     <span class="section-tag" style="color:var(--rosa);">Bienestar</span>
                     <h1 class="bitacora-article-title">El loop de éxito externo sin disfrute interno</h1>
                     <div class="bitacora-prose">
-                        <p>Objetivo. Esfuerzo. Logro. Y luego… vacío. Este patrón es frecuente en culturas orientadas al rendimiento. El logro externo se convierte en la única métrica válida.</p>
-                        <p>Pero el cerebro se adapta rápido a las recompensas. Si el único motor es la validación externa, el sistema entra en dependencia del próximo resultado.</p>
-                        <blockquote>"¿Tu éxito te está expandiendo… o te está drenando?"</blockquote>
-                        <p>No se trata de abandonar la ambición. Se trata de integrarla con coherencia profunda.</p>
+                        <p style="font-size:1.5rem; font-style:italic; color:var(--texto-light); margin-bottom:3rem;">Cuando el logro no alcanza</p>
+                        <p>Objetivo. Esfuerzo. Logro. Y luego… una sensación de vacío. Este patrón se repite en culturas orientadas al rendimiento, donde el éxito es la métrica principal y el "siempre más" es la norma.</p>
+                        <p>Durante un tiempo, esa lógica funciona. El logro activa el sistema de recompensa del cerebro. Pero la neurociencia describe la adaptación hedónica: el cerebro se acostumbra rápido a las recompensas y necesitamos el próximo hito para volver a sentir impulso.</p>
+                        <blockquote>"Si el único motor es la validación externa, entramos en un circuito de dependencia del próximo resultado. Desde afuera somos exitosos; desde adentro, el disfrute es ausente."</blockquote>
+                        <p>En el modelo PERMA, el logro es solo una de las cinco dimensiones del bienestar. Sin emociones positivas, relaciones significativas, sentido y compromiso genuino, el éxito pierde profundidad. No se trata de abandonar la ambición, sino de integrarla con coherencia.</p>
+                        <p>La pregunta clave no es “¿puedo lograrlo?”, sino “¿quiero lograrlo por las razones correctas?”. El disfrute no es un premio final; es un indicador intermedio de alineación. El cerebro no aprende a disfrutar por acumulación de metas, sino por práctica de presencia.</p>
+                        <p style="text-align:center; font-family:'Cormorant Garamond', serif; font-size:1.8rem; font-style:italic; margin:2rem 0;">La ambición integrada busca crecimiento sin sacrificar identidad.</p>
+                        <p>La comparación crónica activa sistemas de amenaza. El cerebro interpreta la evaluación social como riesgo. Cuando la identidad depende del rendimiento, cualquier fluctuación es una amenaza personal.</p>
+                        <p>Introducí micro-espacios de disfrute consciente: celebrá avances parciales, registrá aprendizajes y reconocé contribuciones. La recuperación no es opcional; el rendimiento sostenido requiere ciclos de activación y descanso.</p>
+                        <blockquote>"Si el proceso es significativo, el resultado se vuelve consecuencia. El éxito deja de ser identidad y pasa a ser expresión de valores y crecimiento."</blockquote>
+                        <p>Podés aspirar alto y, al mismo tiempo, experimentar presencia. Podés perseguir metas sin convertirte en esclavo de ellas.</p>
+                        <p style="font-weight:700; margin-top:4rem; border-top:1px solid #eee; padding-top:2rem;">Reflexión final: ¿Mi éxito me está expandiendo o me está drenando?</p>
                     </div>
                 `
             },
@@ -2122,10 +2537,18 @@
                     <span class="section-tag" style="color:var(--violeta-soft);">Neurociencia</span>
                     <h1 class="bitacora-article-title">La diferencia entre reaccionar y elegir</h1>
                     <div class="bitacora-prose">
-                        <p>Entre estímulo y respuesta hay un espacio. La reacción es automática. La elección es entrenada. Cuando alguien te desafía o critica, el sistema emocional se activa. Eso es biología.</p>
-                        <p>Pero la regulación emocional permite intervenir en ese proceso mediante la interpretación consciente del evento antes de la respuesta.</p>
-                        <blockquote>"Elegir no es suprimir emociones. Es regularlas para actuar alineado con quién querés ser."</blockquote>
-                        <p style="font-weight:700; margin-top:4rem;">Reflexión final: ¿Estás reaccionando… o estás diseñando tu respuesta?</p>
+                        <p style="font-size:1.5rem; font-style:italic; color:var(--texto-light); margin-bottom:3rem;">El espacio invisible que cambia tu vida</p>
+                        <p>Entre estímulo y respuesta hay un espacio. Esa frase resume la capacidad de elegir cómo responder. No siempre elegimos lo que sucede, pero podemos entrenar cómo reaccionamos.</p>
+                        <p>Cuando te sentís desafiado o presionado, el cerebro activa un sistema de detección de amenazas en milisegundos. Reaccionar es automático. Elegir es entrenado. La diferencia cambia trayectorias de relaciones y liderazgo.</p>
+                        <blockquote>"La corteza prefrontal puede modular la respuesta emocional si tiene tiempo suficiente. Ese tiempo es el espacio invisible. Entrenar regulación es ampliar ese margen."</blockquote>
+                        <p>La reinterpretación cognitiva consiste en cambiar el significado que asignamos a una situación antes de actuar. "Me están atacando" puede pasar a ser "Esto es información". La narrativa modifica la respuesta fisiológica.</p>
+                        <p>Los planes "Si–Entonces" ayudan a automatizar respuestas elegidas: "Si noto irritación, entonces tomo tres respiraciones antes de hablar". No eliminan la emoción, pero dirigen la acción.</p>
+                        <p style="text-align:center; font-family:'Cormorant Garamond', serif; font-size:1.8rem; font-style:italic; margin:2rem 0;">Elegir no es reprimir. Es regular.</p>
+                        <p>Un líder reactivo genera miedo; uno regulado genera seguridad psicológica. La seguridad psicológica es la percepción de que es seguro asumir riesgos interpersonales. Cuando la respuesta es regulada, la seguridad se fortalece.</p>
+                        <p>Las relaciones se deterioran por la forma en que reaccionamos ante los conflictos. Elegir genera coherencia a largo plazo. No siempre significa ser pasivo; implica que la acción surge de decisión consciente y no de impulso.</p>
+                        <blockquote>"No controlamos estímulos externos. Controlamos nuestras conductas. La autonomía interna es mayor de lo que creemos."</blockquote>
+                        <p>Cada elección consciente fortalece el músculo de la regulación. Reaccionar es instintivo. Elegir es evolutivo. En ese pequeño espacio invisible se define nuestra paz interna.</p>
+                        <p style="font-weight:700; margin-top:4rem; border-top:1px solid #eee; padding-top:2rem;">Reflexión final: ¿Estás reaccionando… o estás diseñando tu respuesta?</p>
                     </div>
                 `
             },
@@ -2138,10 +2561,17 @@
                     <span class="section-tag" style="color:var(--verde);">Liderazgo</span>
                     <h1 class="bitacora-article-title">El poder de la autoobservación y la autocorrección</h1>
                     <div class="bitacora-prose">
-                        <p>Autoobservación no es crítica constante. Es conciencia aplicada. Cuando observás tus patrones sin juicio, ganás libertad. Cuando corregís con intención, ganás dirección.</p>
-                        <p>El cerebro aprende por feedback. La autoobservación funciona como sensor. La autocorrección, como ajuste de rumbo constante.</p>
-                        <blockquote>"La clave no es ser distinto mañana. Es ajustar 1% hoy."</blockquote>
-                        <p style="font-weight:700; margin-top:4rem;">Reflexión final: ¿Qué patrón estás listo para observar con honestidad esta semana?</p>
+                        <p style="font-size:1.5rem; font-style:italic; color:var(--texto-light); margin-bottom:3rem;">La práctica silenciosa del crecimiento</p>
+                        <p>Autoobservación es conciencia aplicada. Es la capacidad de mirarse con honestidad sin destruirse en el intento. En un mundo veloz, detenerse a observar parece improductivo, pero es el pilar del aprendizaje.</p>
+                        <p>La mayoría de nuestras conductas son automáticas. La autoobservación interrumpe ese piloto automático. Sin observación no hay ajuste, y sin ajuste no hay evolución. El cerebro aprende a través de feedback.</p>
+                        <blockquote>"La autocorrección no es autocastigo. Es redirección. El cambio sostenible surge más fácilmente desde la comprensión que desde el autoataque."</blockquote>
+                        <p>Una práctica semanal sencilla: ¿Qué hice bien? ¿Qué me drenó energía? ¿Qué ajusto la próxima vez? Esta tríada activa la mejora continua sin caer en la culpa, equilibrando el sesgo de negatividad del cerebro.</p>
+                        <p>No es necesario rediseñar la vida entera para mejorar. Ajustar un 1% cada semana genera transformaciones profundas. La autocorrección es viable cuando el error se entiende como información y no como identidad.</p>
+                        <p style="text-align:center; font-family:'Cormorant Garamond', serif; font-size:1.8rem; font-style:italic; margin:2rem 0;">No digas “soy asi”, decí “estoy entrenando”.</p>
+                        <p>En liderazgo, el líder que no reflexiona sobre su impacto repite patrones disfuncionales. La autoobservación permite reducir la distancia entre intención y acción. Habrá retrocesos, pero la diferencia es cuánto tardamos en ajustar.</p>
+                        <blockquote>"Observar sin juicio reduce la activación defensiva. Admitir un error sin dramatizar preserva energía para mejorar en lugar de gastarla en rumiación."</blockquote>
+                        <p>La autoobservación fortalece la autonomía. Cuando sos consciente de tus patrones, recuperás margen de acción. El crecimiento real es silencioso, ocurre en decisiones pequeñas repetidas con intención.</p>
+                        <p style="font-weight:700; margin-top:4rem; border-top:1px solid #eee; padding-top:2rem;">Reflexión final: ¿Qué patrón estás listo para observar con honestidad esta semana?</p>
                     </div>
                 `
             }
@@ -2158,12 +2588,13 @@
                 grid.innerHTML += `
                     <div class="bitacora-card reveal" onclick="openBitacoraModal('${a.id}')">
                         <div>
-                            <span class="section-tag" style="font-size:0.6rem; opacity:0.5;">${a.category}</span>
+                            <span class="section-tag" style="color:var(--rosa);">${a.category}</span>
                             <h3>${a.title}</h3>
-                            <p style="font-size:0.95rem; color:var(--texto-light); font-weight:300;">${a.excerpt}</p>
+                            <p>${a.excerpt}</p>
                         </div>
-                        <div style="margin-top:2rem; font-weight:700; font-size:0.8rem; display:flex; align-items:center; gap:0.5rem;">
-                            Leer reflexión <i class="ph-bold ph-arrow-right"></i>
+                        <div class="card-meta">
+                            <span>${Math.ceil(a.content.length / 500)} min de lectura</span>
+                            <div class="read-action">Leer reflexión <i class="ph-bold ph-arrow-right"></i></div>
                         </div>
                     </div>
                 `;
@@ -2179,14 +2610,28 @@
 
         function openBitacoraModal(id) {
             const article = bitacoraArticles.find(a => a.id === id);
+            const modal = document.getElementById('bitacora-modal');
+            const progress = document.getElementById('modal-progress');
+
             document.getElementById('modal-article-body').innerHTML = article.content;
-            document.getElementById('bitacora-modal').classList.add('open');
+            modal.classList.add('open');
             document.body.style.overflow = 'hidden';
+
+            // Reset and handle progress bar
+            progress.style.width = '0%';
+            modal.onscroll = () => {
+                const totalHeight = modal.scrollHeight - modal.clientHeight;
+                const progressWidth = (modal.scrollTop / totalHeight) * 100;
+                progress.style.width = `${progressWidth}%`;
+            };
         }
 
         function closeBitacoraModal() {
-            document.getElementById('bitacora-modal').classList.remove('open');
-            document.body.style.overflow = 'auto';
+            const modal = document.getElementById('bitacora-modal');
+            modal.classList.remove('open');
+            setTimeout(() => {
+                document.body.style.overflow = 'auto';
+            }, 500);
         }
 
         // Llamada inicial (comentada para favorecer contenido estático)
@@ -2345,16 +2790,281 @@
             document.getElementById('diagnostic-result').style.display = 'none';
             renderQuestion();
         }
+        // ─── Cuaderno de Reflexión Logic ───
+        const cuadernoQuestions = [
+            { id: 1, text: "Me siento agotado aunque esté cumpliendo objetivos.", dim: "Estructura y Energía" },
+            { id: 2, text: "Mi forma actual de trabajar me exige más de lo que me nutre.", dim: "Estructura y Energía" },
+            { id: 3, text: "Siento que sostengo hábitos que ya no representan quién soy.", dim: "Estructura y Energía" },
+            { id: 4, text: "Me cuesta poner límites claros.", dim: "Estructura y Energía" },
+            { id: 5, text: "Lo que hago diariamente refleja lo que valoro.", dim: "Sentido y Coherencia" },
+            { id: 6, text: "Siento que mi trabajo tiene propósito.", dim: "Sentido y Coherencia" },
+            { id: 7, text: "Me siento conectado con algo más grande que mis resultados.", dim: "Sentido y Coherencia" },
+            { id: 8, text: "Mis decisiones están alineadas con mis valores personales.", dim: "Sentido y Coherencia" },
+            { id: 9, text: "Disfruto el proceso, no solo el resultado.", dim: "Éxito y Disfrute" },
+            { id: 10, text: "Mi motivación principal es interna, no solo externa.", dim: "Éxito y Disfrute" },
+            { id: 11, text: "Puedo celebrar avances sin esperar metas finales.", dim: "Éxito y Disfrute" },
+            { id: 12, text: "Mi identidad no depende exclusivamente de mi rendimiento.", dim: "Éxito y Disfrute" },
+            { id: 13, text: "Antes de responder en situaciones tensas, hago una pausa.", dim: "Regulación y Elección" },
+            { id: 14, text: "Puedo expresar desacuerdos sin reaccionar impulsivamente.", dim: "Regulación y Elección" },
+            { id: 15, text: "Soy consciente de mis emociones en tiempo real.", dim: "Regulación y Elección" },
+            { id: 16, text: "Mis respuestas representan quién quiero ser.", dim: "Regulación y Elección" },
+            { id: 17, text: "Reviso semanalmente lo que funcionó y lo que no.", dim: "Autoobservación y Mejora" },
+            { id: 18, text: "Ajusto conductas sin caer en culpa excesiva.", dim: "Autoobservación y Mejora" },
+            { id: 19, text: "Pido feedback cuando lo necesito.", dim: "Autoobservación y Mejora" },
+            { id: 20, text: "Siento que estoy evolucionando de manera consciente.", dim: "Autoobservación y Mejora" }
+        ];
+
+        let currentWizardStep = 0;
+        const cuadernoAnswers = {};
+
+        function startCuaderno() {
+            renderWizardSteps();
+            goToWizardStep(1);
+        }
+
+        function renderWizardSteps() {
+            const container = document.getElementById('wizard-steps-content');
+            container.innerHTML = '';
+
+            const dimensions = [...new Set(cuadernoQuestions.map(q => q.dim))];
+
+            dimensions.forEach((dim, index) => {
+                const stepIdx = index + 1;
+                const questions = cuadernoQuestions.filter(q => q.dim === dim);
+
+                const stepEl = document.createElement('div');
+                stepEl.className = 'step-container';
+                stepEl.id = `step-${stepIdx}`;
+
+                stepEl.innerHTML = `
+                    <div class="cuaderno-progress-wrapper">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:0.5rem; font-size:0.8rem; font-weight:700; color:var(--violeta-soft);">
+                            <span>SECCIÓN: ${dim}</span>
+                            <span>${stepIdx} / 5</span>
+                        </div>
+                        <div class="cuaderno-progress-bar">
+                            <div class="cuaderno-progress-fill" style="width: ${(stepIdx / 5) * 100}%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="questions-list">
+                        ${questions.map(q => `
+                            <div class="question-item">
+                                <span class="question-text">${q.text}</span>
+                                <div class="rating-group">
+                                    ${[1, 2, 3, 4, 5].map(val => `
+                                        <div class="rating-option">
+                                            <input type="radio" name="q${q.id}" id="q${q.id}_${val}" value="${val}" ${cuadernoAnswers[q.id] == val ? 'checked' : ''} onchange="saveAnswer(${q.id}, ${val})">
+                                            <label for="q${q.id}_${val}" class="rating-label">${val}</label>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                                <div class="rating-scale-labels">
+                                    <span>Nunca</span>
+                                    <span>Siempre</span>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    <div class="cuaderno-nav">
+                        <button class="btn-outline-white" style="color:var(--texto); border-color:#ddd;" onclick="goToWizardStep(${stepIdx - 1})">Anterior</button>
+                        ${stepIdx < 5
+                        ? `<button class="btn-hero" style="border:none;" onclick="nextWizardStep(${stepIdx})">Siguiente</button>`
+                        : `<button class="btn-hero" style="background:var(--verde); border:none;" onclick="finishCuaderno()">Ver mi resultado</button>`
+                    }
+                    </div>
+                `;
+                container.appendChild(stepEl);
+            });
+        }
+
+        function saveAnswer(qId, val) {
+            cuadernoAnswers[qId] = val;
+            localStorage.setItem('cuaderno_answers', JSON.stringify(cuadernoAnswers));
+        }
+
+        function nextWizardStep(currentIdx) {
+            const stepQuestions = cuadernoQuestions.filter(q => q.dim === [...new Set(cuadernoQuestions.map(d => d.dim))][currentIdx - 1]);
+            const allAnswered = stepQuestions.every(q => cuadernoAnswers[q.id] !== undefined);
+
+            if (!allAnswered) {
+                alert('Por favor, respondé todas las preguntas de esta sección antes de continuar.');
+                return;
+            }
+            goToWizardStep(currentIdx + 1);
+        }
+
+        function goToWizardStep(stepIdx) {
+            document.querySelectorAll('.step-container').forEach(el => el.classList.remove('active'));
+            document.getElementById(`step-${stepIdx}`).classList.add('active');
+            currentWizardStep = stepIdx;
+
+            // Scroll to the wizard container
+            const wizard = document.getElementById('cuaderno-wizard');
+            if (wizard) {
+                const offset = 100;
+                const bodyRect = document.body.getBoundingClientRect().top;
+                const elementRect = wizard.getBoundingClientRect().top;
+                const elementPosition = elementRect - bodyRect;
+                const offsetPosition = elementPosition - offset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        function finishCuaderno() {
+            const allAnswered = cuadernoQuestions.every(q => cuadernoAnswers[q.id] !== undefined);
+            if (!allAnswered) {
+                alert('Por favor, respondé todas las preguntas antes de finalizar.');
+                return;
+            }
+            calculateResults();
+        }
+
+        function calculateResults() {
+            const dimensions = [...new Set(cuadernoQuestions.map(q => q.dim))];
+            const scores = dimensions.map(dim => {
+                const qs = cuadernoQuestions.filter(q => q.dim === dim);
+                const sum = qs.reduce((acc, q) => acc + (cuadernoAnswers[q.id] || 0), 0);
+                return { dim, score: sum };
+            });
+
+            const lowest = [...scores].sort((a, b) => a.score - b.score)[0];
+            const highest = [...scores].sort((a, b) => b.score - a.score)[0];
+
+            renderResults(scores, lowest, highest);
+            goToWizardStep('results');
+        }
+
+        function renderResults(scores, lowest, highest) {
+            const container = document.getElementById('cuaderno-results-content');
+
+            const getStatus = (s) => {
+                if (s >= 16) return { label: 'Coherencia activa', class: 'status-green', desc: 'Sostener y profundizar' };
+                if (s >= 10) return { label: 'Zona de ajuste', class: 'status-yellow', desc: 'Hay conciencia, falta consistencia' };
+                return { label: 'Revisión estructural', class: 'status-red', desc: 'Intervenir con intención' };
+            };
+
+            const focoText = {
+                'Estructura y Energía': 'Rediseñar estructura y límites',
+                'Sentido y Coherencia': 'Reconectar con valores y propósito',
+                'Éxito y Disfrute': 'Integrar disfrute al proceso',
+                'Regulación y Elección': 'Entrenar regulación emocional',
+                'Autoobservación y Mejora': 'Instalar práctica de autoevaluación'
+            };
+
+            container.innerHTML = `
+                <div style="text-align:center; margin-bottom:3rem;">
+                    <i class="ph-bold ph-chart-polar" style="font-size:3.5rem; color:var(--rosa);"></i>
+                    <h3 style="font-size:2rem; margin:1rem 0;">Tu Diagnóstico de Consciencia</h3>
+                    <p style="color:var(--texto-light);">Este es el mapa actual de tu forma de hacer y ser.</p>
+                </div>
+
+                <div class="results-grid">
+                    ${scores.map(s => {
+                const status = getStatus(s.score);
+                return `
+                            <div class="result-card">
+                                <h4 style="font-size:0.9rem; margin-bottom:1rem; height:2.5rem; display:flex; align-items:center; justify-content:center;">${s.dim}</h4>
+                                <div style="font-size:1.8rem; font-weight:800; color:var(--violeta-deep);">${s.score}<span style="font-size:0.8rem; opacity:0.4;">/20</span></div>
+                                <span class="status-pill ${status.class}">${status.label}</span>
+                                <p style="font-size:0.75rem; margin-top:0.8rem; color:var(--texto-muted);">${status.desc}</p>
+                            </div>
+                        `;
+            }).join('')}
+                </div>
+
+                <div class="diagnosis-box">
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:2rem;">
+                        <div>
+                            <span style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em; opacity:0.8;">Tu foco recomendado</span>
+                            <h4 style="font-size:1.4rem; margin:0.5rem 0;">${lowest.dim}</h4>
+                            <p style="font-size:0.95rem; opacity:0.9; font-style:italic;">"${focoText[lowest.dim]}"</p>
+                        </div>
+                        <div style="border-left: 1px solid rgba(255,255,255,0.2); padding-left:2rem;">
+                            <span style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em; opacity:0.8;">Tu fortaleza actual</span>
+                            <h4 style="font-size:1.4rem; margin:0.5rem 0;">${highest.dim}</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="plan-box" id="plan-section">
+                    <h4 style="font-size:1.4rem; margin-bottom:1.5rem;">Plan 30 días — Mini compromiso</h4>
+                    <p style="font-size:0.9rem; color:var(--texto-light); margin-bottom:2rem;">Basado en tu foco en <strong>${lowest.dim}</strong>, definí estos 4 puntos para el próximo mes:</p>
+                    
+                    <div class="plan-input-group">
+                        <label>1 cambio pequeño</label>
+                        <input type="text" placeholder="Ej: No mirar el celular la primera hora del día" id="plan_cambio">
+                    </div>
+                    <div class="plan-input-group">
+                        <label>1 conversación pendiente</label>
+                        <input type="text" placeholder="Ej: Hablar con mi socio sobre los nuevos límites" id="plan_conversa">
+                    </div>
+                    <div class="plan-input-group">
+                        <label>1 hábito semanal</label>
+                        <input type="text" placeholder="Ej: Bloque de 2 horas de foco profundo los martes" id="plan_habito">
+                    </div>
+                    <div class="plan-input-group">
+                        <label>1 límite claro</label>
+                        <input type="text" placeholder="Ej: No responder correos después de las 19hs" id="plan_limite">
+                    </div>
+                    
+                    <div style="display:flex; gap:1rem; margin-top:2rem;">
+                        <button class="btn-hero" onclick="savePlan()" style="flex:2; border:none;">Guardar mi plan</button>
+                        <button class="btn-outline-white" onclick="window.print()" style="flex:1; border-color:#ddd; color:var(--texto);">Imprimir</button>
+                    </div>
+                    <p style="font-size:0.8rem; text-align:center; margin-top:1.5rem; color:var(--texto-muted);">Repetí este Cuaderno en 30 días y compará tu evolución.</p>
+                </div>
+
+                <div style="text-align:center; margin-top:4rem;">
+                    <a href="#experiencias" class="btn-outline-white" style="color:var(--violeta-mid); border-color:var(--violeta-mid);">Explorar experiencias</a>
+                </div>
+            `;
+
+            // Load saved plan if exists
+            const savedPlan = JSON.parse(localStorage.getItem('cuaderno_plan') || '{}');
+            if (savedPlan.cambio) document.getElementById('plan_cambio').value = savedPlan.cambio;
+            if (savedPlan.conversa) document.getElementById('plan_conversa').value = savedPlan.conversa;
+            if (savedPlan.habito) document.getElementById('plan_habito').value = savedPlan.habito;
+            if (savedPlan.limite) document.getElementById('plan_limite').value = savedPlan.limite;
+        }
+
+        function savePlan() {
+            const plan = {
+                cambio: document.getElementById('plan_cambio').value,
+                conversa: document.getElementById('plan_conversa').value,
+                habito: document.getElementById('plan_habito').value,
+                limite: document.getElementById('plan_limite').value,
+                timestamp: new Date().toISOString()
+            };
+            localStorage.setItem('cuaderno_plan', JSON.stringify(plan));
+            alert('¡Plan guardado localmente con éxito! Te esperamos en 30 días para revisar tu evolución.');
+        }
+
+        // Initialize LocalStorage check
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedAnswers = localStorage.getItem('cuaderno_answers');
+            if (savedAnswers) {
+                Object.assign(cuadernoAnswers, JSON.parse(savedAnswers));
+            }
+        });
+
     </script>
 
     <!-- ═══════════════════════════════════════
-          MODAL DE LECTURA BITÁCORA
+          MODAL DE LECTURA BITÁCORA (EVOLVED)
           ═══════════════════════════════════════ -->
     <div id="bitacora-modal">
+        <div class="modal-progress" id="modal-progress"></div>
         <div class="modal-content-inner">
             <button onclick="closeBitacoraModal()"
-                style="position:fixed; top:2rem; left:2rem; background:white; border:1px solid rgba(0,0,0,0.1); width:50px; height:50px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow: 0 10px 20px rgba(0,0,0,0.05); z-index:2100;">
-                <i class="ph-bold ph-arrow-left" style="font-size:1.2rem;"></i>
+                style="position:fixed; top:2.5rem; right:2.5rem; background:#f5f5f5; border:none; width:50px; height:50px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow: 0 10px 20px rgba(0,0,0,0.05); z-index:3200; transition: transform 0.3s;"
+                onmouseover="this.style.transform='rotate(90deg)'" onmouseout="this.style.transform='rotate(0deg)'">
+                <i class="ph-bold ph-x" style="font-size:1.4rem;"></i>
             </button>
             <div id="modal-article-body">
                 <!-- Inyectado por JS -->
