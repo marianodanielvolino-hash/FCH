@@ -1040,29 +1040,91 @@
   <section class="s s--alt" id="inversion">
     <p class="s-label">Inversión</p>
     <h2 class="reveal">Aranceles y<br /><em>pagos</em></h2>
+
     <div
-      style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 3rem;"
+      style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 4rem;"
       class="reveal">
-      <div style="background: var(--ink); padding: 2rem; border-top: 2px solid var(--sand);">
-        <h4 style="font-family: var(--ff-d); margin-bottom: 1rem;">Módulo I</h4>
-        <div style="font-size: 1.6rem; font-weight: 600;">$ 100.000 <span style="font-size: 0.8rem;">ARS</span></div>
+      <!-- Card 1 -->
+      <div
+        style="background: var(--ink); padding: 3rem; border: 1px solid rgba(28,21,16,0.06); display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <span
+            style="font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terra);">Experiencia
+            de Entrada</span>
+          <div style="font-size: 2rem; font-weight: 500; margin: 1.5rem 0;">$ 120.000 <span
+              style="font-size: 0.8rem; opacity: 0.5;">ARS</span></div>
+          <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-main); margin-bottom: 2rem;">Acceso al
+            Módulo
+            I (5 encuentros).<br>Ideal para empezar y ordenar tu punto de partida.</p>
+        </div>
+        <div>
+          <button onclick="scrollToCTA()" class="btn-primary" style="width: 100%; border:none;">Sumarme al Módulo
+            I</button>
+          <p style="font-size: 0.75rem; color: var(--fog); margin-top: 1rem; text-align: center;">Si luego querés
+            continuar, podés aplicar al Proceso Completo.</p>
+        </div>
       </div>
-      <div style="background: var(--ink); padding: 2rem; border-top: 2px solid var(--sand);">
-        <h4 style="font-family: var(--ff-d); margin-bottom: 1rem;">Módulo II</h4>
-        <div style="font-size: 1.6rem; font-weight: 600;">$ 120.000 <span style="font-size: 0.8rem;">ARS</span></div>
+
+      <!-- Card 2 (Highlighted) -->
+      <div
+        style="background: #fff; padding: 3rem; border: 2px solid var(--terra); display: flex; flex-direction: column; justify-content: space-between; transform: scale(1.03); z-index: 2; box-shadow: 0 20px 40px rgba(0,0,0,0.05); border-radius: 4px;">
+        <div>
+          <span
+            style="font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terra); font-weight: 600;">Proceso
+            Completo</span>
+          <div style="font-size: 2rem; font-weight: 500; margin: 1.5rem 0;">Desde $ 330.000 <span
+              style="font-size: 0.8rem; opacity: 0.5;">ARS</span></div>
+          <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-main); margin-bottom: 2rem;">Los 3 módulos
+            (15 encuentros) con estructura, seguimiento y plan final.</p>
+          <div
+            style="font-size: 0.85rem; color: var(--fog); margin-bottom: 2rem; padding: 1.5rem; background: var(--deep); border-radius: 2px;">
+            <div style="margin-bottom: 0.5rem;"><strong>Early Bird:</strong> $ 330.000 ARS <span
+                style="font-size: 0.75rem;">(cupos limitados)</span></div>
+            <div><strong>Regular:</strong> $ 360.000 ARS</div>
+          </div>
+        </div>
+        <div>
+          <button onclick="scrollToCTA()" class="btn-primary"
+            style="width: 100%; border:none; background: var(--terra); border-radius: 2px;">Sumarme al Proceso
+            Completo</button>
+          <p style="font-size: 0.75rem; color: var(--fog); margin-top: 1rem; text-align: center;">Podés comenzar por
+            Módulo I y luego completar la diferencia.</p>
+        </div>
       </div>
-      <div style="background: var(--ink); padding: 2rem; border-top: 2px solid var(--sand);">
-        <h4 style="font-family: var(--ff-d); margin-bottom: 1rem;">Módulo III</h4>
-        <div style="font-size: 1.6rem; font-weight: 600;">$ 140.000 <span style="font-size: 0.8rem;">ARS</span></div>
-      </div>
-      <div style="background: var(--terra); color: #fff; padding: 2rem;">
-        <h4 style="font-family: var(--ff-d); margin-bottom: 1rem;">Combo Completo</h4>
-        <div style="font-size: 1.8rem; font-weight: 700;">$ 300.000 <span style="font-size: 0.8rem;">ARS</span></div>
-        <p style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.9;">Pago único de los 3 módulos.</p>
+
+      <!-- Card 3 -->
+      <div
+        style="background: var(--ink); padding: 3rem; border: 1px solid rgba(28,21,16,0.06); display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <span
+            style="font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terra);">Proceso
+            Completo + Mentoría</span>
+          <div style="font-size: 2rem; font-weight: 500; margin: 1.5rem 0;">$ 480.000 <span
+              style="font-size: 0.8rem; opacity: 0.5;">ARS</span></div>
+          <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-main); margin-bottom: 1.5rem;">Los 3 módulos
+            + 2 sesiones 1:1 para trabajar tu caso puntual y tu plan de 90 días.</p>
+          <ul style="list-style: none; font-size: 0.85rem; color: var(--fog); margin-bottom: 2rem; padding-left: 0;">
+            <li style="margin-bottom: 0.5rem; display: flex; gap: 0.5rem;"><span style="color: var(--terra);">•</span>
+              Diagnóstico personal (1:1)</li>
+            <li style="display: flex; gap: 0.5rem;"><span style="color: var(--terra);">•</span> Ajuste de plan y
+              seguimiento (1:1)</li>
+          </ul>
+        </div>
+        <div>
+          <button onclick="scrollToCTA()" class="btn-primary" style="width: 100%; border:none;">Quiero la versión con
+            Mentoría</button>
+          <p style="font-size: 0.75rem; color: var(--fog); margin-top: 1rem; text-align: center;">Recomendado si
+            necesitás foco, decisiones y sostén personalizado.</p>
+        </div>
       </div>
     </div>
 
-    <div style="margin-top: 4rem; text-align: center;" class="reveal">
+    <!-- Scarcity Line -->
+    <p class="reveal"
+      style="text-align: center; margin-top: 6rem; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--fog); text-transform: uppercase;">
+      Cupos limitados a 25 personas por grupo.</p>
+
+    <div style="margin-top: 5rem; text-align: center;" class="reveal">
       <p
         style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--fog); margin-bottom: 2rem;">
         Medios de Pago</p>
