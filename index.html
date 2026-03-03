@@ -234,6 +234,113 @@
             color: var(--violeta-mid);
         }
 
+        /* ═══════════════════════════════
+           BITÁCORA SECTION STYLES
+           ═══════════════════════════════ */
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&display=swap');
+
+        .bitacora-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .bitacora-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 2rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            cursor: pointer;
+        }
+
+        .bitacora-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(58, 16, 120, 0.1);
+            border-color: var(--violeta-soft);
+        }
+
+        .bitacora-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.85rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .category-pill {
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .category-pill.active {
+            background: var(--violeta-deep);
+            color: white;
+            border-color: var(--violeta-deep);
+        }
+
+        /* Modal Bitácora */
+        #bitacora-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: #FDF9F3;
+            overflow-y: auto;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        #bitacora-modal.open {
+            display: block;
+            opacity: 1;
+        }
+
+        .modal-content-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+        }
+
+        .bitacora-article-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            line-height: 1;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .bitacora-prose {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--texto);
+            font-weight: 300;
+        }
+
+        .bitacora-prose p {
+            margin-bottom: 1.5rem;
+        }
+
+        .bitacora-prose blockquote {
+            border-left: 4px solid var(--rosa);
+            padding-left: 2rem;
+            margin: 3rem 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-style: italic;
+            color: var(--violeta-deep);
+        }
+
         .btn-cta-nav {
             font-family: 'Poppins', sans-serif;
             font-size: 0.8rem;
@@ -1295,6 +1402,7 @@
 
             <ul class="navbar-links">
                 <li><a href="#proposito">Misión</a></li>
+                <li><a href="#bitacora">Bitácora</a></li>
                 <li><a href="#conversacion">Nuestra Mirada</a></li>
                 <li><a href="#experiencias">Verticales</a></li>
                 <li><a href="#el-salto">El Salto</a></li>
@@ -1319,6 +1427,7 @@
             <i class="ph-bold ph-x"></i>
         </button>
         <a href="#proposito" onclick="closeMobileMenu()">Misión</a>
+        <a href="#bitacora" onclick="closeMobileMenu()">Bitácora</a>
         <a href="#conversacion" onclick="closeMobileMenu()">Nuestra Mirada</a>
         <a href="#experiencias" onclick="closeMobileMenu()">Verticales</a>
         <a href="#el-salto" onclick="closeMobileMenu()">El Salto</a>
@@ -1345,6 +1454,34 @@
                 <a href="#conversacion" class="btn-outline-white" style="padding: 1rem 2rem; border-radius: 50px;">
                     Conocer nuestra mirada
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+          SECCIÓN: BITÁCORA DE CONSCIENCIA (INTEGRADA)
+          ═══════════════════════════════════════ -->
+    <section class="section" id="bitacora" style="background:#FDF9F3;">
+        <div class="section-inner">
+            <div class="triada-intro reveal" style="text-align: center; margin-bottom: 4rem;">
+                <span class="section-tag">Reflexiones para evolucionar</span>
+                <h2 class="section-title"
+                    style="font-family:'Cormorant Garamond', serif; font-style: italic; font-size: 3.5rem;">Bitácora de
+                    Consciencia</h2>
+                <p class="section-subtitle" style="margin: 0 auto;">Un espacio para cuestionar lo automático, activar
+                    claridad y entrenar una nueva forma de hacer y ser.</p>
+
+                <div style="margin-top: 3rem; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
+                    <button class="category-pill active" onclick="filterBitacora('Todos', this)">Todos</button>
+                    <button class="category-pill" onclick="filterBitacora('Bienestar', this)">Bienestar</button>
+                    <button class="category-pill" onclick="filterBitacora('Neurociencia', this)">Neurociencia</button>
+                    <button class="category-pill" onclick="filterBitacora('Liderazgo', this)">Liderazgo</button>
+                    <button class="category-pill" onclick="filterBitacora('Sentido', this)">Sentido</button>
+                </div>
+            </div>
+
+            <div class="bitacora-grid reveal" id="bitacora-grid">
+                <!-- Se inyectan por JS -->
             </div>
         </div>
     </section>
@@ -1920,6 +2057,137 @@
         const impactoSection = document.getElementById('impacto');
         if (impactoSection) metricsObserver.observe(impactoSection);
 
+        // ─── Bitácora Logic ───
+        const bitacoraArticles = [
+            {
+                id: 'agotamiento',
+                title: 'El agotamiento de viejas estructuras de hacer y ser',
+                excerpt: 'Cuando funcionar ya no alcanza y el sistema interno pide actualización: menos piloto automático, más diseño.',
+                category: 'Bienestar',
+                content: `
+                    <span class="section-tag" style="color:var(--rosa);">Bienestar</span>
+                    <h1 class="bitacora-article-title">El agotamiento de viejas estructuras de hacer y ser</h1>
+                    <div class="bitacora-prose">
+                        <p style="font-size:1.5rem; font-style:italic; color:var(--texto-light); margin-bottom:3rem;">Hay un tipo de cansancio que no se resuelve con vacaciones.</p>
+                        <p>Es el agotamiento que aparece cuando seguís haciendo “lo correcto” pero internamente algo se vacía. Muchos sistemas de trabajo, liderazgo y vida personal fueron diseñados bajo una lógica de rendimiento constante. Más velocidad. Más resultados. Más control.</p>
+                        <blockquote>"El problema no es trabajar mucho. El problema es trabajar desde estructuras que ya no están alineadas con nuestras necesidades básicas."</blockquote>
+                        <p>Desde la neurociencia sabemos que el cerebro no está preparado para vivir en modo alerta sostenida. El cansancio crónico puede ser el inicio de una transformación consciente.</p>
+                        <p style="font-weight:700; margin-top:4rem;">Reflexión final: ¿Estás agotado… o estás listo para evolucionar tu estructura?</p>
+                    </div>
+                `
+            },
+            {
+                id: 'sentido',
+                title: 'La carencia de sentido que muchas veces no sabemos nombrar',
+                excerpt: 'Cuando todo “está bien”, pero algo no encaja: cómo reconstruir significado desde microdecisiones.',
+                category: 'Sentido',
+                content: `
+                    <span class="section-tag" style="color:var(--amarillo-hover);">Sentido</span>
+                    <h1 class="bitacora-article-title">La carencia de sentido que muchas veces no sabemos nombrar</h1>
+                    <div class="bitacora-prose">
+                        <p>No siempre la falta de sentido se siente como tristeza. A veces aparece como vacío, apatía o desmotivación sin causa clara. Podés tener trabajo, vínculos, estabilidad… y aun así sentir que algo no termina de resonar.</p>
+                        <p>La psicología positiva define el sentido como la percepción de que lo que hacemos está conectado con algo más grande que nosotros. Cuando esa conexión se debilita, la energía también lo hace.</p>
+                        <blockquote>"El sentido no aparece en teorías. Aparece cuando los valores se ponen en acción."</blockquote>
+                        <p>No se trata de encontrar sentido. Se trata de construirlo en microdecisiones diarias.</p>
+                        <p style="font-weight:700; margin-top:4rem;">Reflexión final: ¿Qué pequeño ajuste podrías hacer esta semana para vivir con 10% más coherencia?</p>
+                    </div>
+                `
+            },
+            {
+                id: 'exito',
+                title: 'El loop de éxito externo sin disfrute interno',
+                excerpt: 'Metas, logro, vacío, meta. Cómo sostener ambición sin perder vitalidad: éxito con coherencia.',
+                category: 'Bienestar',
+                content: `
+                    <span class="section-tag" style="color:var(--rosa);">Bienestar</span>
+                    <h1 class="bitacora-article-title">El loop de éxito externo sin disfrute interno</h1>
+                    <div class="bitacora-prose">
+                        <p>Objetivo. Esfuerzo. Logro. Y luego… vacío. Este patrón es frecuente en culturas orientadas al rendimiento. El logro externo se convierte en la única métrica válida.</p>
+                        <p>Pero el cerebro se adapta rápido a las recompensas. Si el único motor es la validación externa, el sistema entra en dependencia del próximo resultado.</p>
+                        <blockquote>"¿Tu éxito te está expandiendo… o te está drenando?"</blockquote>
+                        <p>No se trata de abandonar la ambición. Se trata de integrarla con coherencia profunda.</p>
+                    </div>
+                `
+            },
+            {
+                id: 'reaccionar',
+                title: 'La diferencia entre reaccionar y elegir',
+                excerpt: 'Entre estímulo y respuesta hay un espacio. Entrenarlo cambia tus vínculos y tu paz.',
+                category: 'Neurociencia',
+                content: `
+                    <span class="section-tag" style="color:var(--violeta-soft);">Neurociencia</span>
+                    <h1 class="bitacora-article-title">La diferencia entre reaccionar y elegir</h1>
+                    <div class="bitacora-prose">
+                        <p>Entre estímulo y respuesta hay un espacio. La reacción es automática. La elección es entrenada. Cuando alguien te desafía o critica, el sistema emocional se activa. Eso es biología.</p>
+                        <p>Pero la regulación emocional permite intervenir en ese proceso mediante la interpretación consciente del evento antes de la respuesta.</p>
+                        <blockquote>"Elegir no es suprimir emociones. Es regularlas para actuar alineado con quién querés ser."</blockquote>
+                        <p style="font-weight:700; margin-top:4rem;">Reflexión final: ¿Estás reaccionando… o estás diseñando tu respuesta?</p>
+                    </div>
+                `
+            },
+            {
+                id: 'autoobservacion',
+                title: 'El poder de la autoobservación y la autocorrección',
+                excerpt: 'Conciencia aplicada: observar sin juicio, ajustar sin culpa. El circuito del crecimiento real.',
+                category: 'Liderazgo',
+                content: `
+                    <span class="section-tag" style="color:var(--verde);">Liderazgo</span>
+                    <h1 class="bitacora-article-title">El poder de la autoobservación y la autocorrección</h1>
+                    <div class="bitacora-prose">
+                        <p>Autoobservación no es crítica constante. Es conciencia aplicada. Cuando observás tus patrones sin juicio, ganás libertad. Cuando corregís con intención, ganás dirección.</p>
+                        <p>El cerebro aprende por feedback. La autoobservación funciona como sensor. La autocorrección, como ajuste de rumbo constante.</p>
+                        <blockquote>"La clave no es ser distinto mañana. Es ajustar 1% hoy."</blockquote>
+                        <p style="font-weight:700; margin-top:4rem;">Reflexión final: ¿Qué patrón estás listo para observar con honestidad esta semana?</p>
+                    </div>
+                `
+            }
+        ];
+
+        function renderBitacora(filter = 'Todos') {
+            const grid = document.getElementById('bitacora-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            const filtered = filter === 'Todos' ? bitacoraArticles : bitacoraArticles.filter(a => a.category === filter);
+
+            filtered.forEach(a => {
+                grid.innerHTML += `
+                    <div class="bitacora-card reveal" onclick="openBitacoraModal('${a.id}')">
+                        <div>
+                            <span class="section-tag" style="font-size:0.6rem; opacity:0.5;">${a.category}</span>
+                            <h3>${a.title}</h3>
+                            <p style="font-size:0.95rem; color:var(--texto-light); font-weight:300;">${a.excerpt}</p>
+                        </div>
+                        <div style="margin-top:2rem; font-weight:700; font-size:0.8rem; display:flex; align-items:center; gap:0.5rem;">
+                            Leer reflexión <i class="ph-bold ph-arrow-right"></i>
+                        </div>
+                    </div>
+                `;
+            });
+            if (window.checkReveal) checkReveal();
+        }
+
+        function filterBitacora(cat, btn) {
+            document.querySelectorAll('.category-pill').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderBitacora(cat);
+        }
+
+        function openBitacoraModal(id) {
+            const article = bitacoraArticles.find(a => a.id === id);
+            document.getElementById('modal-article-body').innerHTML = article.content;
+            document.getElementById('bitacora-modal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBitacoraModal() {
+            document.getElementById('bitacora-modal').classList.remove('open');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Llamada inicial
+        window.addEventListener('load', () => renderBitacora());
+
         // ─── Mobile menu ───
         function openMobileMenu() {
             document.getElementById('mobile-menu').classList.add('open');
@@ -2074,6 +2342,21 @@
             renderQuestion();
         }
     </script>
+
+    <!-- ═══════════════════════════════════════
+          MODAL DE LECTURA BITÁCORA
+          ═══════════════════════════════════════ -->
+    <div id="bitacora-modal">
+        <div class="modal-content-inner">
+            <button onclick="closeBitacoraModal()"
+                style="position:fixed; top:2rem; left:2rem; background:white; border:1px solid rgba(0,0,0,0.1); width:50px; height:50px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow: 0 10px 20px rgba(0,0,0,0.05); z-index:2100;">
+                <i class="ph-bold ph-arrow-left" style="font-size:1.2rem;"></i>
+            </button>
+            <div id="modal-article-body">
+                <!-- Inyectado por JS -->
+            </div>
+        </div>
+    </div>
 
 </body>
 
