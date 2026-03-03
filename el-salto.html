@@ -11,6 +11,256 @@
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@300;400;500&display=swap"
     rel="stylesheet" />
   <style>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script><style>
+
+    /* PORTAL STYLES */
+    #auth-overlay {
+      position: fixed;
+      inset: 0;
+      background: var(--deep);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    #auth-overlay.active {
+      display: flex;
+    }
+
+    .auth-card {
+      background: var(--cream);
+      padding: 3rem;
+      max-width: 400px;
+      width: 100%;
+      border-radius: 4px;
+      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      position: relative;
+    }
+
+    .auth-card h1 {
+      font-family: var(--ff-d);
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--text-main);
+    }
+
+    .auth-card p {
+      color: var(--fog);
+      margin-bottom: 2rem;
+      font-size: 0.9rem;
+    }
+
+    .auth-card input {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      background: #fff;
+      font-family: var(--ff-b);
+      border-radius: 4px;
+      outline: none;
+    }
+
+    .auth-card button {
+      width: 100%;
+      padding: 1rem;
+      background: var(--terra);
+      color: #fff;
+      border: none;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.3s;
+      border-radius: 4px;
+    }
+
+    .auth-card button:hover {
+      background: var(--text-main);
+    }
+
+    .auth-switch {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--fog);
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    #portal-app {
+      position: fixed;
+      inset: 0;
+      background: var(--cream);
+      z-index: 1000;
+      display: none;
+      overflow-y: auto;
+    }
+
+    #portal-app.active {
+      display: block;
+    }
+
+    .portal-header {
+      background: var(--text-main);
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--sand);
+      position: sticky;
+      top: 0;
+      z-index: 1100;
+    }
+
+    .portal-header .logo {
+      font-family: var(--ff-d);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .portal-header .logout-btn {
+      background: none;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      font-size: 0.8rem;
+      border-radius: 4px;
+    }
+
+    .portal-container {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+      cursor: auto;
+    }
+
+    .dash-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+    }
+
+    .p-card {
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      border-radius: 8px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .p-card-title {
+      font-family: var(--ff-d);
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #f5f5f5;
+      padding-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .attendance-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+    }
+
+    .class-box {
+      background: var(--cream);
+      aspect-ratio: 1/1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      color: var(--fog);
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .class-box.present {
+      background: var(--terra);
+      color: #fff;
+    }
+
+    .resource-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid #f5f5f5;
+    }
+
+    .btn-dl {
+      color: var(--terra);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .coach-box {
+      background: var(--text-main);
+      color: #fff;
+      padding: 2.5rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .btn-gold-p {
+      background: var(--gold);
+      color: #fff;
+      border: none;
+      padding: 1rem 2rem;
+      width: 100%;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .status-pill {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+
+    .status-pill.paid {
+      background: #e8f5e9;
+      color: #2e7d32;
+    }
+
+    .status-pill.pending {
+      background: #fff3e0;
+      color: #ef6c00;
+    }
+
+    .close-portal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: var(--fog);
+    }
+
+    @media (max-width: 900px) {
+      .dash-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .attendance-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
     *,
     *::before,
     *::after {
@@ -1097,6 +1347,17 @@
         </div>
       </div>
     </div>
+
+    <!-- PORTAL TRIGGER -->
+    <div class="reveal"
+      style="margin-top: 4rem; text-align: center; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 4rem;">
+      <p style="font-family: var(--ff-d); font-size: 1.4rem; margin-bottom: 1.5rem;">¿Ya sos parte del programa?</p>
+      <div style="display: flex; gap: 1rem; justify-content: center; align-items: center;">
+        <button onclick="openPortalAuth()" class="btn-primary"
+          style="background: var(--text-main); color: #fff; border: none; padding: 1rem 2.5rem;">Ingresar a Mi
+          Salto</button>
+      </div>
+    </div>
   </section>
 
   <!-- INVERSIÓN -->
@@ -1266,6 +1527,92 @@
     </div>
   </footer>
 
+  <!-- PORTAL OVERLAYS -->
+  <div id="auth-overlay">
+    <div class="auth-card">
+      <i class="ph-bold ph-x close-portal" onclick="closePortalAuth()"></i>
+      <div id="login-form">
+        <h1>Mi Salto</h1>
+        <p>Ingresá al portal para alumnos.</p>
+        <input type="email" id="login-email" placeholder="Email" value="alumno@ejemplo.com" />
+        <input type="password" id="login-pass" placeholder="Contraseña" value="123456" />
+        <button onclick="handleLogin()">INICIAR SESIÓN</button>
+        <div class="auth-switch" onclick="toggleAuth(true)">No tengo cuenta, registrarme</div>
+      </div>
+      <div id="register-form" style="display:none;">
+        <h1>Registro</h1>
+        <p>Crea tu acceso único.</p>
+        <input type="text" id="reg-name" placeholder="Nombre completo" />
+        <input type="email" id="reg-email" placeholder="Email" />
+        <input type="password" id="reg-pass" placeholder="Contraseña" />
+        <button onclick="handleRegister()">CREAR CUENTA</button>
+        <div class="auth-switch" onclick="toggleAuth(false)">Ya tengo cuenta, volver</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="portal-app">
+    <header class="portal-header">
+      <div class="logo">MI SALTO</div>
+      <div style="display: flex; align-items: center; gap: 1.5rem;">
+        <span id="display-name" style="font-weight: 500; font-size: 0.9rem;"></span>
+        <button class="logout-btn" onclick="handleLogout()">Salir</button>
+      </div>
+    </header>
+
+    <div class="portal-container">
+      <button onclick="closePortal()"
+        style="margin-bottom: 2rem; background: none; border: 1px solid var(--fog); padding: 0.5rem 1.5rem; border-radius: 4px; cursor: pointer; color: var(--fog); font-size: 0.8rem; display: flex; align-items: center; gap: 0.5rem;">
+        <i class="ph-bold ph-arrow-left"></i> Regresar a la web
+      </button>
+
+      <div class="dash-grid">
+        <main>
+          <div class="p-card">
+            <h3 class="p-card-title"><i class="ph-bold ph-calendar-check"></i> Mi Asistencia</h3>
+            <div class="attendance-grid" id="attendance-container"></div>
+          </div>
+          <div class="p-card">
+            <h3 class="p-card-title"><i class="ph-bold ph-books"></i> Material del Alumno</h3>
+            <div class="resource-item">
+              <div>
+                <h4>Guía Módulo I: Despertar</h4>
+                <p style="font-size:0.8rem; color:var(--fog);">PDF · 12MB</p>
+              </div>
+              <a href="#" class="btn-dl"><i class="ph-bold ph-download-simple"></i> Bajar</a>
+            </div>
+            <div class="resource-item">
+              <div>
+                <h4>Bitácora Digital</h4>
+                <p style="font-size:0.8rem; color:var(--fog);">PDF · 4MB</p>
+              </div>
+              <a href="#" class="btn-dl"><i class="ph-bold ph-download-simple"></i> Bajar</a>
+            </div>
+          </div>
+        </main>
+        <aside>
+          <div class="coach-box">
+            <i class="ph-light ph-chats-circle"
+              style="font-size: 2.5rem; color: var(--gold); margin-bottom: 1rem; display: block;"></i>
+            <h3>Coach Personal</h3>
+            <p style="font-size: 0.85rem; margin-bottom: 1.5rem; opacity: 0.8;">Sesiones 1:1 para ajustar tu proceso.
+            </p>
+            <button class="btn-gold-p" onclick="alert('Solicitud enviada.')">SOLICITAR SESIÓN</button>
+          </div>
+          <div class="p-card" style="margin-top: 2rem; padding: 1.5rem;">
+            <h4 style="font-family: var(--ff-d); margin-bottom: 1rem;">Pagos</h4>
+            <div style="font-size: 0.85rem;">
+              <div style="display:flex; justify-content:space-between; margin-bottom:0.5rem;"><span>Módulo I</span>
+                <span class="status-pill paid">Pagado</span></div>
+              <div style="display:flex; justify-content:space-between;"><span>Módulo II</span> <span
+                  class="status-pill pending">Pendiente</span></div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
   <script>
     const cur = document.getElementById('cur'), ring = document.getElementById('ring');
     document.addEventListener('mousemove', e => {
@@ -1288,6 +1635,84 @@
 
     function scrollToCTA() {
       document.getElementById('cta').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // --- PORTAL LOGIC ---
+    let currentUser = null;
+
+    function openPortalAuth() {
+      const activeSession = localStorage.getItem('salto_active_session');
+      if (activeSession) {
+        const stored = localStorage.getItem('salto_user_' + activeSession);
+        if (stored) return initSession(JSON.parse(stored));
+      }
+      document.getElementById('auth-overlay').classList.add('active');
+    }
+
+    function closePortalAuth() { document.getElementById('auth-overlay').classList.remove('active'); }
+    function toggleAuth(isReg) {
+      document.getElementById('login-form').style.display = isReg ? 'none' : 'block';
+      document.getElementById('register-form').style.display = isReg ? 'block' : 'none';
+    }
+
+    function handleRegister() {
+      const name = document.getElementById('reg-name').value;
+      const email = document.getElementById('reg-email').value;
+      const pass = document.getElementById('reg-pass').value;
+      if (!name || !email || !pass) return alert('Completá los datos');
+      const user = { name, email, pass, attendance: [] };
+      localStorage.setItem('salto_user_' + email, JSON.stringify(user));
+      localStorage.setItem('salto_active_session', email);
+      initSession(user);
+    }
+
+    function handleLogin() {
+      const email = document.getElementById('login-email').value;
+      const pass = document.getElementById('login-pass').value;
+      const stored = localStorage.getItem('salto_user_' + email);
+      if (!stored) return alert('No encontrado');
+      const user = JSON.parse(stored);
+      if (user.pass !== pass) return alert('Incorrecto');
+      localStorage.setItem('salto_active_session', email);
+      initSession(user);
+    }
+
+    function initSession(user) {
+      currentUser = user;
+      document.getElementById('auth-overlay').classList.remove('active');
+      document.getElementById('portal-app').classList.add('active');
+      document.getElementById('display-name').textContent = 'Alumno: ' + user.name;
+      document.body.style.cursor = 'auto'; // Re-enable normal cursor for portal
+      renderAttendance();
+    }
+
+    function handleLogout() {
+      localStorage.removeItem('salto_active_session');
+      location.reload();
+    }
+
+    function closePortal() {
+      document.getElementById('portal-app').classList.remove('active');
+      document.body.style.cursor = 'none';
+    }
+
+    function renderAttendance() {
+      const container = document.getElementById('attendance-container');
+      container.innerHTML = '';
+      for (let i = 1; i <= 15; i++) {
+        const box = document.createElement('div');
+        const isPresent = currentUser.attendance.includes(i);
+        box.className = 'class-box' + (isPresent ? ' present' : '');
+        box.innerHTML = `<i class="ph-bold ph-check"></i>Clase ${i}`;
+        box.onclick = () => {
+          const idx = currentUser.attendance.indexOf(i);
+          if (idx === -1) currentUser.attendance.push(i);
+          else currentUser.attendance.splice(idx, 1);
+          localStorage.setItem('salto_user_' + currentUser.email, JSON.stringify(currentUser));
+          renderAttendance();
+        };
+        container.appendChild(box);
+      }
     }
   </script>
 </body>
