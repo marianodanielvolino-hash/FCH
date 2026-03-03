@@ -10,9 +10,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@300;400;500&display=swap"
     rel="stylesheet" />
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <style>
-    <script src="https://unpkg.com/@phosphor-icons/web"></script><style>
-
     /* PORTAL STYLES */
     #auth-overlay {
       position: fixed;
@@ -561,6 +560,8 @@
       inset: 0;
       background: linear-gradient(90deg, var(--ink) 0%, transparent 25%, transparent 75%, rgba(253, 249, 243, .3) 100%);
       z-index: 1;
+      pointer-events: none;
+      /* Crucial to allow clicking elements underneath */
     }
 
     .hero-img {
@@ -1057,8 +1058,8 @@
     <div class="hero-right"
       style="display: flex; align-items: center; justify-content: center; background: var(--deep); position: relative;">
       <!-- PORTAL IN HERO -->
-      <div class="reveal"
-        style="width: 100%; max-width: 440px; padding: 3rem; background: var(--cream); border-radius: 8px; box-shadow: 0 30px 60px rgba(61, 43, 31, 0.08); text-align: center; border: 1px solid rgba(196, 81, 31, 0.1);">
+      <div
+        style="width: 100%; max-width: 440px; padding: 3rem; background: var(--cream); border-radius: 8px; box-shadow: 0 30px 60px rgba(61, 43, 31, 0.08); text-align: center; border: 1px solid rgba(196, 81, 31, 0.1); position: relative; z-index: 10;">
         <h2
           style="font-family: var(--ff-d); font-size: 3rem; color: var(--text-main); margin-bottom: 0.5rem; letter-spacing: -1px;">
           Mi<span style="color: var(--terra); font-weight: 600;">SALTO</span></h2>
@@ -1067,17 +1068,17 @@
 
         <div style="text-align: left;">
           <input type="email" id="hero-login-email" placeholder="Email" value="alumno@ejemplo.com"
-            style="width: 100%; padding: 1.1rem; margin-bottom: 1rem; border: 1px solid rgba(61, 43, 31, 0.1); background: #fff; font-family: var(--ff-b); border-radius: 4px; outline: none; font-size: 0.95rem; color: var(--text-main);" />
+            style="width: 100%; padding: 1.1rem; margin-bottom: 1rem; border: 1px solid rgba(61, 43, 31, 0.1); background: #fff; font-family: var(--ff-b); border-radius: 4px; outline: none; font-size: 0.95rem; color: var(--text-main); pointer-events: auto;" />
           <input type="password" id="hero-login-pass" placeholder="Contraseña" value="123456"
-            style="width: 100%; padding: 1.1rem; margin-bottom: 2rem; border: 1px solid rgba(61, 43, 31, 0.1); background: #fff; font-family: var(--ff-b); border-radius: 4px; outline: none; font-size: 0.95rem; color: var(--text-main);" />
+            style="width: 100%; padding: 1.1rem; margin-bottom: 2rem; border: 1px solid rgba(61, 43, 31, 0.1); background: #fff; font-family: var(--ff-b); border-radius: 4px; outline: none; font-size: 0.95rem; color: var(--text-main); pointer-events: auto;" />
           <button onclick="handleHeroLogin()" class="btn-primary"
-            style="width: 100%; padding: 1.1rem; border-radius: 4px; font-weight: 600; font-size: 0.9rem; letter-spacing: 1px;">INICIAR
+            style="width: 100%; padding: 1.1rem; border-radius: 4px; font-weight: 600; font-size: 0.9rem; letter-spacing: 1px; cursor: pointer; pointer-events: auto;">INICIAR
             SESIÓN</button>
         </div>
 
         <div style="margin-top: 1.5rem; font-size: 0.85rem; color: var(--fog);">
-          No tengo cuenta, <span onclick="openPortalAuth()"
-            style="text-decoration: underline; cursor: pointer; color: var(--terra);">registrarme</span>
+          No tengo cuenta, <span onclick="openPortalAuth(); toggleAuth(true);"
+            style="text-decoration: underline; cursor: pointer; color: var(--terra); pointer-events: auto;">registrarme</span>
         </div>
       </div>
 
