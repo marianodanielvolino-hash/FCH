@@ -1042,10 +1042,6 @@
                 margin: 0 auto 3rem;
             }
 
-            .journal-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
         }
 
         @media (max-width: 768px) {
@@ -1101,9 +1097,6 @@
                 gap: 1.5rem;
             }
 
-            .journal-grid {
-                grid-template-columns: 1fr;
-            }
         }
 
         @media (max-width: 480px) {
@@ -1481,7 +1474,66 @@
             </div>
 
             <div class="bitacora-grid reveal" id="bitacora-grid">
-                <!-- Se inyectan por JS -->
+                <div class="bitacora-card reveal" onclick="openBitacoraModal('agotamiento')">
+                    <div>
+                        <span class="section-tag" style="font-size:0.6rem; opacity:0.5;">Bienestar</span>
+                        <h3>El agotamiento de viejas estructuras de hacer y ser</h3>
+                        <p style="font-size:0.95rem; color:var(--texto-light); font-weight:300;">Cuando funcionar ya no
+                            alcanza y el sistema interno pide actualización: menos piloto automático, más diseño.</p>
+                    </div>
+                    <div
+                        style="margin-top:2rem; font-weight:700; font-size:0.8rem; display:flex; align-items:center; gap:0.5rem;">
+                        Leer reflexión <i class="ph-bold ph-arrow-right"></i>
+                    </div>
+                </div>
+                <div class="bitacora-card reveal" onclick="openBitacoraModal('sentido')">
+                    <div>
+                        <span class="section-tag" style="font-size:0.6rem; opacity:0.5;">Sentido</span>
+                        <h3>La carencia de sentido que muchas veces no sabemos nombrar</h3>
+                        <p style="font-size:0.95rem; color:var(--texto-light); font-weight:300;">Cuando todo “está
+                            bien”, pero algo no encaja: cómo reconstruir significado desde microdecisiones.</p>
+                    </div>
+                    <div
+                        style="margin-top:2rem; font-weight:700; font-size:0.8rem; display:flex; align-items:center; gap:0.5rem;">
+                        Leer reflexión <i class="ph-bold ph-arrow-right"></i>
+                    </div>
+                </div>
+                <div class="bitacora-card reveal" onclick="openBitacoraModal('exito')">
+                    <div>
+                        <span class="section-tag" style="font-size:0.6rem; opacity:0.5;">Bienestar</span>
+                        <h3>El loop de éxito externo sin disfrute interno</h3>
+                        <p style="font-size:0.95rem; color:var(--texto-light); font-weight:300;">Metas, logro, vacío,
+                            meta. Cómo sostener ambición sin perder vitalidad: éxito con coherencia.</p>
+                    </div>
+                    <div
+                        style="margin-top:2rem; font-weight:700; font-size:0.8rem; display:flex; align-items:center; gap:0.5rem;">
+                        Leer reflexión <i class="ph-bold ph-arrow-right"></i>
+                    </div>
+                </div>
+                <div class="bitacora-card reveal" onclick="openBitacoraModal('reaccionar')">
+                    <div>
+                        <span class="section-tag" style="font-size:0.6rem; opacity:0.5;">Neurociencia</span>
+                        <h3>La diferencia entre reaccionar y elegir</h3>
+                        <p style="font-size:0.95rem; color:var(--texto-light); font-weight:300;">Entre estímulo y
+                            respuesta hay un espacio. Entrenarlo cambia tus vínculos y tu paz.</p>
+                    </div>
+                    <div
+                        style="margin-top:2rem; font-weight:700; font-size:0.8rem; display:flex; align-items:center; gap:0.5rem;">
+                        Leer reflexión <i class="ph-bold ph-arrow-right"></i>
+                    </div>
+                </div>
+                <div class="bitacora-card reveal" onclick="openBitacoraModal('autoobservacion')">
+                    <div>
+                        <span class="section-tag" style="font-size:0.6rem; opacity:0.5;">Liderazgo</span>
+                        <h3>El poder de la autoobservación y la autocorrección</h3>
+                        <p style="font-size:0.95rem; color:var(--texto-light); font-weight:300;">Conciencia aplicada:
+                            observar sin juicio, ajustar sin culpa. El circuito del crecimiento real.</p>
+                    </div>
+                    <div
+                        style="margin-top:2rem; font-weight:700; font-size:0.8rem; display:flex; align-items:center; gap:0.5rem;">
+                        Leer reflexión <i class="ph-bold ph-arrow-right"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1847,48 +1899,7 @@
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════
-         NUEVA SECCIÓN: JOURNAL & MANIFIESTO
-         ═══════════════════════════════════════ -->
-    <section class="section section-light" id="journal">
-        <div class="section-inner">
-            <div class="triada-intro reveal">
-                <span class="section-tag">Pensamiento FCH</span>
-                <h2 class="section-title">El Journal</h2>
-                <p class="section-subtitle">Exploraciones sobre consciencia, tecnología y el futuro humano.</p>
-            </div>
 
-            <div class="journal-grid stagger">
-                <div class="journal-card reveal" style="--i:0">
-                    <div style="height:180px; background:var(--violeta-soft); opacity:0.2;"></div>
-                    <div style="padding:1.5rem;">
-                        <span style="font-size:0.7rem; color:var(--rosa); font-weight:700;">MANIFESTO</span>
-                        <h3 style="font-size:1.1rem; margin:0.5rem 0;">Despertar en la Matrix</h3>
-                        <p style="font-size:0.9rem; color:var(--texto-light);">Cómo mantener la soberanía personal en un
-                            mundo hiper-digitalizado.</p>
-                    </div>
-                </div>
-                <div class="journal-card reveal" style="--i:1">
-                    <div style="height:180px; background:var(--amarillo); opacity:0.2;"></div>
-                    <div style="padding:1.5rem;">
-                        <span style="font-size:0.7rem; color:var(--rosa); font-weight:700;">ACCIÓN</span>
-                        <h3 style="font-size:1.1rem; margin:0.5rem 0;">Liderazgo del Futuro</h3>
-                        <p style="font-size:0.9rem; color:var(--texto-light);">Por qué la empatía es la habilidad
-                            técnica más importante de esta década.</p>
-                    </div>
-                </div>
-                <div class="journal-card reveal" style="--i:2">
-                    <div style="height:180px; background:var(--verde); opacity:0.2;"></div>
-                    <div style="padding:1.5rem;">
-                        <span style="font-size:0.7rem; color:var(--rosa); font-weight:700;">TECNOLOGÍA</span>
-                        <h3 style="font-size:1.1rem; margin:0.5rem 0;">IA con Alma</h3>
-                        <p style="font-size:0.9rem; color:var(--texto-light);">Hacia una inteligencia artificial que
-                            potencie nuestra humanidad, no que la reemplace.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- ═══════════════════════════════════════
          DIAGNOSTIC WIDGET HTML
@@ -1940,14 +1951,7 @@
     </div>
     </div>
 
-    <!-- ═══════════════════════════════════════
-          NUEVA SECCIÓN: SUMATE AL EQUIPO
-          ═══════════════════════════════════════ -->
-    </section>
 
-    <!-- ═══════════════════════════════════════
-          NUEVA SECCIÓN: SUMATE AL EQUIPO
-          ═══════════════════════════════════════ -->
     <section class="section section-light" id="sumate">
         <div class="section-inner">
             <div class="triada-intro reveal" style="max-width: 800px; margin: 0 auto; text-align: center;">
@@ -2185,8 +2189,8 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Llamada inicial
-        window.addEventListener('load', () => renderBitacora());
+        // Llamada inicial (comentada para favorecer contenido estático)
+        // window.addEventListener('load', () => renderBitacora());
 
         // ─── Mobile menu ───
         function openMobileMenu() {
