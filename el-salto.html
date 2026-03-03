@@ -102,12 +102,13 @@
     }
 
     .portal-header {
-      background: var(--text-main);
+      background: var(--terra);
+      /* Replaced text-main (black) with terra */
       padding: 1rem 5%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      color: var(--sand);
+      color: #fff;
       position: sticky;
       top: 0;
       z-index: 1100;
@@ -122,7 +123,7 @@
 
     .portal-header .logout-btn {
       background: none;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.4);
       color: #fff;
       padding: 0.5rem 1rem;
       cursor: pointer;
@@ -206,7 +207,8 @@
     }
 
     .coach-box {
-      background: var(--text-main);
+      background: var(--gold);
+      /* Replaced text-main (black) with gold */
       color: #fff;
       padding: 2.5rem;
       border-radius: 8px;
@@ -277,7 +279,8 @@
       --sand: #E8D9C0;
       --cream: #FDF9F3;
       --fog: #5A4D41;
-      --text-main: #1C1510;
+      --text-main: #3D2B1F;
+      /* Warmer espresso/bark brown instead of near-black */
       --ff-d: 'Cormorant Garamond', Georgia, serif;
       --ff-b: 'Outfit', sans-serif;
     }
@@ -402,6 +405,8 @@
       text-decoration: none;
       letter-spacing: .1em;
       text-transform: uppercase;
+      margin-right: 3rem;
+      /* Moved Regresar further left */
     }
 
     .btn-nav {
@@ -1024,6 +1029,8 @@
     </ul>
     <div class="nav-cta-wrap">
       <a href="index.html" class="nav-back">← Regresar</a>
+      <a href="javascript:void(0)" onclick="openPortalAuth()" class="btn-nav"
+        style="border-color: var(--gold); color: var(--gold); font-weight: 600;">Mi Salto</a>
       <a href="#cta" class="btn-nav">Inscribirme</a>
     </div>
   </nav>
@@ -1315,7 +1322,7 @@
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
         <!-- Grupo Evolución -->
         <div
-          style="background: #fff; padding: 2.5rem; border: 1px solid rgba(28,21,16,0.06); border-radius: 4px; position: relative;">
+          style="background: #fff; padding: 2.5rem; border: 1px solid rgba(61, 43, 31, 0.06); border-radius: 4px; position: relative;">
           <span
             style="position: absolute; top: 1rem; right: 1rem; font-size: 0.65rem; background: var(--terra); color: #fff; padding: 0.2rem 0.6rem; border-radius: 20px;">Cupo
             25</span>
@@ -1331,7 +1338,7 @@
         </div>
         <!-- Grupo Proyección -->
         <div
-          style="background: #fff; padding: 2.5rem; border: 1px solid rgba(28,21,16,0.06); border-radius: 4px; position: relative;">
+          style="background: #fff; padding: 2.5rem; border: 1px solid rgba(61, 43, 31, 0.06); border-radius: 4px; position: relative;">
           <span
             style="position: absolute; top: 1rem; right: 1rem; font-size: 0.65rem; background: var(--terra); color: #fff; padding: 0.2rem 0.6rem; border-radius: 20px;">Cupo
             25</span>
@@ -1348,16 +1355,6 @@
       </div>
     </div>
 
-    <!-- PORTAL TRIGGER -->
-    <div class="reveal"
-      style="margin-top: 4rem; text-align: center; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 4rem;">
-      <p style="font-family: var(--ff-d); font-size: 1.4rem; margin-bottom: 1.5rem;">¿Ya sos parte del programa?</p>
-      <div style="display: flex; gap: 1rem; justify-content: center; align-items: center;">
-        <button onclick="openPortalAuth()" class="btn-primary"
-          style="background: var(--text-main); color: #fff; border: none; padding: 1rem 2.5rem;">Ingresar a Mi
-          Salto</button>
-      </div>
-    </div>
   </section>
 
   <!-- INVERSIÓN -->
@@ -1370,7 +1367,7 @@
       class="reveal">
       <!-- Card 1 -->
       <div
-        style="background: var(--ink); padding: 3rem; border: 1px solid rgba(28,21,16,0.06); display: flex; flex-direction: column; justify-content: space-between;">
+        style="background: var(--ink); padding: 3rem; border: 1px solid rgba(61, 43, 31, 0.06); display: flex; flex-direction: column; justify-content: space-between;">
         <div>
           <span
             style="font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terra);">Experiencia
@@ -1418,7 +1415,7 @@
 
       <!-- Card 3 -->
       <div
-        style="background: var(--ink); padding: 3rem; border: 1px solid rgba(28,21,16,0.06); display: flex; flex-direction: column; justify-content: space-between;">
+        style="background: var(--ink); padding: 3rem; border: 1px solid rgba(61, 43, 31, 0.06); display: flex; flex-direction: column; justify-content: space-between;">
         <div>
           <span
             style="font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terra);">Proceso
@@ -1504,13 +1501,13 @@
         style="width: 100%; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); background: none; color: #fff; padding: 1rem 0; margin-bottom: 2rem; font-family: var(--ff-b);">
       <select
         style="width: 100%; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); background: none; color: #fff; padding: 1rem 0; margin-bottom: 3rem; font-family: var(--ff-b);">
-        <option value="" disabled selected style="color:#000;">Seleccionar Grupo / Cohorte...</option>
-        <optgroup label="Cohorte 1 (Abril - Julio)" style="color:#000;">
+        <option value="" disabled selected style="color:var(--text-main);">Seleccionar Grupo / Cohorte...</option>
+        <optgroup label="Cohorte 1 (Abril - Julio)" style="color:var(--text-main);">
           <option value="c1-semilla">Grupo Semilla · Martes 19hs</option>
           <option value="c1-horizonte">Grupo Horizonte · Jueves 19hs</option>
           <option value="c1-extra">Semilla · Solo Módulo I (Sáb 10hs)</option>
         </optgroup>
-        <optgroup label="Cohorte 2 (Agosto - Noviembre)" style="color:#000;">
+        <optgroup label="Cohorte 2 (Agosto - Noviembre)" style="color:var(--text-main);">
           <option value="c2-evolucion">Grupo Evolución · Martes 19hs</option>
           <option value="c2-proyeccion">Grupo Proyección · Jueves 19hs</option>
         </optgroup>
@@ -1603,7 +1600,8 @@
             <h4 style="font-family: var(--ff-d); margin-bottom: 1rem;">Pagos</h4>
             <div style="font-size: 0.85rem;">
               <div style="display:flex; justify-content:space-between; margin-bottom:0.5rem;"><span>Módulo I</span>
-                <span class="status-pill paid">Pagado</span></div>
+                <span class="status-pill paid">Pagado</span>
+              </div>
               <div style="display:flex; justify-content:space-between;"><span>Módulo II</span> <span
                   class="status-pill pending">Pendiente</span></div>
             </div>
