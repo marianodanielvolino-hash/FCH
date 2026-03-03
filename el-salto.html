@@ -1,2088 +1,1752 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fundación Consciencia Humana | Experiencias Transformadoras</title>
-    <meta name="description"
-        content="Experiencias transformadoras para personas y equipos. Retiros, programas B2B y charlas abiertas para reconectarte con tu propósito y bienestar integral.">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>El Salto de Tu Vida · Fundación Consciencia Humana</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap"
-        rel="stylesheet">
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@300;400;500&display=swap"
+        rel="stylesheet" />
     <style>
-        /* ═══════════════════════════════════════════════
-           DESIGN TOKENS — Fundación Consciencia Humana
-           ═══════════════════════════════════════════════ */
-        :root {
-            /* Core Palette */
-            --violeta-deep: #3A1078;
-            --violeta-mid: #4E31AA;
-            --violeta-soft: #6B4EBF;
-            --blanco: #FFFFFF;
-            --fondo-claro: #F8F6FF;
-            --fondo-warm: #FDF9F3;
-            /* Accent Colors */
-            --rosa: #E84393;
-            --rosa-hover: #D63384;
-            --amarillo: #FDCB6E;
-            --amarillo-hover: #F0B429;
-            --verde: #00B894;
-            --verde-soft: #55EFC4;
-            /* Text */
-            --texto: #2D2A4A;
-            --texto-light: rgba(45, 42, 74, 0.65);
-            --texto-muted: rgba(45, 42, 74, 0.45);
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --ink: #FDF9F3;
+            /* Light warm background */
+            --deep: #F4EDE0;
+            /* Slightly darker cream */
+            --bark: #2E1F14;
+            /* Deep earth (instead of black) */
+            --terra: #C4511F;
+            /* Accent Orange */
+            --gold: #C9902A;
+            /* Accent Gold */
+            --sand: #E8D9C0;
+            /* Sand tone for UI elements */
+            --cream: #FDF9F3;
+            /* Base cream */
+            --fog: #5A4D41;
+            /* Text lead / Muted text */
+            --text-main: #1C1510;
+            /* Main deep text */
+            --ff-d: 'Cormorant Garamond', Georgia, serif;
+            --ff-b: 'Outfit', sans-serif;
         }
 
         html {
-            scroll-behavior: smooth;
+            scroll-behavior: smooth
         }
 
         body {
-            font-family: 'Lato', sans-serif;
-            background-color: var(--fondo-warm);
-            color: var(--texto);
+            background: var(--ink);
+            color: var(--text-main);
+            font-family: var(--ff-b);
+            font-size: 16px;
             line-height: 1.7;
             overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
+            cursor: none;
+            /* Custom cursor experience */
         }
 
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
+        /* CURSOR */
+        .cursor {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: var(--terra);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform .1s, width .25s, height .25s, background .25s;
         }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.2;
-            word-wrap: break-word;
+        .cursor-ring {
+            position: fixed;
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(196, 81, 31, .4);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: transform .18s ease, width .3s, height .3s, border-color .3s;
         }
 
-        /* ═══════════════════════════════
-           NAVBAR
-           ═══════════════════════════════ */
-        .navbar {
+        body:has(a:hover) .cursor {
+            width: 6px;
+            height: 6px;
+            background: var(--gold)
+        }
+
+        body:has(a:hover) .cursor-ring {
+            width: 52px;
+            height: 52px;
+            border-color: var(--gold)
+        }
+
+        /* NOISE OVERLAY */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1;
+            opacity: .5;
+        }
+
+        /* NAV */
+        nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 100;
-            padding: 1.5rem 2rem;
-            transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .navbar.scrolled {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 0.8rem 2rem;
-            box-shadow: 0 2px 30px rgba(58, 16, 120, 0.08);
-        }
-
-        .navbar-inner {
-            max-width: 1280px;
-            margin: 0 auto;
+            padding: 0 clamp(1.5rem, 5vw, 4rem);
             display: flex;
             align-items: center;
             justify-content: space-between;
+            height: 68px;
+            border-bottom: 1px solid rgba(28, 21, 16, .07);
+            backdrop-filter: blur(16px);
+            background: rgba(253, 249, 243, .7);
+            /* Translucent cream */
         }
 
-        .navbar-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
+        .nav-logo {
+            font-family: var(--ff-d);
+            font-size: 1.05rem;
+            color: var(--text-main);
             text-decoration: none;
-            color: var(--texto);
-        }
-
-        /* ═══════════════════════════════
-           ANIMATED LOGO FCH
-           ═══════════════════════════════ */
-        .fch-logo-container {
-            width: 40px;
-            height: 40px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .fch-logo-animated {
-            width: 100%;
-            height: 100%;
-            overflow: visible;
-        }
-
-        .fch-petal {
-            transform-origin: 50% 90%;
-            fill-opacity: 0.8;
-            mix-blend-mode: multiply;
-            transition: all 0.5s ease;
-        }
-
-        @keyframes open-cyan {
-
-            0%,
-            100% {
-                transform: rotate(0deg) scale(1);
-            }
-
-            50% {
-                transform: rotate(0deg) translateY(-5px) scale(1.1);
-            }
-        }
-
-        @keyframes open-purple {
-
-            0%,
-            100% {
-                transform: rotate(-15deg) scale(0.95);
-            }
-
-            50% {
-                transform: rotate(-35deg) scale(1.05);
-            }
-        }
-
-        @keyframes open-pink {
-
-            0%,
-            100% {
-                transform: rotate(-30deg) scale(0.9);
-            }
-
-            50% {
-                transform: rotate(-65deg) scale(1);
-            }
-        }
-
-        @keyframes open-yellow {
-
-            0%,
-            100% {
-                transform: rotate(20deg) scale(0.95);
-            }
-
-            50% {
-                transform: rotate(45deg) scale(1.05);
-            }
-        }
-
-        .p-cyan {
-            animation: open-cyan 5s ease-in-out infinite;
-        }
-
-        .p-purple {
-            animation: open-purple 5s ease-in-out infinite;
-            animation-delay: 0.3s;
-        }
-
-        .p-pink {
-            animation: open-pink 5s ease-in-out infinite;
-            animation-delay: 0.6s;
-        }
-
-        .p-yellow {
-            animation: open-yellow 5s ease-in-out infinite;
-            animation-delay: 0.1s;
-        }
-
-        .navbar-logo span {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: -0.02em;
-        }
-
-        .navbar-links {
-            display: flex;
-            align-items: center;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        .navbar-links a {
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 500;
+            letter-spacing: .1em;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--texto-light);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .navbar-links a:hover {
-            color: var(--violeta-mid);
-        }
-
-        .btn-cta-nav {
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.8rem;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            background: var(--amarillo);
-            color: var(--texto);
-            border: none;
-            padding: 0.7rem 1.8rem;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none
+        }
+
+        .nav-links a {
+            font-size: .72rem;
+            color: var(--fog);
             text-decoration: none;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            transition: color .2s;
         }
 
-        .btn-cta-nav:hover {
-            background: var(--amarillo-hover);
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(253, 203, 110, 0.4);
+        .nav-links a:hover {
+            color: var(--text-main)
         }
 
-        /* Mobile Nav */
-        .mobile-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--texto);
-        }
-
-        /* ═══════════════════════════════
-           HERO SECTION
-           ═══════════════════════════════ */
-        .hero {
-            position: relative;
-            min-height: 100vh;
+        .nav-cta-wrap {
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 1.5rem
+        }
+
+        .nav-back {
+            font-size: .72rem;
+            color: var(--fog);
+            text-decoration: none;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        .nav-back:hover {
+            color: var(--text-main)
+        }
+
+        .btn-nav {
+            border: 1px solid var(--terra);
+            color: var(--terra);
+            padding: .45rem 1.4rem;
+            font-family: var(--ff-b);
+            font-size: .72rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: background .2s, color .2s;
+            border-radius: 1px;
+        }
+
+        .btn-nav:hover {
+            background: var(--terra);
+            color: #fff
+        }
+
+        @media(max-width:768px) {
+
+            .nav-links,
+            .nav-back {
+                display: none
+            }
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 10fr 12fr;
+            /* Adjusted for better light layout */
+            position: relative;
             overflow: hidden;
         }
 
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            background: url('img/hero-sunrise.png') center/cover no-repeat;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom,
-                    rgba(58, 16, 120, 0.55) 0%,
-                    rgba(45, 42, 74, 0.65) 100%);
-        }
-
-        .hero-content {
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: clamp(7rem, 14vw, 12rem) clamp(2rem, 6vw, 5rem) clamp(4rem, 8vw, 7rem);
             position: relative;
             z-index: 2;
-            text-align: center;
-            max-width: 800px;
-            padding: 2rem;
+            background: var(--ink);
         }
 
-        .hero h1 {
-            font-size: clamp(2rem, 5vw, 3.4rem);
-            font-weight: 800;
-            color: var(--blanco);
-            margin-bottom: 1.5rem;
-            line-height: 1.15;
-            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .hero p {
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            color: rgba(255, 255, 255, 0.88);
-            font-weight: 300;
-            max-width: 620px;
-            margin: 0 auto 2.5rem;
-            line-height: 1.8;
-        }
-
-        .btn-hero {
-            display: inline-block;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 600;
-            background: var(--rosa);
-            color: var(--blanco);
-            border: none;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.35s;
-            box-shadow: 0 8px 30px rgba(232, 67, 147, 0.35);
-        }
-
-        .btn-hero:hover {
-            background: var(--rosa-hover);
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(232, 67, 147, 0.45);
-        }
-
-        /* ═══════════════════════════════
-           SECTION STYLES (Shared)
-           ═══════════════════════════════ */
-        .section {
-            padding: 6rem 2rem;
-        }
-
-        .section-white {
-            background: var(--blanco);
-        }
-
-        .section-light {
-            background: var(--fondo-claro);
-        }
-
-        .section-dark {
-            background: var(--violeta-deep);
-            color: var(--blanco);
-        }
-
-        .section-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-tag {
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.7rem;
-            font-weight: 600;
+        .hero-eyebrow {
+            font-size: .7rem;
+            letter-spacing: .22em;
             text-transform: uppercase;
-            letter-spacing: 0.25em;
-            color: var(--violeta-mid);
-            margin-bottom: 0.8rem;
+            color: var(--terra);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
             display: block;
+            width: 32px;
+            height: 1px;
+            background: var(--terra)
         }
 
-        .section-tag-light {
-            color: var(--amarillo);
-        }
-
-        .section-title {
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--texto-light);
+        .hero-h1 {
+            font-family: var(--ff-d);
+            font-size: clamp(4.5rem, 8vw, 8rem);
             font-weight: 300;
-            max-width: 600px;
+            line-height: .95;
+            color: var(--text-main);
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-h1 span {
+            display: block
+        }
+
+        .hero-h1 em {
+            font-style: italic;
+            color: var(--terra)
+        }
+
+        .hero-h1 .outline {
+            -webkit-text-stroke: 1.5px var(--terra);
+            color: transparent;
+        }
+
+        .hero-lead {
+            font-size: 1.1rem;
+            color: var(--fog);
             line-height: 1.8;
+            max-width: 42ch;
+            margin-bottom: 3rem;
+            font-weight: 300;
         }
 
-        .section-subtitle-light {
-            color: rgba(255, 255, 255, 0.7);
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap
         }
 
-        /* ═══════════════════════════════
-           SECCIÓN 2: METODOLOGÍA (Tríada)
-           ═══════════════════════════════ */
-        .triada-intro {
-            text-align: center;
-            margin-bottom: 4rem;
+        .btn-primary {
+            background: var(--terra);
+            color: #fff;
+            padding: .9rem 2.2rem;
+            border-radius: 1px;
+            text-decoration: none;
+            font-size: .8rem;
+            font-weight: 500;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            transition: all .25s;
         }
 
-        .triada-intro .section-subtitle {
-            margin: 0 auto;
+        .btn-primary:hover {
+            background: var(--bark);
+            transform: translateY(-2px);
         }
 
-        .triada-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+        .btn-outline {
+            border: 1px solid rgba(28, 21, 16, .2);
+            color: var(--text-main);
+            padding: .9rem 2.2rem;
+            border-radius: 1px;
+            text-decoration: none;
+            font-size: .8rem;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            transition: border-color .25s, color .25s, background .25s;
         }
 
-        .triada-card {
-            background: var(--blanco);
-            border-radius: 20px;
-            padding: 2.5rem 2rem;
+        .btn-outline:hover {
+            border-color: var(--text-main);
+            background: rgba(28, 21, 16, 0.03);
+        }
+
+        .hero-right {
             position: relative;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-            box-shadow: 0 4px 20px rgba(58, 16, 120, 0.05);
         }
 
-        .triada-card::before {
+        .hero-right::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
+            inset: 0;
+            background: linear-gradient(90deg, var(--ink) 0%, transparent 25%, transparent 75%, rgba(253, 249, 243, .3) 100%);
+            z-index: 1;
         }
 
-        .triada-card.rosa::before {
-            background: var(--rosa);
-        }
-
-        .triada-card.amarillo::before {
-            background: var(--amarillo);
-        }
-
-        .triada-card.verde::before {
-            background: var(--verde);
-        }
-
-        .triada-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 16px 50px rgba(58, 16, 120, 0.12);
-        }
-
-        .triada-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .triada-icon.rosa-bg {
-            background: rgba(232, 67, 147, 0.1);
-            color: var(--rosa);
-        }
-
-        .triada-icon.amarillo-bg {
-            background: rgba(253, 203, 110, 0.25);
-            color: var(--amarillo-hover);
-        }
-
-        .triada-icon.verde-bg {
-            background: rgba(0, 184, 148, 0.12);
-            color: var(--verde);
-        }
-
-        .triada-card h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-        }
-
-        .triada-card p {
-            color: var(--texto-light);
-            font-size: 0.95rem;
-            font-weight: 300;
-            line-height: 1.7;
-        }
-
-        /* ═══════════════════════════════
-           SECCIÓN 3: PLATAFORMA
-           ═══════════════════════════════ */
-        .platform-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .platform-text h2 {
-            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
-            margin-bottom: 1.5rem;
-        }
-
-        .platform-text p {
-            color: var(--texto-light);
-            font-size: 1rem;
-            margin-bottom: 2rem;
-            line-height: 1.8;
-        }
-
-        .platform-features {
-            list-style: none;
-            padding: 0;
-        }
-
-        .platform-features li {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.8rem;
-            margin-bottom: 1.2rem;
-            font-size: 1rem;
-            color: var(--texto);
-        }
-
-        .platform-features li i {
-            color: var(--verde);
-            font-size: 1.4rem;
-            margin-top: 0.15rem;
-            flex-shrink: 0;
-        }
-
-        .platform-img {
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(58, 16, 120, 0.1);
-        }
-
-        .platform-img img {
+        .hero-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
+            filter: brightness(1.05) contrast(1.02);
+            /* Optimized for light theme */
+            transform: scale(1.04);
+            transition: transform 8s ease;
         }
 
-        /* ═══════════════════════════════
-           SECCIÓN 4: A QUIÉN / QUÉ HACEMOS
-           ═══════════════════════════════ */
-        .audience-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+        .hero-img.loaded {
+            transform: scale(1)
         }
 
-        .audience-card {
-            background: var(--blanco);
-            border-radius: 20px;
-            padding: 3rem;
-            box-shadow: 0 4px 20px rgba(58, 16, 120, 0.05);
-        }
-
-        .audience-card h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--violeta-deep);
-        }
-
-        .audience-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .audience-list li {
+        .hero-pills {
+            position: absolute;
+            bottom: clamp(2rem, 5vw, 4rem);
+            right: clamp(2rem, 5vw, 5rem);
+            z-index: 10;
             display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: var(--texto);
+            flex-direction: column;
+            gap: .6rem;
+            align-items: flex-end;
         }
 
-        .audience-list li i {
-            color: var(--verde);
-            font-size: 1.3rem;
-            flex-shrink: 0;
-            margin-top: 0.1rem;
+        .pill {
+            border: 1px solid rgba(28, 21, 16, .1);
+            padding: .35rem .9rem;
+            font-size: .7rem;
+            letter-spacing: .1em;
+            color: var(--text-main);
+            background: rgba(255, 255, 255, .6);
+            backdrop-filter: blur(8px);
+            border-radius: 1px;
+            font-weight: 500;
         }
 
-        /* ═══════════════════════════════
-           SECCIÓN 5: MÉTRICAS DE IMPACTO
-           ═══════════════════════════════ */
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            text-align: center;
-        }
-
-        .metric-item {
-            padding: 2rem 1rem;
-        }
-
-        .metric-number {
-            font-family: 'Poppins', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            font-weight: 800;
+        .hero-number {
+            position: absolute;
+            bottom: clamp(2rem, 5vw, 4rem);
+            left: clamp(2rem, 6vw, 5rem);
+            z-index: 10;
+            font-family: var(--ff-d);
+            font-size: clamp(6rem, 15vw, 14rem);
+            font-weight: 300;
+            color: rgba(28, 21, 16, .03);
             line-height: 1;
-            margin-bottom: 0.6rem;
+            pointer-events: none;
         }
 
-        .metric-number.rosa-t {
-            color: var(--rosa);
+        @media(max-width:900px) {
+            .hero {
+                grid-template-columns: 1fr
+            }
+
+            .hero-right {
+                display: none
+            }
         }
 
-        .metric-number.amarillo-t {
-            color: var(--amarillo);
+        /* ─── MARQUEE ─── */
+        .marquee-wrap {
+            border-top: 1px solid rgba(28, 21, 16, .08);
+            border-bottom: 1px solid rgba(28, 21, 16, .08);
+            overflow: hidden;
+            padding: .9rem 0;
+            background: var(--deep);
         }
 
-        .metric-number.verde-t {
-            color: var(--verde-soft);
-        }
-
-        .metric-number.white-t {
-            color: var(--blanco);
-        }
-
-        .metric-label {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.65);
-            font-weight: 300;
-        }
-
-        /* ═══════════════════════════════
-           SECCIÓN 6: VALIDACIÓN
-           ═══════════════════════════════ */
-        .validation-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .validation-card {
-            background: var(--blanco);
-            border: 1px solid rgba(58, 16, 120, 0.08);
-            border-radius: 16px;
-            padding: 2.5rem;
+        .marquee-track {
             display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            transition: all 0.3s;
+            gap: 0;
+            white-space: nowrap;
+            animation: marquee 28s linear infinite;
         }
 
-        .validation-card:hover {
-            box-shadow: 0 10px 30px rgba(58, 16, 120, 0.08);
-            transform: translateY(-3px);
-        }
-
-        .validation-logo {
-            width: 70px;
-            height: 70px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.65rem;
-            font-weight: 800;
-            text-align: center;
-            flex-shrink: 0;
-            line-height: 1.2;
-        }
-
-        .validation-logo.gcba {
-            background: linear-gradient(135deg, var(--amarillo), #f39c12);
-            color: var(--texto);
-        }
-
-        .validation-logo.caf {
-            background: linear-gradient(135deg, var(--violeta-mid), var(--violeta-deep));
-            color: var(--blanco);
-        }
-
-        .validation-info h4 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 0.3rem;
-        }
-
-        .validation-info p {
-            font-size: 0.88rem;
-            color: var(--texto-light);
-            font-weight: 300;
-        }
-
-        .testimonial-quote {
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: center;
-            font-size: 1.25rem;
+        .marquee-track span {
+            font-family: var(--ff-d);
             font-style: italic;
-            font-weight: 300;
-            color: var(--texto);
-            line-height: 1.8;
-            padding: 2rem 0;
-            border-top: 1px solid rgba(58, 16, 120, 0.1);
+            font-size: 1.05rem;
+            color: var(--text-main);
+            padding: 0 2.5rem;
+            border-right: 1px solid rgba(28, 21, 16, .1);
         }
 
-        .testimonial-quote span {
+        .marquee-track span em {
+            color: var(--terra);
+            font-style: normal
+        }
+
+        @keyframes marquee {
+            from {
+                transform: translateX(0)
+            }
+
+            to {
+                transform: translateX(-50%)
+            }
+        }
+
+        /* ─── SECTIONS ─── */
+        .s {
+            padding: clamp(5rem, 12vw, 10rem) clamp(2rem, 8vw, 7rem)
+        }
+
+        .s--alt {
+            background: var(--deep)
+        }
+
+        .s--bark {
+            background: var(--bark);
+            color: var(--cream);
+        }
+
+        .s--bark .s-label::before {
+            background: var(--gold);
+        }
+
+        .s--bark .s-label {
+            color: var(--gold);
+        }
+
+        .s--bark h2 {
+            color: var(--cream);
+        }
+
+        .s--bark .s-lead {
+            color: var(--sand);
+        }
+
+        .s-label {
+            font-size: .7rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--terra);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+        }
+
+        .s-label::before {
+            content: '';
             display: block;
-            margin-top: 1rem;
-            font-size: 0.85rem;
-            font-style: normal;
-            font-weight: 600;
-            color: var(--violeta-mid);
+            width: 24px;
+            height: 1px;
+            background: var(--terra)
         }
 
-        /* ═══════════════════════════════
-           SECCIÓN 7: FOOTER / CTA FINAL
-           ═══════════════════════════════ */
-        .footer-cta {
-            text-align: center;
-        }
-
-        .footer-cta h2 {
-            font-size: clamp(1.8rem, 4vw, 2.6rem);
-            font-weight: 700;
-            color: var(--blanco);
+        h2 {
+            font-family: var(--ff-d);
+            font-size: clamp(2.4rem, 5vw, 4.2rem);
+            font-weight: 300;
+            line-height: 1.1;
+            color: var(--text-main);
             margin-bottom: 1rem;
         }
 
-        .footer-cta p {
-            font-size: 1.15rem;
-            color: rgba(255, 255, 255, 0.7);
-            font-weight: 300;
-            max-width: 550px;
-            margin: 0 auto 3rem;
+        h2 em {
+            font-style: italic;
+            color: var(--terra)
+        }
+
+        .s-lead {
+            font-size: 1.05rem;
+            color: var(--fog);
+            max-width: 54ch;
+            margin-bottom: clamp(3rem, 6vw, 5rem);
             line-height: 1.8;
+            font-weight: 300;
         }
 
-        .footer-buttons {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .btn-rosa {
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            background: var(--rosa);
-            color: var(--blanco);
-            border: none;
-            padding: 1rem 2.2rem;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.35s;
-            text-decoration: none;
-            box-shadow: 0 6px 25px rgba(232, 67, 147, 0.3);
-        }
-
-        .btn-rosa:hover {
-            background: var(--rosa-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 35px rgba(232, 67, 147, 0.4);
-        }
-
-        .btn-outline-white {
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            background: transparent;
-            color: var(--blanco);
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            padding: 0.9rem 2rem;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.35s;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-outline-white:hover {
-            border-color: var(--blanco);
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .footer-bottom {
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.35);
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .footer-bottom a {
-            color: rgba(255, 255, 255, 0.45);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-bottom a:hover {
-            color: var(--blanco);
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        /* ═══════════════════════════════
-           ANIMATIONS
-           ═══════════════════════════════ */
+        /* REVEAL */
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+            transform: translateY(32px);
+            transition: opacity .8s ease, transform .8s ease;
         }
 
         .reveal.visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: none
         }
 
-        /* Stagger children */
-        .stagger>* {
-            transition-delay: calc(var(--i, 0) * 0.12s);
+        /* ─── NO ES ─── */
+        .noes-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: start
         }
 
-        /* Counter Animation */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .noes-list {
+            display: grid;
+            gap: 0;
+            border: 1px solid rgba(28, 21, 16, .1)
         }
 
-        /* ═══════════════════════════════
-           MOBILE MENU
-           ═══════════════════════════════ */
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 200;
-            background: rgba(58, 16, 120, 0.97);
-            backdrop-filter: blur(20px);
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 2rem;
-        }
-
-        .mobile-menu.open {
+        .no-item {
+            padding: 2rem 2.5rem;
+            border-bottom: 1px solid rgba(28, 21, 16, .1);
             display: flex;
-        }
-
-        .mobile-menu a {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--blanco);
-            text-decoration: none;
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-
-        .mobile-menu a:hover {
-            opacity: 1;
-        }
-
-        .mobile-close {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            background: none;
-            border: none;
-            color: var(--blanco);
-            font-size: 2rem;
-            cursor: pointer;
-        }
-
-        /* ═══════════════════════════════
-           RESPONSIVE
-           ═══════════════════════════════ */
-        @media (max-width: 1024px) {
-            .triada-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-
-            .platform-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .platform-img {
-                order: -1;
-                max-height: 450px;
-            }
-
-            .audience-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .metrics-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .validation-grid {
-                grid-template-columns: 1fr;
-                max-width: 500px;
-                margin: 0 auto 3rem;
-            }
-
-            .journal-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 1rem;
-            }
-
-            .navbar-links {
-                display: none;
-            }
-
-            .btn-cta-nav {
-                display: none;
-            }
-
-            .mobile-toggle {
-                display: block;
-            }
-
-            .section {
-                padding: 4rem 1.5rem;
-            }
-
-            .triada-grid {
-                grid-template-columns: 1fr;
-                max-width: 100%;
-            }
-
-            .metrics-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-
-            .footer-buttons,
-            .hero-buttons {
-                flex-direction: column;
-                width: 100%;
-                max-width: 320px;
-                margin: 0 auto;
-            }
-
-            .btn-hero,
-            .btn-rosa,
-            .btn-outline-white {
-                width: 100%;
-                text-align: center;
-                justify-content: center;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-                gap: 1.5rem;
-            }
-
-            .journal-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: clamp(1.8rem, 8vw, 2.22rem);
-            }
-
-            .hero p {
-                font-size: 0.95rem;
-                padding: 0 0.5rem;
-            }
-
-            .metrics-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title {
-                font-size: 1.75rem;
-            }
-
-            .navbar-logo span {
-                font-size: 1rem;
-            }
-        }
-
-        .footer-buttons,
-        .hero-buttons,
-        .button-group {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: flex-start;
             gap: 1.5rem;
-            flex-wrap: wrap;
+            transition: background .3s;
         }
 
-        @media (max-width: 768px) {
-
-            .footer-buttons,
-            .hero-buttons,
-            .button-group {
-                flex-direction: column;
-                width: 100%;
-                max-width: 320px;
-                margin: 0 auto;
-            }
-
-            .btn-hero,
-            .btn-rosa,
-            .btn-outline-white,
-            .btn-cta-nav {
-                width: 100%;
-                text-align: center;
-                justify-content: center;
-            }
+        .no-item:last-child {
+            border-bottom: none
         }
 
-        /* ═══════════════════════════════
-           DIAGNOSTIC WIDGET & NEW SECTIONS
-           ═══════════════════════════════ */
-        .widget-fab {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 60px;
-            height: 60px;
-            background: var(--violeta-mid);
-            color: white;
+        .no-item:hover {
+            background: rgba(28, 21, 16, .03)
+        }
+
+        .no-icon-wrap {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(196, 81, 31, .3);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        .no-icon-wrap svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--terra);
+            fill: none;
+            stroke-width: 1.5
+        }
+
+        .no-item h3 {
+            font-family: var(--ff-d);
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--text-main);
+            margin-bottom: .4rem;
+        }
+
+        .no-item p {
+            font-size: .88rem;
+            color: var(--fog);
+            line-height: 1.75
+        }
+
+        .noes-quote {
+            font-family: var(--ff-d);
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            font-weight: 300;
+            font-style: italic;
+            line-height: 1.4;
+            color: var(--text-main);
+            padding-left: 2rem;
+            border-left: 2px solid var(--terra);
+        }
+
+        @media(max-width:900px) {
+            .noes-layout {
+                grid-template-columns: 1fr
+            }
+        }
+
+        /* ─── PARA VOS ─── */
+        .paravos-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: rgba(28, 21, 16, .08)
+        }
+
+        .pv-col {
+            background: var(--ink);
+            padding: 3rem
+        }
+
+        .s--alt .pv-col {
+            background: var(--deep)
+        }
+
+        .pv-col h3 {
+            font-family: var(--ff-d);
             font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: 0 10px 25px rgba(58, 16, 120, 0.3);
-            z-index: 1000;
-            border: none;
-            transition: all 0.3s;
-        }
-
-        .widget-fab:hover {
-            transform: scale(1.1);
-            background: var(--rosa);
-        }
-
-        .widget-panel {
-            position: fixed;
-            top: 0;
-            right: -450px;
-            width: 400px;
-            height: 100vh;
-            background: white;
-            z-index: 2000;
-            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1);
-            padding: 3rem 2rem;
-            transition: right 0.4s ease;
-            overflow-y: auto;
-        }
-
-        .widget-panel.open {
-            right: 0;
-        }
-
-        .journal-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .journal-card {
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            transition: 0.3s;
-        }
-
-        .journal-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        }
-
-        @media (max-width: 768px) {
-            .journal-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .widget-panel {
-                width: 100%;
-                top: auto;
-                bottom: -100%;
-                right: 0;
-                height: 80vh;
-                transition: bottom 0.4s;
-            }
-
-            .widget-panel.open {
-                bottom: 0;
-                right: 0;
-            }
-        }
-
-        /* ═══════════════════════════════
-           EL SALTO LANDING STYLES
-           ═══════════════════════════════ */
-        .el-salto-hero {
-            background: var(--fondo-claro);
-            padding: 8rem 2rem 4rem;
+            font-weight: 400;
+            color: var(--text-main);
+            margin-bottom: 1.75rem;
             display: flex;
             align-items: center;
-            gap: 4rem;
+            gap: .75rem;
         }
 
-        .el-salto-hero-content {
-            flex: 1;
-            text-align: left;
+        .pv-col h3 svg {
+            width: 22px;
+            height: 22px;
+            flex-shrink: 0
         }
 
-        .el-salto-hero-img {
-            flex: 1;
-            border-radius: 30px;
-            overflow: hidden;
-            box-shadow: 0 30px 60px rgba(58, 16, 120, 0.15);
-        }
-
-        .el-salto-bullets {
+        .pv-list {
             list-style: none;
-            margin: 2rem 0;
+            display: grid;
+            gap: 1rem
         }
 
-        .el-salto-bullets li {
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
+        .pv-list li {
+            font-size: .9rem;
+            color: var(--fog);
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.7;
         }
 
-        .grid-2x3 {
+        .pv-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: .65rem;
+            width: 8px;
+            height: 1px;
+            background: var(--terra);
+        }
+
+        @media(max-width:600px) {
+            .paravos-grid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        /* ─── BENEFICIOS ─── */
+        .bene-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+            gap: 1px;
+            background: rgba(28, 21, 16, .08)
         }
 
-        .module-grid-5 {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 1.2rem;
-            margin-top: 2rem;
+        .bene-card {
+            background: var(--ink);
+            padding: 2.5rem 2rem;
+            transition: all .3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .pill-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            border-left: 6px solid var(--violeta-soft);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
+        .s--alt .bene-card {
+            background: var(--deep)
         }
 
-        .pill-card:hover {
+        .bene-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--terra);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .4s ease;
+        }
+
+        .bene-card:hover::after {
+            transform: scaleX(1)
+        }
+
+        .bene-card:hover {
+            background: rgba(196, 81, 31, .04);
             transform: translateY(-5px);
         }
 
-        .module-card-premium {
-            background: var(--blanco);
-            border-radius: 16px;
-            padding: 1.5rem;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            transition: all 0.3s;
+        .bene-icon {
+            width: 42px;
+            height: 42px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bene-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--terra);
+            fill: none;
+            stroke-width: 1.3
+        }
+
+        .bene-card h4 {
+            font-family: var(--ff-d);
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--text-main);
+            margin-bottom: .6rem;
+        }
+
+        .bene-card p {
+            font-size: .85rem;
+            color: var(--fog);
+            line-height: 1.75
+        }
+
+        @media(max-width:900px) {
+            .bene-grid {
+                grid-template-columns: 1fr 1fr
+            }
+        }
+
+        @media(max-width:500px) {
+            .bene-grid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        /* ─── ESTRUCTURA / TABS ─── */
+        .tabs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            border: 1px solid rgba(28, 21, 16, .1);
+            margin-bottom: 4rem
+        }
+
+        .tab {
+            padding: 2rem 1.5rem;
+            cursor: pointer;
+            border-right: 1px solid rgba(28, 21, 16, .1);
+            transition: background .3s;
             position: relative;
         }
 
-        .module-card-premium:hover {
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-            border-color: var(--violeta-soft);
+        .tab:last-child {
+            border-right: none
         }
 
-        .scroll-indicator {
-            margin-top: 4rem;
-            animation: bounce 2s infinite;
-            opacity: 0.5;
+        .tab .tab-num {
+            font-family: var(--ff-d);
+            font-size: .8rem;
+            letter-spacing: .15em;
+            color: var(--fog);
+            margin-bottom: .6rem;
+            text-transform: uppercase;
         }
 
-        @media (max-width: 1024px) {
-            .el-salto-hero {
-                flex-direction: column;
-                text-align: center;
+        .tab h3 {
+            font-family: var(--ff-d);
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--text-main);
+            margin-bottom: .3rem;
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+        }
+
+        .tab h3 svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.5;
+            color: var(--fog)
+        }
+
+        .tab p {
+            font-size: .8rem;
+            color: var(--fog)
+        }
+
+        .tab::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--terra);
+            transform: scaleX(0);
+            transition: transform .3s;
+        }
+
+        .tab.active {
+            background: rgba(196, 81, 31, .08)
+        }
+
+        .tab.active::after {
+            transform: scaleX(1)
+        }
+
+        .tab.active .tab-num {
+            color: var(--terra)
+        }
+
+        .tab.active h3 {
+            color: var(--text-main)
+        }
+
+        .tab.active h3 svg {
+            color: var(--terra)
+        }
+
+        .mod-panel {
+            display: none
+        }
+
+        .mod-panel.active {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: start
+        }
+
+        .mod-head h3 {
+            font-family: var(--ff-d);
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .mod-head p {
+            font-size: .95rem;
+            color: var(--fog);
+            line-height: 1.8
+        }
+
+        .temas {
+            display: grid;
+            gap: 0;
+            border: 1px solid rgba(28, 21, 16, .1)
+        }
+
+        .tema {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid rgba(28, 21, 16, .08);
+            transition: background .25s;
+        }
+
+        .tema:last-child {
+            border-bottom: none
+        }
+
+        .tema:hover {
+            background: rgba(28, 21, 16, .03)
+        }
+
+        .tema-ico {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(28, 21, 16, .12);
+        }
+
+        .tema-ico svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--terra);
+            fill: none;
+            stroke-width: 1.5
+        }
+
+        .tema h4 {
+            font-size: .9rem;
+            font-weight: 500;
+            color: var(--text-main);
+            margin-bottom: .2rem
+        }
+
+        .tema p {
+            font-size: .82rem;
+            color: var(--fog);
+            line-height: 1.6
+        }
+
+        .mod-nota {
+            margin-top: 1.5rem;
+            font-size: .78rem;
+            color: rgba(28, 21, 16, .4);
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            border-top: 1px solid rgba(28, 21, 16, .08);
+            padding-top: 1rem;
+        }
+
+        @media(max-width:768px) {
+            .tabs {
+                grid-template-columns: 1fr
             }
 
-            .el-salto-hero-content {
-                text-align: center;
+            .tab {
+                border-right: none;
+                border-bottom: 1px solid rgba(28, 21, 16, .1)
             }
 
-            .grid-2x3 {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .module-grid-5 {
-                grid-template-columns: repeat(2, 1fr);
+            .mod-panel.active {
+                grid-template-columns: 1fr
             }
         }
 
-        @media (max-width: 768px) {
+        /* ─── MODALIDAD ─── */
+        .formato-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: rgba(28, 21, 16, .08);
+            margin-bottom: 3rem
+        }
 
-            .grid-2x3,
-            .module-grid-5 {
-                grid-template-columns: 1fr;
-            }
+        .formato-item {
+            background: var(--deep);
+            padding: 2.5rem 2rem;
+            transition: background .3s;
+        }
 
-            .module-card-premium {
-                margin-bottom: 1rem;
+        .formato-item:hover {
+            background: rgba(196, 81, 31, .06)
+        }
+
+        .formato-ico {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(28, 21, 16, .12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .formato-ico svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--terra);
+            fill: none;
+            stroke-width: 1.3
+        }
+
+        .formato-item h4 {
+            font-family: var(--ff-d);
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--text-main);
+            margin-bottom: .4rem;
+        }
+
+        .formato-item p {
+            font-size: .83rem;
+            color: var(--fog);
+            line-height: 1.7
+        }
+
+        @media(max-width:900px) {
+            .formato-grid {
+                grid-template-columns: 1fr 1fr
             }
         }
 
-        /* Acordeón para Módulos en Móvil */
-        @media (max-width: 768px) {
-            .module-content-mobile {
-                display: none;
-                margin-top: 1rem;
-                padding-top: 1rem;
-                border-top: 1px solid rgba(0, 0, 0, 0.05);
+        @media(max-width:500px) {
+            .formato-grid {
+                grid-template-columns: 1fr
             }
+        }
 
-            .module-card-premium.open .module-content-mobile {
-                display: block;
-            }
+        /* ─── ACOMPAÑAMIENTO ─── */
+        .acomp-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center
+        }
 
-            .module-card-premium {
-                cursor: pointer;
-            }
+        .acomp-img {
+            position: relative
+        }
 
-            .module-card-premium::after {
-                content: '▼';
-                position: absolute;
-                right: 1.5rem;
-                top: 1.5rem;
-                font-size: 0.7rem;
-                opacity: 0.3;
-                transition: transform 0.3s;
-            }
+        .acomp-img img {
+            width: 100%;
+            display: block;
+            filter: grayscale(10%) sepia(5%) brightness(1.02);
+            border-radius: 2px;
+        }
 
-            .module-card-premium.open::after {
-                transform: rotate(180deg);
+        .acomp-img::before {
+            content: '';
+            position: absolute;
+            inset: -12px -12px 12px 12px;
+            border: 1px solid rgba(196, 81, 31, .3);
+            z-index: -1;
+        }
+
+        .acomp-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            background: rgba(196, 81, 31, .08);
+            border: 1px solid rgba(196, 81, 31, .2);
+            color: var(--terra);
+            font-size: .7rem;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            padding: .35rem .9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media(max-width:768px) {
+            .acomp-wrap {
+                grid-template-columns: 1fr
             }
+        }
+
+        /* ─── FAQ ─── */
+        .faq-wrap {
+            border-top: 1px solid rgba(28, 21, 16, .1)
+        }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(28, 21, 16, .1)
+        }
+
+        .faq-q {
+            width: 100%;
+            background: none;
+            border: none;
+            cursor: none;
+            padding: 1.75rem 0;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            font-family: var(--ff-b);
+            font-size: .95rem;
+            font-weight: 400;
+            color: var(--text-main);
+            transition: color .2s;
+        }
+
+        .faq-q:hover {
+            color: var(--terra)
+        }
+
+        .faq-cross {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            border: 1px solid rgba(28, 21, 16, .15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all .35s;
+        }
+
+        .faq-cross svg {
+            width: 12px;
+            height: 12px;
+            stroke: var(--terra);
+            fill: none;
+            stroke-width: 2;
+            transition: transform .35s
+        }
+
+        .faq-item.open .faq-cross {
+            background: var(--terra);
+            border-color: var(--terra);
+            transform: none
+        }
+
+        .faq-item.open .faq-cross svg {
+            transform: rotate(45deg);
+            stroke: #fff
+        }
+
+        .faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .4s ease
+        }
+
+        .faq-a-inner {
+            padding: 0 0 1.75rem;
+            font-size: .88rem;
+            color: var(--fog);
+            line-height: 1.8;
+            max-width: 72ch
+        }
+
+        /* ─── CTA ─── */
+        .cta-s {
+            position: relative;
+            overflow: hidden;
+            background: var(--bark);
+            padding: clamp(5rem, 12vw, 10rem) clamp(2rem, 8vw, 7rem);
+            text-align: center;
+            color: var(--cream);
+        }
+
+        .cta-s::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(196, 81, 31, .2) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .cta-big {
+            font-family: var(--ff-d);
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            font-weight: 300;
+            line-height: .95;
+            color: var(--cream);
+            margin-bottom: 2rem;
+        }
+
+        .cta-big em {
+            font-style: italic;
+            color: var(--gold)
+        }
+
+        .cta-sub {
+            font-size: 1.1rem;
+            color: var(--sand);
+            max-width: 50ch;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+            font-weight: 300
+        }
+
+        .cta-btns {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: var(--deep);
+            border-top: 1px solid rgba(28, 21, 16, .08);
+            padding: 2.5rem clamp(2rem, 8vw, 7rem);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .footer-brand {
+            font-family: var(--ff-d);
+            color: var(--text-main);
+            font-size: .95rem;
+            letter-spacing: .06em;
+            font-weight: 600;
+        }
+
+        footer p {
+            font-size: .78rem;
+            color: var(--fog)
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem
+        }
+
+        .footer-links a {
+            font-size: .78rem;
+            color: var(--fog);
+            text-decoration: none;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            transition: color .2s
+        }
+
+        .footer-links a:hover {
+            color: var(--terra)
         }
     </style>
 </head>
 
 <body>
 
-    <!-- ═══════════════════════════════════════
-         NAVBAR
-         ═══════════════════════════════════════ -->
-    <nav class="navbar" id="navbar">
-        <div class="navbar-inner">
-            <a href="index.html" class="navbar-logo">
-                <div class="fch-logo-container">
-                    <svg viewBox="0 0 100 100" class="fch-logo-animated">
-                        <defs>
-                            <path id="petal"
-                                d="M50 90 C30 90 15 65 15 40 C15 15 50 5 50 5 C50 5 85 15 85 40 C85 65 70 90 50 90 Z" />
-                        </defs>
-                        <!-- Petalo Cyan (Top) -->
-                        <use href="#petal" class="fch-petal p-cyan" fill="#5DC1FF" />
-                        <!-- Petalo Púrpura -->
-                        <use href="#petal" class="fch-petal p-purple" fill="#AC5CFF" />
-                        <!-- Petalo Rosa (Izquierda) -->
-                        <use href="#petal" class="fch-petal p-pink" fill="#FF76E2" />
-                        <!-- Petalo Amarillo (Derecha) -->
-                        <use href="#petal" class="fch-petal p-yellow" fill="#FFF647" />
-                    </svg>
-                </div>
-                <span>FCH</span>
-            </a>
+    <div class="cursor" id="cur"></div>
+    <div class="cursor-ring" id="ring"></div>
 
-            <ul class="navbar-links">
-                <li><a href="#estructura">Estructura</a></li>
-                <li><a href="#modulos-detalle">Módulos</a></li>
-                <li><a href="#valor">Beneficios</a></li>
-                <li><a href="#preguntas">FAQs</a></li>
-            </ul>
-
-            <div style="display:flex; gap:1rem; align-items:center;">
-                <a href="index.html" class="btn-cta-nav"
-                    style="background:transparent; color:var(--texto); border: 2px solid var(--texto);">Volver a la
-                    Fundación</a>
-                <a href="#cta-salto" class="btn-cta-nav">Dar el Salto</a>
-            </div>
-
-            <button class="mobile-toggle" onclick="openMobileMenu()" aria-label="Abrir menú">
-                <i class="ph-bold ph-list"></i>
-            </button>
+    <!-- NAV -->
+    <nav>
+        <a href="index.html" class="nav-logo">FCH</a>
+        <ul class="nav-links">
+            <li><a href="#estructura">Estructura</a></li>
+            <li><a href="#modulos">Módulos</a></li>
+            <li><a href="#beneficios">Beneficios</a></li>
+            <li><a href="#preguntas">FAQs</a></li>
+        </ul>
+        <div class="nav-cta-wrap">
+            <a href="index.html" class="nav-back">← Regresar</a>
+            <a href="#cta" class="btn-nav">Dar el Salto</a>
         </div>
     </nav>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobile-menu">
-        <button class="mobile-close" onclick="closeMobileMenu()" aria-label="Cerrar menú">
-            <i class="ph-bold ph-x"></i>
-        </button>
-        <a href="#estructura" onclick="closeMobileMenu()">Estructura</a>
-        <a href="#modulos-detalle" onclick="closeMobileMenu()">Módulos</a>
-        <a href="#valor" onclick="closeMobileMenu()">Beneficios</a>
-        <a href="#preguntas" onclick="closeMobileMenu()">FAQs</a>
-        <a href="index.html" onclick="closeMobileMenu()" style="color: var(--violeta-soft);">Volver a la Fundación</a>
-        <a href="#cta-salto" onclick="closeMobileMenu()" style="color: var(--amarillo);">Dar el Salto</a>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-left">
+            <p class="hero-eyebrow">Palermo · Proceso presencial</p>
+            <h1 class="hero-h1">
+                <span>El</span>
+                <span class="outline">Salto</span>
+                <span>de <em>tu</em></span>
+                <span>Vida.</span>
+            </h1>
+            <p class="hero-lead">
+                Para quienes ya saben qué necesitan cambiar pero no encuentran
+                la estructura ni la comunidad para sostenerlo.
+                De la teoría al movimiento real.
+            </p>
+            <div class="hero-actions">
+                <a href="#cta" class="btn-primary">Quiero dar el salto</a>
+                <a href="#modulos" class="btn-outline">Ver módulos</a>
+            </div>
+            <div class="hero-number">I</div>
+        </div>
+        <div class="hero-right">
+            <img class="hero-img" src="img/elsalto-hero.png" alt="Transformación de vida" id="heroImg" />
+            <div class="hero-pills">
+                <span class="pill">3 módulos · 5 encuentros c/u</span>
+                <span class="pill">Grupo reducido</span>
+                <span class="pill">Práctica desde el día 1</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee-wrap">
+        <div class="marquee-track">
+            <span>Consciencia <em>→</em></span>
+            <span>Claridad interna</span>
+            <span>Protagonista de cambio <em>→</em></span>
+            <span>Acción sostenida</span>
+            <span>Conversaciones valientes <em>→</em></span>
+            <span>Comunidad real</span>
+            <span>Plan 90 días <em>→</em></span>
+            <span>Expansión</span>
+            <span>Consciencia <em>→</em></span>
+            <span>Claridad interna</span>
+            <span>Protagonista de cambio <em>→</em></span>
+            <span>Acción sostenida</span>
+            <span>Conversaciones valientes <em>→</em></span>
+            <span>Comunidad real</span>
+            <span>Plan 90 días <em>→</em></span>
+            <span>Expansión</span>
+        </div>
     </div>
 
-
-    <!-- ═══════════════════════════════════════
-          SECCIÓN: EL SALTO DE TU VIDA (LANDING SECTION)
-          ═══════════════════════════════════════ -->
-    <section id="el-salto">
-        <!-- BLOQUE 1: HERO -->
-        <div class="el-salto-hero section-inner">
-            <div class="el-salto-hero-content reveal">
-                <span class="section-tag">PLATAFORMA DE TRANSFORMACIÓN EN MOVIMIENTO</span>
-                <h1 style="font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--violeta-deep); margin-bottom: 1rem;">El
-                    Salto de Tu Vida</h1>
-                <p
-                    style="font-size: 1.25rem; color: var(--texto-light); max-width: 550px; line-height: 1.4; margin-bottom: 2rem;">
-                    Un proceso presencial en Palermo para pasar de la claridad a la acción, con estructura, comunidad y
-                    seguimiento real.
-                </p>
-                <ul class="el-salto-bullets">
-                    <li><i class="ph-fill ph-check-circle" style="color:var(--verde);"></i> 3 módulos · 5 encuentros
-                        cada uno</li>
-                    <li><i class="ph-fill ph-check-circle" style="color:var(--verde);"></i> Grupo reducido · dinámica
-                        práctica</li>
-                    <li><i class="ph-fill ph-check-circle" style="color:var(--verde);"></i> Herramientas aplicables
-                        desde el día 1</li>
-                </ul>
-                <div class="button-group">
-                    <a href="#cta-salto" class="btn-hero" style="padding: 1.2rem 3rem;">Quiero dar el salto</a>
-                    <a href="#modulos-detalle" class="btn-outline-white"
-                        style="color: var(--violeta-soft); border-color: var(--violeta-soft); padding: 1.1rem 2.5rem;">Ver
-                        módulos</a>
-                </div>
-                <div class="scroll-indicator">
-                    <i class="ph ph-caret-double-down" style="font-size: 1.5rem; color: var(--violeta-mid);"></i>
-                </div>
-            </div>
-            <div class="el-salto-hero-img reveal" style="--i:1">
-                <img src="img/elsalto-hero.png" alt="Espacio de transformación en Palermo">
-            </div>
-        </div>
-
-        <!-- BLOQUE 2: "No es..." -->
-        <div class="section section-white" id="no-es">
-            <div class="section-inner">
-                <div class="triada-intro reveal">
-                    <h2 class="section-title">Esto no es lo de siempre</h2>
-                </div>
-                <div class="triada-grid stagger">
-                    <div class="triada-card reveal" style="padding: 2.5rem; border-top: 4px solid var(--rosa);">
-                        <div style="font-size:2.5rem; margin-bottom:1rem;">🚫</div>
-                        <h3 style="font-size:1.2rem;">No es un retiro</h3>
-                        <p>No depende de “desconectar un finde”. Es formación constante en tu entorno real.</p>
-                    </div>
-                    <div class="triada-card reveal"
-                        style="--i:1; padding: 2.5rem; border-top: 4px solid var(--amarillo);">
-                        <div style="font-size:2.5rem; margin-bottom:1rem;">🚫</div>
-                        <h3 style="font-size:1.2rem;">No es terapia grupal</h3>
-                        <p>Es un proceso con guía y estructura orientado al movimiento y la acción.</p>
-                    </div>
-                    <div class="triada-card reveal"
-                        style="--i:2; padding: 2.5rem; border-top: 4px solid var(--violeta-soft);">
-                        <div style="font-size:2.5rem; margin-bottom:1rem;">🚫</div>
-                        <h3 style="font-size:1.2rem;">No es motivación</h3>
-                        <p>No buscamos el “high” pasajero. Es práctica, decisiones duras y sostén real.</p>
-                    </div>
-                </div>
-                <div style="text-align:center; margin-top:3.5rem;">
-                    <p style="font-size:1.2rem; font-weight:600; color:var(--violeta-mid);">Es un sistema de encuentros
-                        para transformar lo que entendés… en lo que hacés.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- BLOQUE 3: Qué te llevás -->
-        <div class="section section-light" id="valor">
-            <div class="section-inner">
-                <div class="triada-intro reveal">
-                    <h2 class="section-title">Lo que te llevás del programa</h2>
-                </div>
-                <div class="grid-2x3 stagger">
-                    <div class="reveal" style="background:white; padding:2rem; border-radius:20px; --i:0;">
-                        <div style="font-size:2rem; margin-bottom:1rem;">🧭</div>
-                        <h4 style="margin-bottom:0.5rem;">Claridad para decidir</h4>
-                        <p style="font-size:0.9rem; color:var(--texto-light);">Aprenderás a silenciar el ruido externo y
-                            conectar con tu verdad para elegir con seguridad.</p>
-                    </div>
-                    <div class="reveal" style="background:white; padding:2rem; border-radius:20px; --i:1;">
-                        <div style="font-size:2rem; margin-bottom:1rem;">⚙️</div>
-                        <h4 style="margin-bottom:0.5rem;">Sistema de acción</h4>
-                        <p style="font-size:0.9rem; color:var(--texto-light);">Hábitos y disciplina consciente para
-                            sostener tus cambios más allá del encuentro.</p>
-                    </div>
-                    <div class="reveal" style="background:white; padding:2rem; border-radius:20px; --i:2;">
-                        <div style="font-size:2rem; margin-bottom:1rem;">🗣️</div>
-                        <h4 style="margin-bottom:0.5rem;">Conversaciones valientes</h4>
-                        <p style="font-size:0.9rem; color:var(--texto-light);">Herramientas para decir lo pendiente,
-                            marcar límites claros y rediseñar vínculos.</p>
-                    </div>
-                    <div class="reveal" style="background:white; padding:2rem; border-radius:20px; --i:3;">
-                        <div style="font-size:2rem; margin-bottom:1rem;">🤝</div>
-                        <h4 style="margin-bottom:0.5rem;">Comunidad que acompaña</h4>
-                        <p style="font-size:0.9rem; color:var(--texto-light);">Una red de pares que atraviesa el proceso
-                            junto a vos, sosteniendo el compromiso mutuo.</p>
-                    </div>
-                    <div class="reveal" style="background:white; padding:2rem; border-radius:20px; --i:4;">
-                        <div style="font-size:2rem; margin-bottom:1rem;">🎯</div>
-                        <h4 style="margin-bottom:0.5rem;">Enfoque en prioridades</h4>
-                        <p style="font-size:0.9rem; color:var(--texto-light);">Dejar de dispersar energía en lo urgente
-                            para poner el foco en lo que realmente importa.</p>
-                    </div>
-                    <div class="reveal" style="background:white; padding:2rem; border-radius:20px; --i:5;">
-                        <div style="font-size:2rem; margin-bottom:1rem;">📈</div>
-                        <h4 style="margin-bottom:0.5rem;">Plan 90 días</h4>
-                        <p style="font-size:0.9rem; color:var(--texto-light);">Una hoja de ruta concreta para ejecutar
-                            tus objetivos una vez terminado el programa.</p>
-                    </div>
-                </div>
-                <div style="text-align:center; margin-top:2.5rem;">
-                    <a href="#modulos-detalle"
-                        style="color:var(--violeta-mid); font-weight:700; text-decoration:none;">Ver cómo se estructura
-                        →</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- BLOQUE 4: Estructura (Resumen) -->
-        <div class="section section-white" id="estructura">
-            <div class="section-inner">
-                <div class="triada-intro reveal">
-                    <h2 class="section-title">Estructura del programa</h2>
-                    <p class="section-subtitle">Tres etapas progresivas. Cinco encuentros por módulo. Un camino claro,
-                        sin improvisación.</p>
-                </div>
-                <div class="triada-grid stagger" style="margin-top: 3rem;">
-                    <div class="pill-card reveal" style="--i:0; border-color: var(--violeta-deep);">
-                        <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">🌑 Módulo I — Despertar</h3>
-                        <p style="font-size:0.9rem;">(5 encuentros) &rarr; enfoque en <strong>claridad interna</strong>.
-                        </p>
-                    </div>
-                    <div class="pill-card reveal" style="--i:1; border-color: var(--rosa);">
-                        <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">⚡ Módulo II — Protagonista</h3>
-                        <p style="font-size:0.9rem;">(5 encuentros) &rarr; enfoque en <strong>acción sostenida</strong>.
-                        </p>
-                    </div>
-                    <div class="pill-card reveal" style="--i:2; border-color: var(--amarillo);">
-                        <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">🌅 Módulo III — Expansión</h3>
-                        <p style="font-size:0.9rem;">(5 encuentros) &rarr; enfoque en <strong>impacto real</strong>.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- BLOQUE 5: Módulos (WOW) -->
-        <div class="section section-light" id="modulos-detalle">
-            <div class="section-inner">
-                <!-- Módulo I DETALLE -->
-                <div class="reveal" style="margin-bottom: 5rem;">
-                    <div style="margin-bottom: 2rem;">
-                        <div style="display:flex; align-items:center; gap:1rem; margin-bottom:0.5rem;">
-                            <div style="width:12px; height:12px; border-radius:50%; background:var(--violeta-deep);">
-                            </div>
-                            <h3 style="font-size:1.8rem; color:var(--violeta-deep);">MÓDULO I — DESPERTAR</h3>
-                        </div>
-                        <p style="font-style:italic; color:var(--texto-light); font-size:1.1rem;">Ordenar el mundo
-                            interno para tomar decisiones con verdad.</p>
-                    </div>
-                    <div class="module-grid-5 stagger">
-                        <div class="module-card-premium reveal" style="--i:0"
-                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
-                            <div style="font-size:1.8rem; margin-bottom:0.5rem;">🌀</div>
-                            <h4 style="font-size:1rem;">Punto Cero</h4>
-                            <div class="module-content-mobile">
-                                <p style="font-size:0.8rem; line-height:1.4;">Donde estás realmente y qué estás evitando
-                                    mirar.</p>
-                            </div>
-                        </div>
-                        <div class="module-card-premium reveal" style="--i:1"
-                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
-                            <div style="font-size:1.8rem; margin-bottom:0.5rem;">🪞</div>
-                            <h4 style="font-size:1rem;">Historia Invisible</h4>
-                            <div class="module-content-mobile">
-                                <p style="font-size:0.8rem; line-height:1.4;">Patrones y creencias que gobiernan tus
-                                    decisiones.</p>
-                            </div>
-                        </div>
-                        <div class="module-card-premium reveal" style="--i:2"
-                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
-                            <div style="font-size:1.8rem; margin-bottom:0.5rem;">🔥</div>
-                            <h4 style="font-size:1rem;">Lo que Te Frena</h4>
-                            <div class="module-content-mobile">
-                                <p style="font-size:0.8rem; line-height:1.4;">Miedo, postergación y mecanismos de
-                                    autosabotaje.</p>
-                            </div>
-                        </div>
-                        <div class="module-card-premium reveal" style="--i:3"
-                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
-                            <div style="font-size:1.8rem; margin-bottom:0.5rem;">🧭</div>
-                            <h4 style="font-size:1rem;">Norte y Prioridad</h4>
-                            <div class="module-content-mobile">
-                                <p style="font-size:0.8rem; line-height:1.4;">Definir qué es lo que importa y qué es lo
-                                    que sobra.</p>
-                            </div>
-                        </div>
-                        <div class="module-card-premium reveal" style="--i:4"
-                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
-                            <div style="font-size:1.8rem; margin-bottom:0.5rem;">🚀</div>
-                            <h4 style="font-size:1rem;">Declaración</h4>
-                            <div class="module-content-mobile">
-                                <p style="font-size:0.8rem; line-height:1.4;">Una decisión concreta, medible y poderosa
-                                    de cambio.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Módulo II DETALLE -->
-                <div class="reveal" style="margin-bottom: 5rem;">
-                    <div style="margin-bottom: 2rem;">
-                        <div style="display:flex; align-items:center; gap:1rem; margin-bottom:0.5rem;">
-                            <div style="width:12px; height:12px; border-radius:50%; background:var(--rosa);"></div>
-                            <h3 style="font-size:1.8rem; color:var(--rosa);">MÓDULO II — PROTAGONISTA DE CAMBIO</h3>
-                        </div>
-                        <p style="font-style:italic; color:var(--texto-light); font-size:1.1rem;">Pasar de comprender… a
-                            hacer, sostener y responder.</p>
-                    </div>
-                    <div class="module-grid-5 stagger">
-                        <div class="module-card-premium reveal" style="--i:0"
-                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
-                            <div style="font-size:1.8rem; margin-bottom:0.5rem;">🎭</div>
-                            <h4 style="font-size:1rem;">Cambiar el Personaje</h4>
-                            <div class="module-content-mobile">
-                                <p style="font-size:0.8rem; line-height:1.4;">De reaccionar automáticamente a elegir tu
-                                    respuesta.</p>
-                            </div>
-                        </div>
-                        <div class="module-card-premium reveal" style="--i:1"
-                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
-                            <div style="font-size:1.8rem; margin-bottom:0.5rem;">⚙️</div>
-                            <h4 style="font-size:1rem;">Sistema de Acción</h4>
-                            <div class="module-content-mobile">
-                                <p style="font-size:0.8rem; line-height:1.4;">Gestión de energía, hábitos y disciplina
-                                    consciente.</p>
-                            </div>
-                        </div>
-                        <div class="module-card-premium reveal" style="--i:2"
-                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
-                            <div style="font-size:1.8rem; margin-bottom:0.5rem;">🗣️</div>
-                            <h4 style="font-size:1rem;">Conversaciones</h4>
-                            <div class="module-content-mobile">
-                                <p style="font-size:0.8rem; line-height:1.4;">Decir lo pendiente con claridad, firmeza y
-                                    empatía.</p>
-                            </div>
-                        </div>
-                        <div class="module-card-premium reveal" style="--i:3"
-                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
-                            <div style="font-size:1.8rem; margin-bottom:0.5rem;">🎯</div>
-                            <h4 style="font-size:1rem;">Movimiento</h4>
-                            <div class="module-content-mobile">
-                                <p style="font-size:0.8rem; line-height:1.4;">Acciones inteligentes y estratégicas, no
-                                    impulsivas.</p>
-                            </div>
-                        </div>
-                        <div class="module-card-premium reveal" style="--i:4"
-                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
-                            <div style="font-size:1.8rem; margin-bottom:0.5rem;">🏛️</div>
-                            <h4 style="font-size:1rem;">Compromiso Público</h4>
-                            <div class="module-content-mobile">
-                                <p style="font-size:0.8rem; line-height:1.4;">Sostener tu verdad y decisiones frente al
-                                    grupo.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Módulo III DETALLE -->
-                <div class="reveal" style="margin-bottom: 2rem;">
-                    <div style="margin-bottom: 2rem;">
-                        <div style="display:flex; align-items:center; gap:1rem; margin-bottom:0.5rem;">
-                            <div style="width:12px; height:12px; border-radius:50%; background:var(--amarillo-hover);">
-                            </div>
-                            <h3 style="font-size:1.8rem; color:var(--amarillo-hover);">MÓDULO III — EXPANSIÓN</h3>
-                        </div>
-                        <p style="font-style:italic; color:var(--texto-light); font-size:1.1rem;">Consolidar identidad y
-                            proyectar un nuevo nivel de impacto.</p>
-                    </div>
-                    <div class="module-grid-5 stagger">
-                        <div class="module-card-premium reveal" style="--i:0"
-                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
-                            <div style="font-size:1.8rem; margin-bottom:0.5rem;">👑</div>
-                            <h4 style="font-size:1rem;">Liderarte Primero</h4>
-                            <div class="module-content-mobile">
-                                <p style="font-size:0.8rem; line-height:1.4;">Coherencia interna y autogestión emocional
-                                    continua.</p>
-                            </div>
-                        </div>
-                        <div class="module-card-premium reveal" style="--i:1"
-                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
-                            <div style="font-size:1.8rem; margin-bottom:0.5rem;">🤝</div>
-                            <h4 style="font-size:1rem;">Relaciones que Elevan</h4>
-                            <div class="module-content-mobile">
-                                <p style="font-size:0.8rem; line-height:1.4;">Rediseñar vínculos alineados a tu nueva
-                                    etapa vital.</p>
-                            </div>
-                        </div>
-                        <div class="module-card-premium reveal" style="--i:2"
-                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
-                            <div style="font-size:1.8rem; margin-bottom:0.5rem;">🧩</div>
-                            <h4 style="font-size:1rem;">Proyecto con Sentido</h4>
-                            <div class="module-content-mobile">
-                                <p style="font-size:0.8rem; line-height:1.4;">Ordenar visión laboral o personal con
-                                    propósito.</p>
-                            </div>
-                        </div>
-                        <div class="module-card-premium reveal" style="--i:3"
-                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
-                            <div style="font-size:1.8rem; margin-bottom:0.5rem;">🌐</div>
-                            <h4 style="font-size:1rem;">Comunidad Activa</h4>
-                            <div class="module-content-mobile">
-                                <p style="font-size:0.8rem; line-height:1.4;">Construir una red de sostén y colaboración
-                                    consciente.</p>
-                            </div>
-                        </div>
-                        <div class="module-card-premium reveal" style="--i:4"
-                            onclick="if(window.innerWidth <= 768) this.classList.toggle('open')">
-                            <div style="font-size:1.8rem; margin-bottom:0.5rem;">📈</div>
-                            <h4 style="font-size:1rem;">Plan 90 Días</h4>
-                            <div class="module-content-mobile">
-                                <p style="font-size:0.8rem; line-height:1.4;">Hoja de ruta concreta para proyectar tu
-                                    futuro.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div style="text-align:center; margin-top:3rem;">
-                    <p style="font-size:0.9rem; color:var(--texto-muted); font-style:italic;">Cada encuentro incluye
-                        dinámica práctica + integración + compromiso semanal.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- BLOQUE 6: Modalidad -->
-        <div class="section section-white" id="modalidad">
-            <div class="section-inner">
-                <div class="triada-intro reveal">
-                    <h2 class="section-title">Modalidad</h2>
-                </div>
-                <div class="metrics-grid stagger" style="margin-top:2rem;">
-                    <div class="reveal" style="text-align:center; --i:0">
-                        <div style="font-size:3rem; margin-bottom:0.5rem;">📍</div>
-                        <h4 style="color:var(--violeta-deep);">Presencial en Palermo</h4>
-                        <p style="font-size:0.85rem; color:var(--texto-light);">Espacios de encuentro real.</p>
-                    </div>
-                    <div class="reveal" style="text-align:center; --i:1">
-                        <div style="font-size:3rem; margin-bottom:0.5rem;">👥</div>
-                        <h4 style="color:var(--violeta-deep);">Grupo reducido</h4>
-                        <p style="font-size:0.85rem; color:var(--texto-light);">Calidad y profundidad de intercambio.
-                        </p>
-                    </div>
-                    <div class="reveal" style="text-align:center; --i:2">
-                        <div style="font-size:3rem; margin-bottom:0.5rem;">📅</div>
-                        <h4 style="color:var(--violeta-deep);">Semanales</h4>
-                        <p style="font-size:0.85rem; color:var(--texto-light);">Consistencia en el tiempo.</p>
-                    </div>
-                    <div class="reveal" style="text-align:center; --i:3">
-                        <div style="font-size:3rem; margin-bottom:0.5rem;">🛠️</div>
-                        <h4 style="color:var(--violeta-deep);">Herramientas</h4>
-                        <p style="font-size:0.85rem; color:var(--texto-light);">Cero teoría eterna, 100% práctica.</p>
-                    </div>
-                </div>
-                <p
-                    style="text-align:center; margin-top:3rem; font-style:italic; color:var(--texto-light); font-size:1.1rem;">
-                    El foco es llevar el cambio a tu vida real, no dejarlo en una idea.
+    <!-- NO ES -->
+    <section class="s s--alt">
+        <div class="noes-layout">
+            <div class="reveal">
+                <p class="s-label">Lo que no es</p>
+                <h2>Esto no es<br /><em>lo de siempre</em></h2>
+                <br /><br />
+                <p class="noes-quote">
+                    Es un sistema para transformar lo que ya entendés…
+                    en lo que realmente hacés.
                 </p>
             </div>
-        </div>
-
-        <!-- BLOQUE 7: Opcional 1 a 1 -->
-        <div class="section section-light" id="opcional">
-            <div class="section-inner">
-                <div class="platform-grid" style="align-items: center;">
-                    <div class="reveal">
-                        <span
-                            style="font-size:0.7rem; padding:0.4rem 1rem; background:var(--blanco); border-radius:30px; font-weight:700; color:var(--violeta-mid); box-shadow:0 4px 15px rgba(0,0,0,0.05);">OPCIONAL
-                            · CUPOS LIMITADOS</span>
-                        <h2 class="section-title" style="margin-top:1.5rem;">Opcional: acompañamiento 1 a 1</h2>
-                        <p style="color:var(--texto-light); font-size:1.1rem; margin-bottom: 1.5rem;">
-                            Si en algún punto necesitás profundizar de forma individual, podés sumar encuentros 1 a 1
-                            como instancia complementaria.
-                        </p>
-                        <p style="color:var(--texto-light);">
-                            En algunos casos, estos encuentros pueden realizarse en entornos naturales (<strong>Sakura
-                                Escobar</strong>).
-                        </p>
+            <div class="noes-list reveal">
+                <div class="no-item">
+                    <div class="no-icon-wrap">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M18 6L6 18M6 6l12 12" />
+                        </svg>
                     </div>
-                    <div class="platform-img reveal">
-                        <img src="img/platform-connection.png" alt="Acompañamiento individual">
+                    <div>
+                        <h3>No es un retiro</h3>
+                        <p>El cambio ocurre en tu vida cotidiana, no lejos de ella. No dependés de desconectarte para
+                            evolucionar.</p>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- BLOQUE 8: Para quién es / no es -->
-        <div class="section section-white" id="perfil">
-            <div class="section-inner">
-                <div class="triada-intro reveal">
-                    <h2 class="section-title">¿Es para vos?</h2>
-                </div>
-                <div class="audience-grid stagger">
-                    <div class="audience-card reveal" style="background:#f0fff4; border:1px solid #c6f6d5; --i:0;">
-                        <h3 style="color:#2f855a; margin-bottom:1rem;">✅ Sí, si...</h3>
-                        <ul class="audience-list">
-                            <li><i class="ph-bold ph-check" style="color:#48bb78;"></i> <span>Estás en transición o
-                                    decisión importante.</span></li>
-                            <li><i class="ph-bold ph-check" style="color:#48bb78;"></i> <span>Querés orden, enfoque y
-                                    sostén real.</span></li>
-                            <li><i class="ph-bold ph-check" style="color:#48bb78;"></i> <span>Te sirve trabajar en grupo
-                                    con compromiso.</span></li>
-                        </ul>
+                <div class="no-item">
+                    <div class="no-icon-wrap">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M18 6L6 18M6 6l12 12" />
+                        </svg>
                     </div>
-                    <div class="audience-card reveal" style="background:#fff5f5; border:1px solid #fed7d7; --i:1;">
-                        <h3 style="color:#c53030; margin-bottom:1rem;">🚫 No, si...</h3>
-                        <ul class="audience-list">
-                            <li><i class="ph-bold ph-x" style="color:#f56565;"></i> <span>Buscás una solución inmediata
-                                    sin proceso.</span></li>
-                            <li><i class="ph-bold ph-x" style="color:#f56565;"></i> <span>No querés llevar nada a la
-                                    práctica.</span></li>
-                            <li><i class="ph-bold ph-x" style="color:#f56565;"></i> <span>No estás dispuesto a
-                                    incomodarte un poco.</span></li>
-                        </ul>
+                    <div>
+                        <h3>No es terapia grupal</h3>
+                        <p>Es un proceso estructurado orientado al movimiento. Con guía, compromisos semanales y
+                            seguimiento real.</p>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- BLOQUE 9: FAQS -->
-        <div class="section section-light" id="preguntas">
-            <div class="section-inner" style="max-width:800px;">
-                <div class="triada-intro reveal">
-                    <h2 class="section-title">Preguntas frecuentes</h2>
-                </div>
-                <div class="reveal">
-                    <div class="faq-item" onclick="this.classList.toggle('open')">
-                        <div class="faq-q"><span>1. ¿Tengo que hacer los 3 módulos?</span> <i class="ph ph-plus"></i>
-                        </div>
-                        <p class="faq-a">No necesariamente. Podés empezar por el Módulo I y decidir el camino según tu
-                            proceso y necesidades actuales.</p>
+                <div class="no-item">
+                    <div class="no-icon-wrap">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M18 6L6 18M6 6l12 12" />
+                        </svg>
                     </div>
-                    <div class="faq-item" onclick="this.classList.toggle('open')">
-                        <div class="faq-q"><span>2. ¿Necesito experiencia previa?</span> <i class="ph ph-plus"></i>
-                        </div>
-                        <p class="faq-a">No. Solo apertura mental, honestidad y un compromiso real con tu propio proceso
-                            de transformación.</p>
-                    </div>
-                    <div class="faq-item" onclick="this.classList.toggle('open')">
-                        <div class="faq-q"><span>3. ¿Qué pasa si falto a un encuentro?</span> <i class="ph ph-plus"></i>
-                        </div>
-                        <p class="faq-a">Se trabaja con material de integración diseñado para sostener la continuidad y
-                            que no pierdas el hilo del grupo.</p>
-                    </div>
-                    <div class="faq-item" onclick="this.classList.toggle('open')">
-                        <div class="faq-q"><span>4. ¿Es confidencial lo que se comparte?</span> <i
-                                class="ph ph-plus"></i></div>
-                        <p class="faq-a">Absolutamente. Cuidamos el espacio y el respeto del grupo mediante un
-                            compromiso mutuo de confidencialidad desde el día uno.</p>
-                    </div>
-                    <div class="faq-item" onclick="this.classList.toggle('open')">
-                        <div class="faq-q"><span>5. ¿Cómo sé si este programa es para mí?</span> <i
-                                class="ph ph-plus"></i></div>
-                        <p class="faq-a">Podés solicitar la breve charla diagnóstica previa para confirmar si el
-                            programa se alinea con tu momento actual.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- BLOQUE 10: CTA Final -->
-        <div class="section section-white" id="cta-salto">
-            <div class="section-inner" style="text-align:center;">
-                <div class="reveal">
-                    <h2 class="section-title">Si sentís que llegó el momento</h2>
-                    <p style="font-size:1.2rem; color:var(--texto-light); margin-bottom:3rem;">Sumate a la próxima
-                        cohorte y empezá a construir el cambio con estructura.</p>
-                    <div class="button-group">
-                        <a href="https://wa.me/5491100000000" class="btn-hero" style="padding: 1.2rem 4rem;">Quiero dar
-                            el salto</a>
-                        <a href="https://wa.me/5491100000000"
-                            style="color:var(--violeta-mid); font-weight:700; text-decoration:none; display:flex; align-items:center; gap:0.5rem;">
-                            Quiero una conversación previa <i class="ph ph-arrow-right"></i>
-                        </a>
+                    <div>
+                        <h3>No es motivación</h3>
+                        <p>No buscamos entusiasmo pasajero. Buscamos decisiones duras, hábitos sostenibles y comunidad
+                            real.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-
-    <!-- ═══════════════════════════════════════
-         SECCIÓN 7: CTA FINAL / FOOTER
-         ═══════════════════════════════════════ -->
-    <footer class="section section-dark" id="cta-final">
-        <div class="section-inner">
-            <div class="footer-cta reveal">
-                <h2>Si sentís que es momento de dar un paso consciente</h2>
-                <p>Cada proceso comienza con una conversación abierta. Estamos aquí para escucharte y diseñar el camino
-                    que necesitás.</p>
-                <div class="footer-buttons">
-                    <a href="https://wa.me/5491100000000" class="btn-rosa" target="_blank" rel="noopener">Iniciar
-                        conversación</a>
-                    <a href="mailto:contacto@fundacionfch.org" class="btn-outline-white">
-                        <i class="ph-bold ph-envelope"></i>
-                        Email institucional
-                    </a>
-                </div>
+    <!-- PARA VOS -->
+    <section class="s" id="paravos">
+        <p class="s-label">¿Es para vos?</p>
+        <h2 class="reveal">Reconocerse en el<br /><em>punto de partida</em></h2>
+        <p class="s-lead reveal">No requerimos experiencia previa. Requerimos algo más escaso: compromiso genuino y
+            disposición a incomodarse un poco.</p>
+        <div class="paravos-grid reveal">
+            <div class="pv-col">
+                <h3>
+                    <svg viewBox="0 0 24 24" style="stroke:var(--terra);fill:none;stroke-width:1.5">
+                        <path d="M20 6L9 17l-5-5" />
+                    </svg>
+                    Sí, si estás en este momento
+                </h3>
+                <ul class="pv-list">
+                    <li>Estás en una transición o frente a una decisión postergada.</li>
+                    <li>Tenés claridad sobre lo que no funciona, pero no lográs sostener los cambios.</li>
+                    <li>Querés estructura, enfoque y una comunidad que acompañe de verdad.</li>
+                    <li>Estás dispuesto a trabajar en grupo con compromiso mutuo.</li>
+                    <li>Sentís que llegó el momento de parar el piloto automático.</li>
+                </ul>
             </div>
+            <div class="pv-col" style="background:rgba(232, 217, 192, 0.2);">
+                <h3>
+                    <svg viewBox="0 0 24 24" style="stroke:var(--fog);fill:none;stroke-width:1.5">
+                        <path d="M18 6L6 18M6 6l12 12" />
+                    </svg>
+                    <span style="color:var(--fog)">No, si buscás</span>
+                </h3>
+                <ul class="pv-list">
+                    <li>Una solución inmediata sin proceso.</li>
+                    <li>Solo información nueva que no implique acción.</li>
+                    <li>Evitar la incomodidad inherente a todo cambio real.</li>
+                    <li>Escuchar sin llevar nada a la práctica real.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-            <div class="footer-bottom">
-                <span>© 2026 Fundación Consciencia Humana. Promoviendo consciencia, coherencia y acción.</span>
-                <div class="footer-social">
-                    <a href="#" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i> LinkedIn</a>
-                    <a href="#" aria-label="Instagram"><i class="ph ph-instagram-logo"></i> Instagram</a>
+    <!-- BENEFICIOS -->
+    <section class="s s--alt" id="beneficios">
+        <p class="s-label">Lo que desarrollás</p>
+        <h2 class="reveal">Herramientas<br /><em>que se quedan</em></h2>
+        <p class="s-lead reveal">No es un listado de conceptos. Son capacidades que se construyen a través de la
+            experiencia y la práctica repetida.</p>
+        <div class="bene-grid">
+            <div class="bene-card reveal">
+                <div class="bene-icon"><svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="3" />
+                        <path
+                            d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" />
+                    </svg></div>
+                <h4>Claridad para decidir</h4>
+                <p>Silenciar el ruido externo y conectar con tu verdad. Para elegir desde un lugar más auténtico.</p>
+            </div>
+            <div class="bene-card reveal">
+                <div class="bene-icon"><svg viewBox="0 0 24 24">
+                        <rect x="2" y="7" width="20" height="14" rx="1" />
+                        <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2M12 12v5M9.5 14.5h5" />
+                    </svg></div>
+                <h4>Sistema de acción</h4>
+                <p>Hábitos y disciplina consciente que sobreviven al programa. Un andamiaje real para el tiempo.</p>
+            </div>
+            <div class="bene-card reveal">
+                <div class="bene-icon"><svg viewBox="0 0 24 24">
+                        <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+                    </svg></div>
+                <h4>Conversaciones valientes</h4>
+                <p>Las pendientes generan peso. Aprendés a decirlas con claridad, firmeza y cuidado del vínculo.</p>
+            </div>
+            <div class="bene-card reveal">
+                <div class="bene-icon"><svg viewBox="0 0 24 24">
+                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" />
+                    </svg></div>
+                <h4>Comunidad que acompaña</h4>
+                <p>Una red de pares que atraviesa el proceso junto a vos. El aprendizaje grupal es esencial.</p>
+            </div>
+            <div class="bene-card reveal">
+                <div class="bene-icon"><svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 8v4l3 3" />
+                    </svg></div>
+                <h4>Foco en lo que importa</h4>
+                <p>Dejás de dispersar energía en lo urgente. Reconocés y priorizás lo que realmente mueve la aguja.</p>
+            </div>
+            <div class="bene-card reveal">
+                <div class="bene-icon"><svg viewBox="0 0 24 24">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                    </svg></div>
+                <h4>Plan de 90 días</h4>
+                <p>Una hoja de ruta concreta para proyectar y ejecutar tus objetivos una vez terminado el programa.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ESTRUCTURA -->
+    <section class="s s--bark" id="estructura">
+        <p class="s-label">Cómo se organiza</p>
+        <h2 class="reveal">Estructura del<br /><em>programa</em></h2>
+        <p class="s-lead reveal">Tres etapas progresivas. Cinco encuentros por módulo. Un camino claro con propósito.
+        </p>
+        <div class="tabs reveal">
+            <div class="tab active" onclick="setTab(0,this)">
+                <div class="tab-num">Módulo I</div>
+                <h3>
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 8v4M12 16h.01" />
+                    </svg>
+                    Despertar
+                </h3>
+                <p>Claridad interna</p>
+            </div>
+            <div class="tab" onclick="setTab(1,this)">
+                <div class="tab-num">Módulo II</div>
+                <h3>
+                    <svg viewBox="0 0 24 24">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                    </svg>
+                    Protagonista
+                </h3>
+                <p>Acción sostenida</p>
+            </div>
+            <div class="tab" onclick="setTab(2,this)">
+                <div class="tab-num">Módulo III</div>
+                <h3>
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
+                    Expansión
+                </h3>
+                <p>Impacto real</p>
+            </div>
+        </div>
+
+        <!-- MOD 0 -->
+        <div class="mod-panel active" id="mod-0">
+            <div class="mod-head reveal">
+                <h3>Despertar</h3>
+                <p>Ordenar el mundo interno para tomar decisiones con verdad. Trabajamos sobre creencias, miedos y
+                    patrones invisibles.</p>
+            </div>
+            <div>
+                <div class="temas reveal">
+                    <div class="tema">
+                        <div class="tema-ico"><svg viewBox="0 0 24 24">
+                                <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                <path d="M9 10a3 3 0 016 0c0 2-3 3-3 3M12 17h.01" />
+                            </svg></div>
+                        <div>
+                            <h4>Punto Cero</h4>
+                            <p>Dónde estás realmente. Qué estás evitando mirar. El diagnóstico honesto inicial.</p>
+                        </div>
+                    </div>
+                    <div class="tema">
+                        <div class="tema-ico"><svg viewBox="0 0 24 24">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            </svg></div>
+                        <div>
+                            <h4>Historia Invisible</h4>
+                            <p>Los patrones y creencias que gobiernan tus decisiones sin que lo notés.</p>
+                        </div>
+                    </div>
+                    <div class="tema">
+                        <div class="tema-ico"><svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zM12 8v4M12 16h.01" />
+                            </svg></div>
+                        <div>
+                            <h4>Lo que Te Frena</h4>
+                            <p>Comprender miedos y autosabotajes para dejar de ser gobernado por ellos.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </footer>
 
-    <!-- ═══════════════════════════════════════
-         SCRIPTS
-         ═══════════════════════════════════════ -->
-    <script>
-        // ─── Navbar scroll effect ───
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 60);
-        });
-
-        // ─── Reveal on scroll (IntersectionObserver) ───
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        // ─── Counter animation for metrics ───
-        function animateCounters() {
-            const counters = document.querySelectorAll('.metric-number');
-            counters.forEach(counter => {
-                if (counter.dataset.animated) return;
-                const text = counter.textContent.trim();
-                // Only animate numeric ones
-                if (text.startsWith('+')) {
-                    const target = parseInt(text.replace(/[^0-9]/g, ''));
-                    let current = 0;
-                    const step = Math.ceil(target / 60);
-                    counter.dataset.animated = 'true';
-                    const timer = setInterval(() => {
-                        current += step;
-                        if (current >= target) {
-                            current = target;
-                            clearInterval(timer);
-                        }
-                        counter.textContent = '+' + current;
-                    }, 25);
-                }
-            });
-        }
-
-        const metricsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounters();
-                    metricsObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.3 });
-
-        const impactoSection = document.getElementById('impacto');
-        if (impactoSection) metricsObserver.observe(impactoSection);
-
-        // ─── Mobile menu ───
-        function openMobileMenu() {
-            document.getElementById('mobile-menu').classList.add('open');
-            document.body.style.overflow = 'hidden';
-        }
-        function closeMobileMenu() {
-            document.getElementById('mobile-menu').classList.remove('open');
-            document.body.style.overflow = 'auto';
-        }
-
-        // ─── Smooth scroll for anchor links ───
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-
-        // ─── Diagnostic Widget Logic (Ontological Coaching) ───
-        let currentStep = 0;
-        const answers = [];
-        const questions = [
-            { q: "1. ¿Con qué frecuencia distinguís tus juicios de los hechos objetivos?", category: "Lenguaje" },
-            { q: "2. En tus conversaciones difíciles, ¿solés hacer pedidos claros o esperás que el otro adivine?", category: "Lenguaje" },
-            { q: "3. ¿Sentís que tenés el 'permiso' interno para decir NO cuando es necesario?", category: "Lenguaje" },
-            { q: "4. ¿Tus estados de ánimo suelen dominar tus acciones o sos capaz de gestionarlos?", category: "Emoción" },
-            { q: "5. ¿Cómo es tu relación con la incertidumbre? ¿Te genera parálisis o curiosidad?", category: "Emoción" },
-            { q: "6. ¿En qué medida te permitís expresar lo que sentís de manera asertiva?", category: "Emoción" },
-            { q: "7. ¿Qué tan consciente sos de tu respiración y postura corporal en momentos de estrés?", category: "Cuerpo" },
-            { q: "8. ¿Sentís que habitás tu cuerpo con plenitud o vivís mayormente 'en tu cabeza'?", category: "Cuerpo" },
-            { q: "9. ¿Qué tanto espacio le das al silencio y al descanso físico en tu semana?", category: "Cuerpo" },
-            { q: "10. ¿Con qué frecuencia cuestionás tus propias creencias 'limitantes'?", category: "Observador" },
-            { q: "11. ¿Qué tan abierto estás a escuchar perspectivas que contradicen la tuya sin juzgar?", category: "Observador" },
-            { q: "12. ¿Qué tan seguido buscás feedback constructivo para ampliar tu mirada?", category: "Observador" },
-            { q: "13. Al enfrentar un problema, ¿te sentís protagonista de la solución o víctima de las circunstancias?", category: "Compromiso" },
-            { q: "14. ¿Sentís que tus promesas son confiables para los demás y para vos mismo?", category: "Compromiso" },
-            { q: "15. ¿Tus acciones diarias están alineadas con tus valores más profundos?", category: "Compromiso" }
-        ];
-
-        const options = [
-            { text: "Casi nunca / Nunca", val: 1 },
-            { text: "A veces", val: 2 },
-            { text: "Frecuentemente", val: 3 },
-            { text: "Casi siempre / Siempre", val: 4 }
-        ];
-
-        function toggleWidget() {
-            const panel = document.getElementById('diagnostic-panel');
-            panel.classList.toggle('open');
-            if (panel.classList.contains('open') && answers.length === 0) {
-                renderQuestion();
-            }
-        }
-
-        function renderQuestion() {
-            const container = document.getElementById('question-container');
-            const q = questions[currentStep];
-
-            container.innerHTML = `
-                <div class="diagnostic-q" style="animation: fadeInUp 0.4s ease-out;">
-                    <span style="font-size:0.7rem; color:var(--violeta-soft); font-weight:700; text-transform:uppercase;">Dimension: ${q.category}</span>
-                    <p style="font-weight:600; margin:0.5rem 0 1.5rem; font-size:1.1rem; line-height:1.4;">${q.q}</p>
-                    <div style="display:flex; flex-direction:column; gap:0.8rem;">
-                        ${options.map(opt => `
-                            <button onclick="selectOption(${opt.val})" class="opt-btn ${answers[currentStep] === opt.val ? 'selected' : ''}" 
-                                style="text-align:left; padding:1rem; border:1px solid #ddd; border-radius:10px; background:white; cursor:pointer; transition:0.2s; font-family:'Lato';">
-                                ${opt.text}
-                            </button>
-                        `).join('')}
+        <!-- MOD 1 -->
+        <div class="mod-panel" id="mod-1">
+            <div class="mod-head reveal">
+                <h3>Protagonista</h3>
+                <p>Pasar de comprender a hacer. El arquetipo del protagonista: acepta, elige y actúa frente al cambio.
+                </p>
+            </div>
+            <div>
+                <div class="temas reveal">
+                    <div class="tema">
+                        <div class="tema-ico"><svg viewBox="0 0 24 24">
+                                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+                                <circle cx="12" cy="7" r="4" />
+                            </svg></div>
+                        <div>
+                            <h4>Cambiar el Personaje</h4>
+                            <p>De reaccionar automáticamente a elegir tu respuesta conscientemente.</p>
+                        </div>
+                    </div>
+                    <div class="tema">
+                        <div class="tema-ico"><svg viewBox="0 0 24 24">
+                                <rect x="2" y="3" width="20" height="14" rx="2" />
+                                <path d="M8 21h8M12 17v4" />
+                            </svg></div>
+                        <div>
+                            <h4>Sistema de Acción</h4>
+                            <p>Gestión de energía y hábitos. El cambio no depende de la motivación inicial.</p>
+                        </div>
                     </div>
                 </div>
-            `;
+            </div>
+        </div>
 
-            // Style for selected option
-            const style = document.createElement('style');
-            style.id = 'opt-style';
-            style.innerHTML = `
-                .opt-btn:hover { border-color: var(--violeta-soft); background: var(--fondo-claro); }
-                .opt-btn.selected { border-color: var(--rosa); background: rgba(232, 67, 147, 0.05); font-weight: 600; color: var(--rosa); }
-            `;
-            if (!document.getElementById('opt-style')) document.head.appendChild(style);
+        <!-- MOD 2 -->
+        <div class="mod-panel" id="mod-2">
+            <div class="mod-head reveal">
+                <h3>Expansión</h3>
+                <p>Consolidar la nueva identidad y proyectar impacto. Coherencia interna para rediseñar vínculos y
+                    proyectos.</p>
+            </div>
+            <div>
+                <div class="temas reveal">
+                    <div class="tema">
+                        <div class="tema-ico"><svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 8v4l3 3" />
+                            </svg></div>
+                        <div>
+                            <h4>Liderarte Primero</h4>
+                            <p>Coherencia interna y autogestión emocional. El liderazgo real empieza aquí.</p>
+                        </div>
+                    </div>
+                    <div class="tema">
+                        <div class="tema-ico"><svg viewBox="0 0 24 24">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                            </svg></div>
+                        <div>
+                            <h4>Plan 90 Días</h4>
+                            <p>Hoja de ruta concreta para proyectar el futuro desde la claridad adquirida.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            updateProgress();
+    <!-- MODALIDAD -->
+    <section class="s" id="modulos">
+        <p class="s-label">Formato</p>
+        <h2 class="reveal">Cómo<br /><em>funciona</em></h2>
+        <p class="s-lead reveal">Diseñado para que el cambio ocurra en tu vida real, con ritmo y acompañamiento.</p>
+        <div class="formato-grid">
+            <div class="formato-item reveal">
+                <div class="formato-ico"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.3">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                        <circle cx="12" cy="10" r="3" />
+                    </svg></div>
+                <h4>Presencial · Palermo</h4>
+                <p>Espacios de encuentro real. La presencia hace la diferencia absoluta.</p>
+            </div>
+            <div class="formato-item reveal">
+                <div class="formato-ico"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.3">
+                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" />
+                    </svg></div>
+                <h4>Grupo reducido</h4>
+                <p>Calidad de intercambio. El grupo es parte esencial del método.</p>
+            </div>
+            <div class="formato-item reveal">
+                <div class="formato-ico"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.3">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                        <line x1="16" y1="2" x2="16" y2="6" />
+                        <line x1="8" y1="2" x2="8" y2="6" />
+                        <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg></div>
+                <h4>Frecuencia semanal</h4>
+                <p>El cambio se sostiene con ritmo, no con intensidad esporádica.</p>
+            </div>
+            <div class="formato-item reveal">
+                <div class="formato-ico"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.3">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                    </svg></div>
+                <h4>Práctica real</h4>
+                <p>Compromisos concretos cada semana. El aprendizaje se ancla en la acción.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACOMPAÑAMIENTO 1:1 -->
+    <section class="s s--alt">
+        <div class="acomp-wrap">
+            <div class="reveal">
+                <span class="acomp-badge">Opcional · Cupos limitados</span>
+                <p class="s-label">Profundización</p>
+                <h2>Acompañamiento<br /><em>Individual</em></h2>
+                <p style="color:var(--fog);line-height:1.8;margin-bottom:1.5rem;font-size:1rem;max-width:44ch;">
+                    Instancias personales para profundizar en tu proceso específico, complementando el trabajo grupal.
+                </p>
+                <p style="color:var(--fog);line-height:1.8;font-size:.95rem;max-width:44ch;">
+                    Disponible también en <strong style="color:var(--text-main)">Sakura Escobar</strong> para
+                    experiencias de inmersión total en la naturaleza.
+                </p>
+            </div>
+            <div class="acomp-img reveal">
+                <img src="img/platform-connection.png" alt="Inmersión en naturaleza" />
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="s s--alt" id="preguntas" style="background: var(--ink);">
+        <p class="s-label">Dudas</p>
+        <h2>Lo que más<br /><em>nos preguntan</em></h2>
+        <div class="faq-wrap reveal">
+            <div class="faq-item">
+                <button class="faq-q" onclick="faq(this)">
+                    ¿Tengo que hacer los 3 módulos?
+                    <div class="faq-cross"><svg viewBox="0 0 24 24">
+                            <line x1="12" y1="5" x2="12" y2="19" />
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                        </svg></div>
+                </button>
+                <div class="faq-a">
+                    <div class="faq-a-inner">No. Podés comenzar por el Módulo I y decidir tu camino según tu propio
+                        proceso.</div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" onclick="faq(this)">
+                    ¿Es confidencial el espacio?
+                    <div class="faq-cross"><svg viewBox="0 0 24 24">
+                            <line x1="12" y1="5" x2="12" y2="19" />
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                        </svg></div>
+                </button>
+                <div class="faq-a">
+                    <div class="faq-a-inner">Absolutamente. La confidencialidad y el respeto mutuo son pilares de la
+                        cultura del programa.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-s" id="cta">
+        <p class="s-label" style="justify-content:center; color: var(--gold); border-color: var(--gold);">Próxima
+            cohorte</p>
+        <h2 class="cta-big reveal">Si sentís que<br /><em>llegó el momento</em></h2>
+        <p class="cta-sub reveal">Sumate a la próxima cohorte y empezá a construir el cambio con estructura y comunidad
+            real.</p>
+        <div class="cta-btns reveal">
+            <a href="https://wa.me/5491100000000" class="btn-primary"
+                style="background: var(--gold); border-color: var(--gold);">Quiero dar el salto</a>
+            <a href="https://wa.me/5491100000000" class="btn-outline"
+                style="border-color: var(--sand); color: var(--sand);">Conversación previa</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div>
+            <p class="footer-brand">Fundación Consciencia Humana</p>
+            <p>© 2026 · Consciencia, coherencia y acción.</p>
+        </div>
+        <div class="footer-links">
+            <a href="#">LinkedIn</a>
+            <a href="#">Instagram</a>
+        </div>
+    </footer>
+
+    <script>
+        // Cursor interactive logic
+        const cur = document.getElementById('cur'), ring = document.getElementById('ring');
+        document.addEventListener('mousemove', e => {
+            cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px';
+            setTimeout(() => { ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px' }, 60);
+        });
+
+        // Hero image loading state
+        const heroImg = document.getElementById('heroImg');
+        if (heroImg.complete) heroImg.classList.add('loaded');
+        else heroImg.addEventListener('load', () => heroImg.classList.add('loaded'));
+
+        // Reveal animations on scroll
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target) } });
+        }, { threshold: .12 });
+        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+        // Tab management
+        function setTab(i, el) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            el.classList.add('active');
+            document.querySelectorAll('.mod-panel').forEach((p, j) => {
+                p.classList.toggle('active', i === j);
+            });
         }
 
-        function selectOption(val) {
-            answers[currentStep] = val;
-            renderQuestion();
-            setTimeout(() => nextQuestion(), 300);
-        }
-
-        function nextQuestion() {
-            if (answers[currentStep] === undefined) return;
-            if (currentStep < questions.length - 1) {
-                currentStep++;
-                renderQuestion();
-            } else {
-                showResult();
-            }
-        }
-
-        function prevQuestion() {
-            if (currentStep > 0) {
-                currentStep--;
-                renderQuestion();
-            }
-        }
-
-        function updateProgress() {
-            const percent = ((currentStep + 1) / questions.length) * 100;
-            document.getElementById('progress-bar').style.width = `${percent}%`;
-            document.getElementById('progress-text').innerText = `Pregunta ${currentStep + 1} de ${questions.length}`;
-            document.getElementById('prev-btn').style.display = currentStep > 0 ? 'block' : 'none';
-            document.getElementById('next-btn').innerText = currentStep === questions.length - 1 ? 'Finalizar' : 'Siguiente';
-            document.getElementById('next-btn').onclick = currentStep === questions.length - 1 ? showResult : nextQuestion;
-        }
-
-        function showResult() {
-            const totalScore = answers.reduce((a, b) => a + b, 0);
-            document.getElementById('diagnostic-content').style.display = 'none';
-            const resultDiv = document.getElementById('diagnostic-result');
-            resultDiv.style.display = 'block';
-
-            let title, desc, icon;
-            if (totalScore <= 25) {
-                title = "Iniciador del Camino";
-                desc = "Estás en un momento ideal para comenzar a observar tus procesos internos. Sentís que operás en automático y es hora de reconectar con lo esencial. Te recomendamos nuestra charla de 'Despertar en la Matrix'.";
-                icon = "🌱";
-            } else if (totalScore <= 45) {
-                title = "Explorador Consciente";
-                desc = "Vas por buen camino, reconociendo tus emociones y lenguaje. Hay áreas grises por iluminar para dar el salto hacia una mayor soberanía personal. Te recomendamos nuestros 'Retiros Inmersivos'.";
-                icon = "🧭";
-            } else {
-                title = "Líder en Evolución";
-                desc = "Vivís con una alta frecuencia de consciencia y alineación. Tu desafío ahora es sostener este estado y acompañar a otros en su despertar. Consultá por nuestros 'Programas B2B' y mentorías personalizadas.";
-                icon = "🔥";
-            }
-
-            document.getElementById('result-title').innerText = `Resultado: ${title}`;
-            document.getElementById('result-desc').innerText = desc;
-            document.getElementById('result-icon').innerText = icon;
-        }
-
-        function resetDiagnostic() {
-            currentStep = 0;
-            answers.length = 0;
-            document.getElementById('diagnostic-content').style.display = 'block';
-            document.getElementById('diagnostic-result').style.display = 'none';
-            renderQuestion();
+        // FAQ accordion
+        function faq(btn) {
+            const item = btn.closest('.faq-item');
+            const ans = item.querySelector('.faq-a');
+            const open = item.classList.contains('open');
+            document.querySelectorAll('.faq-item.open').forEach(x => {
+                x.classList.remove('open'); x.querySelector('.faq-a').style.maxHeight = '0';
+            });
+            if (!open) { item.classList.add('open'); ans.style.maxHeight = ans.scrollHeight + 'px'; }
         }
     </script>
-
 </body>
 
 </html>
