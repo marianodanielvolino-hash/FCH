@@ -1029,8 +1029,6 @@
     </ul>
     <div class="nav-cta-wrap">
       <a href="index.html" class="nav-back">← Regresar</a>
-      <a href="javascript:void(0)" onclick="openPortalAuth()" class="btn-nav"
-        style="border-color: var(--gold); color: var(--gold); font-weight: 600;">Mi Salto</a>
       <a href="#cta" class="btn-nav">Inscribirme</a>
     </div>
   </nav>
@@ -1056,12 +1054,36 @@
       </div>
       <div class="hero-number">I</div>
     </div>
-    <div class="hero-right">
-      <img class="hero-img" src="img/elsalto-hero.png" alt="Espacio de trabajo premium" id="heroImg" />
-      <div class="hero-pills">
-        <span class="pill">Marzo - Diciembre 2026</span>
-        <span class="pill">Grupo de 25 personas</span>
-        <span class="pill">Palermo, CABA</span>
+    <div class="hero-right"
+      style="display: flex; align-items: center; justify-content: center; background: var(--deep); position: relative;">
+      <!-- PORTAL IN HERO -->
+      <div class="reveal"
+        style="width: 100%; max-width: 440px; padding: 3rem; background: var(--cream); border-radius: 8px; box-shadow: 0 30px 60px rgba(61, 43, 31, 0.08); text-align: center; border: 1px solid rgba(196, 81, 31, 0.1);">
+        <h2
+          style="font-family: var(--ff-d); font-size: 3rem; color: var(--text-main); margin-bottom: 0.5rem; letter-spacing: -1px;">
+          Mi<span style="color: var(--terra); font-weight: 600;">SALTO</span></h2>
+        <p style="color: var(--fog); margin-bottom: 2.5rem; font-size: 0.95rem;">Ingresá al portal exclusivo para
+          alumnos.</p>
+
+        <div style="text-align: left;">
+          <input type="email" id="hero-login-email" placeholder="Email" value="alumno@ejemplo.com"
+            style="width: 100%; padding: 1.1rem; margin-bottom: 1rem; border: 1px solid rgba(61, 43, 31, 0.1); background: #fff; font-family: var(--ff-b); border-radius: 4px; outline: none; font-size: 0.95rem; color: var(--text-main);" />
+          <input type="password" id="hero-login-pass" placeholder="Contraseña" value="123456"
+            style="width: 100%; padding: 1.1rem; margin-bottom: 2rem; border: 1px solid rgba(61, 43, 31, 0.1); background: #fff; font-family: var(--ff-b); border-radius: 4px; outline: none; font-size: 0.95rem; color: var(--text-main);" />
+          <button onclick="handleHeroLogin()" class="btn-primary"
+            style="width: 100%; padding: 1.1rem; border-radius: 4px; font-weight: 600; font-size: 0.9rem; letter-spacing: 1px;">INICIAR
+            SESIÓN</button>
+        </div>
+
+        <div style="margin-top: 1.5rem; font-size: 0.85rem; color: var(--fog);">
+          No tengo cuenta, <span onclick="openPortalAuth()"
+            style="text-decoration: underline; cursor: pointer; color: var(--terra);">registrarme</span>
+        </div>
+      </div>
+
+      <div class="hero-pills" style="position: absolute; bottom: 2rem; right: 2rem; opacity: 0.6;">
+        <span class="pill">Acceso Alumnos</span>
+        <span class="pill">Portal 24/7</span>
       </div>
     </div>
   </section>
@@ -1264,7 +1286,7 @@
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
         <!-- Grupo Semilla -->
         <div
-          style="background: #fff; padding: 2.5rem; border: 1px solid rgba(28,21,16,0.06); border-radius: 4px; position: relative;">
+          style="background: #fff; padding: 2.5rem; border: 1px solid rgba(61, 43, 31, 0.06); border-radius: 4px; position: relative;">
           <span
             style="position: absolute; top: 1rem; right: 1rem; font-size: 0.65rem; background: var(--terra); color: #fff; padding: 0.2rem 0.6rem; border-radius: 20px;">Cupo
             25</span>
@@ -1280,7 +1302,7 @@
         </div>
         <!-- Grupo Horizonte -->
         <div
-          style="background: #fff; padding: 2.5rem; border: 1px solid rgba(28,21,16,0.06); border-radius: 4px; position: relative;">
+          style="background: #fff; padding: 2.5rem; border: 1px solid rgba(61, 43, 31, 0.06); border-radius: 4px; position: relative;">
           <span
             style="position: absolute; top: 1rem; right: 1rem; font-size: 0.65rem; background: var(--terra); color: #fff; padding: 0.2rem 0.6rem; border-radius: 20px;">Cupo
             25</span>
@@ -1303,7 +1325,7 @@
           <h4 style="font-family: var(--ff-d); font-size: 1.6rem; margin-bottom: 0.5rem;">Semilla · Módulo I Extra</h4>
           <p style="font-size: 0.85rem; color: var(--fog); margin-bottom: 1.5rem;">Sábados 10:00 – 13:00 · 5 Clases</p>
           <div
-            style="font-size: 0.9rem; margin-bottom: 1rem; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 1rem;">
+            style="font-size: 0.9rem; margin-bottom: 1rem; border-top: 1px solid rgba(61, 43, 31, 0.05); padding-top: 1rem;">
             <div style="margin-bottom: 0.5rem;"><strong>Inicio:</strong> 11 de Abril</div>
             <div><strong>Cierre:</strong> 9 de Mayo</div>
           </div>
@@ -1388,7 +1410,7 @@
 
       <!-- Card 2 (Highlighted) -->
       <div
-        style="background: #fff; padding: 3rem; border: 2px solid var(--terra); display: flex; flex-direction: column; justify-content: space-between; transform: scale(1.03); z-index: 2; box-shadow: 0 20px 40px rgba(0,0,0,0.05); border-radius: 4px;">
+        style="background: #fff; padding: 3rem; border: 2px solid var(--terra); display: flex; flex-direction: column; justify-content: space-between; transform: scale(1.03); z-index: 2; box-shadow: 0 20px 40px rgba(61, 43, 31, 0.05); border-radius: 4px;">
         <div>
           <span
             style="font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terra); font-weight: 600;">Proceso
@@ -1529,7 +1551,7 @@
     <div class="auth-card">
       <i class="ph-bold ph-x close-portal" onclick="closePortalAuth()"></i>
       <div id="login-form">
-        <h1>Mi Salto</h1>
+        <h1>MiSALTO</h1>
         <p>Ingresá al portal para alumnos.</p>
         <input type="email" id="login-email" placeholder="Email" value="alumno@ejemplo.com" />
         <input type="password" id="login-pass" placeholder="Contraseña" value="123456" />
@@ -1550,7 +1572,7 @@
 
   <div id="portal-app">
     <header class="portal-header">
-      <div class="logo">MI SALTO</div>
+      <div class="logo">MiSALTO</div>
       <div style="display: flex; align-items: center; gap: 1.5rem;">
         <span id="display-name" style="font-weight: 500; font-size: 0.9rem;"></span>
         <button class="logout-btn" onclick="handleLogout()">Salir</button>
@@ -1637,6 +1659,17 @@
 
     // --- PORTAL LOGIC ---
     let currentUser = null;
+
+    function handleHeroLogin() {
+      const email = document.getElementById('hero-login-email').value;
+      const pass = document.getElementById('hero-login-pass').value;
+      const stored = localStorage.getItem('salto_user_' + email);
+      if (!stored) return alert('No encontrado. Registrate primero.');
+      const user = JSON.parse(stored);
+      if (user.pass !== pass) return alert('Incorrecto');
+      localStorage.setItem('salto_active_session', email);
+      initSession(user);
+    }
 
     function openPortalAuth() {
       const activeSession = localStorage.getItem('salto_active_session');
