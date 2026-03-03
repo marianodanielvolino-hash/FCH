@@ -1,603 +1,1156 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>El Salto de Tu Vida · Fundación Consciencia Humana</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet"/>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --ink:#FDF9F3; 
-  --deep:#F4EDE0; 
-  --terra:#C4511F; 
-  --gold:#C9902A; 
-  --sand:#E8D9C0; 
-  --cream:#FDF9F3; 
-  --fog:#5A4D41;   
-  --text-main:#1C1510; 
-  --ff-d:'Cormorant Garamond',Georgia,serif;
-  --ff-b:'Outfit',sans-serif;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>El Salto de Tu Vida · Fundación Consciencia Humana</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
 
-html{scroll-behavior:smooth}
+    :root {
+      --ink: #FDF9F3;
+      --deep: #F4EDE0;
+      --terra: #C4511F;
+      --gold: #C9902A;
+      --sand: #E8D9C0;
+      --cream: #FDF9F3;
+      --fog: #5A4D41;
+      --text-main: #1C1510;
+      --ff-d: 'Cormorant Garamond', Georgia, serif;
+      --ff-b: 'Outfit', sans-serif;
+    }
 
-body{
-  background:var(--ink);
-  color:var(--text-main);
-  font-family:var(--ff-b);
-  font-size:16px;
-  line-height:1.7;
-  overflow-x:hidden;
-  cursor:none; 
-}
+    html {
+      scroll-behavior: smooth
+    }
 
-/* CURSOR */
-.cursor{
-  position:fixed;width:10px;height:10px;
-  background:var(--terra);border-radius:50%;
-  pointer-events:none;z-index:9999;
-  transform:translate(-50%,-50%);
-  transition:transform .1s,width .25s,height .25s,background .25s;
-}
-.cursor-ring{
-  position:fixed;width:36px;height:36px;
-  border:1px solid rgba(196,81,31,.4);border-radius:50%;
-  pointer-events:none;z-index:9998;
-  transform:translate(-50%,-50%);
-  transition:transform .18s ease,width .3s,height .3s,border-color .3s;
-}
-body:has(a:hover) .cursor{width:6px;height:6px;background:var(--gold)}
-body:has(a:hover) .cursor-ring{width:52px;height:52px;border-color:var(--gold)}
+    body {
+      background: var(--ink);
+      color: var(--text-main);
+      font-family: var(--ff-b);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+      cursor: none;
+    }
 
-/* NOISE OVERLAY */
-body::before{
-  content:'';position:fixed;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
-  pointer-events:none;z-index:1;opacity:.5;
-}
+    /* CURSOR */
+    .cursor {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background: var(--terra);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform .1s, width .25s, height .25s, background .25s;
+    }
 
-/* NAV */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  padding:0 clamp(1.5rem,5vw,4rem);
-  display:flex;align-items:center;justify-content:space-between;
-  height:68px;
-  border-bottom:1px solid rgba(28,21,16,.07);
-  backdrop-filter:blur(16px);
-  background:rgba(253,249,243,.7); 
-}
-.nav-logo{
-  font-family:var(--ff-d);font-size:1.05rem;color:var(--text-main);
-  text-decoration:none;letter-spacing:.1em;text-transform:uppercase;
-  font-weight: 600;
-}
-.nav-links{display:flex;gap:2.5rem;list-style:none}
-.nav-links a{
-  font-size:.72rem;color:var(--fog);text-decoration:none;
-  letter-spacing:.14em;text-transform:uppercase;
-  transition:color .2s;
-}
-.nav-links a:hover{color:var(--text-main)}
-.nav-cta-wrap{display:flex;align-items:center;gap:1.5rem}
-.nav-back{
-  font-size:.72rem;color:var(--fog);text-decoration:none;
-  letter-spacing:.1em;text-transform:uppercase;
-}
-.btn-nav{
-  border:1px solid var(--terra);color:var(--terra);
-  padding:.45rem 1.4rem;font-family:var(--ff-b);
-  font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
-  text-decoration:none;transition:background .2s,color .2s;border-radius:1px;
-}
-.btn-nav:hover{background:var(--terra);color:#fff}
-@media(max-width:768px){.nav-links,.nav-back{display:none}}
+    .cursor-ring {
+      position: fixed;
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(196, 81, 31, .4);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: transform .18s ease, width .3s, height .3s, border-color .3s;
+    }
 
-/* ─── HERO ─── */
-.hero{
-  min-height:100vh;
-  display:grid;
-  grid-template-columns:10fr 12fr; 
-  position:relative;
-  overflow:hidden;
-}
-.hero-left{
-  display:flex;flex-direction:column;justify-content:center;
-  padding:clamp(7rem,14vw,12rem) clamp(2rem,6vw,5rem) clamp(4rem,8vw,7rem);
-  position:relative;z-index:2;
-  background: var(--ink);
-}
-.hero-eyebrow{
-  font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--terra);margin-bottom:2rem;
-  display:flex;align-items:center;gap:.75rem;
-}
-.hero-eyebrow::before{content:'';display:block;width:32px;height:1px;background:var(--terra)}
-.hero-h1{
-  font-family:var(--ff-d);
-  font-size:clamp(4.5rem,8vw,8rem);
-  font-weight:300;line-height:.95;
-  color:var(--text-main);
-  margin-bottom:2.5rem;
-}
-.hero-h1 span{display:block}
-.hero-h1 em{font-style:italic;color:var(--terra)}
-.hero-h1 .outline{
-  -webkit-text-stroke:1.5px var(--terra);
-  color:transparent;
-}
-.hero-lead{
-  font-size:1.1rem;color:var(--fog);line-height:1.8;
-  max-width:42ch;margin-bottom:3rem;font-weight:300;
-}
-.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
-.btn-primary{
-  background:var(--terra);color:#fff;
-  padding:.9rem 2.2rem;border-radius:1px;
-  text-decoration:none;font-size:.8rem;font-weight:500;
-  letter-spacing:.08em;text-transform:uppercase;
-  transition:all .25s;
-  border: none;
-  cursor: pointer;
-  display: inline-block;
-  text-align: center;
-}
-.btn-primary:hover{background:var(--text-main); transform: translateY(-2px);}
-.btn-outline{
-  border:1px solid rgba(28,21,16,.2);color:var(--text-main);
-  padding:.9rem 2.2rem;border-radius:1px;
-  text-decoration:none;font-size:.8rem;
-  letter-spacing:.08em;text-transform:uppercase;
-  transition:border-color .25s,color .25s, background .25s;
-}
-.btn-outline:hover{border-color:var(--text-main); background: rgba(28,21,16,0.03);}
+    body:has(a:hover) .cursor {
+      width: 6px;
+      height: 6px;
+      background: var(--gold)
+    }
 
-.hero-right{
-  position:relative;overflow:hidden;
-}
-.hero-right::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(90deg,var(--ink) 0%,transparent 25%,transparent 75%,rgba(253,249,243,.3) 100%);
-  z-index:1;
-}
-.hero-img{
-  width:100%;height:100%;object-fit:cover;
-  filter:brightness(1.05) contrast(1.02); 
-}
+    body:has(a:hover) .cursor-ring {
+      width: 52px;
+      height: 52px;
+      border-color: var(--gold)
+    }
 
-.hero-pills{
-  position:absolute;bottom:clamp(2rem,5vw,4rem);right:clamp(2rem,5vw,5rem);
-  z-index:10;display:flex;flex-direction:column;gap:.6rem;align-items:flex-end;
-}
-.pill{
-  border:1px solid rgba(28,21,16,.1);
-  padding:.35rem .9rem;font-size:.7rem;
-  letter-spacing:.1em;color:var(--text-main);
-  background:rgba(255,255,255,.6);backdrop-filter:blur(8px);
-  border-radius:1px;
-  font-weight: 500;
-}
+    /* NOISE OVERLAY */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1;
+      opacity: .5;
+    }
 
-.hero-number{
-  position:absolute;bottom:clamp(2rem,5vw,4rem);left:clamp(2rem,6vw,5rem);
-  z-index:10;font-family:var(--ff-d);
-  font-size:clamp(6rem,15vw,14rem);font-weight:300;
-  color:rgba(28,21,16,.03);line-height:1;
-  pointer-events:none;
-}
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      border-bottom: 1px solid rgba(28, 21, 16, .07);
+      backdrop-filter: blur(16px);
+      background: rgba(253, 249, 243, .7);
+    }
 
-@media(max-width:900px){
-  .hero{grid-template-columns:1fr}
-  .hero-right{display:none}
-}
+    .nav-logo {
+      font-family: var(--ff-d);
+      font-size: 1.05rem;
+      color: var(--text-main);
+      text-decoration: none;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
 
-/* ─── MARQUEE ─── */
-.marquee-wrap{
-  border-top:1px solid rgba(28,21,16,.08);
-  border-bottom:1px solid rgba(28,21,16,.08);
-  overflow:hidden;padding:.9rem 0;
-  background:var(--deep);
-}
-.marquee-track{
-  display:flex;gap:0;white-space:nowrap;
-  animation:marquee 28s linear infinite;
-}
-.marquee-track span{
-  font-family:var(--ff-d);font-style:italic;
-  font-size:1.05rem;color:var(--text-main);
-  padding:0 2.5rem;
-  border-right:1px solid rgba(28,21,16,.1);
-}
-.marquee-track span em{color:var(--terra);font-style:normal}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none
+    }
 
-/* ─── SECTIONS ─── */
-.s{padding:clamp(5rem,12vw,10rem) clamp(2rem,8vw,7rem)}
-.s--alt{background:var(--deep)}
+    .nav-links a {
+      font-size: .72rem;
+      color: var(--fog);
+      text-decoration: none;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
 
-.s-label{
-  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--terra);margin-bottom:1.25rem;
-  display:flex;align-items:center;gap:.75rem;
-}
-.s-label::before{content:'';display:block;width:24px;height:1px;background:var(--terra)}
+    .nav-links a:hover {
+      color: var(--text-main)
+    }
 
-h2{
-  font-family:var(--ff-d);
-  font-size:clamp(2.4rem,5vw,4.2rem);
-  font-weight:300;line-height:1.1;
-  color:var(--text-main);margin-bottom:1rem;
-}
-h2 em{font-style:italic;color:var(--terra)}
-.s-lead{
-  font-size:1.05rem;color:var(--fog);max-width:54ch;
-  margin-bottom:clamp(3rem,6vw,5rem);line-height:1.8;font-weight:300;
-}
+    .nav-cta-wrap {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem
+    }
 
-/* REVEAL */
-.reveal{
-  opacity:0;transform:translateY(32px);
-  transition:opacity .8s ease,transform .8s ease;
-}
-.reveal.visible{opacity:1;transform:none}
+    .nav-back {
+      font-size: .72rem;
+      color: var(--fog);
+      text-decoration: none;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
 
-/* ─── TABS ─── */
-.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid rgba(28,21,16,.1);margin-bottom:4rem}
-.tab{
-  padding:2rem 1.5rem;cursor:pointer;
-  border-right:1px solid rgba(28,21,16,.1);
-  transition:background .3s;
-  position:relative;
-}
-.tab:last-child{border-right:none}
-.tab .tab-num{
-  font-family:var(--ff-d);font-size:.8rem;
-  letter-spacing:.15em;color:var(--fog);margin-bottom:.6rem;text-transform:uppercase;
-}
-.tab h3{
-  font-family:var(--ff-d);font-size:1.2rem;font-weight:400;
-  color:var(--text-main);margin-bottom:.3rem;
-  display:flex;align-items:center;gap:.5rem;
-}
-.tab h3 svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5;color:var(--fog)}
-.tab p{font-size:.8rem;color:var(--fog)}
-.tab::after{
-  content:'';position:absolute;bottom:-1px;left:0;right:0;height:2px;
-  background:var(--terra);transform:scaleX(0);
-  transition:transform .3s;
-}
-.tab.active{background:rgba(196,81,31,.08)}
-.tab.active::after{transform:scaleX(1)}
-.tab.active .tab-num{color:var(--terra)}
-.tab.active h3{color:var(--text-main)}
+    .btn-nav {
+      border: 1px solid var(--terra);
+      color: var(--terra);
+      padding: .45rem 1.4rem;
+      font-family: var(--ff-b);
+      font-size: .72rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background .2s, color .2s;
+      border-radius: 1px;
+    }
 
-.mod-panel{display:none}
-.mod-panel.active{display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:start}
-.mod-head h3{
-  font-family:var(--ff-d);font-size:2.5rem;font-weight:300;
-  color:var(--text-main);margin-bottom:1rem;line-height:1.1;
-}
-.mod-head p{font-size:.95rem;color:var(--fog);line-height:1.8}
-.temas{display:grid;gap:0;border:1px solid rgba(28,21,16,.1)}
-.tema{
-  display:flex;align-items:flex-start;gap:1.25rem;
-  padding:1.5rem 2rem;border-bottom:1px solid rgba(28,21,16,.08);
-  transition:background .25s;
-}
-.tema:last-child{border-bottom:none}
-.tema:hover{background:rgba(28,21,16,.03)}
-.tema-ico{
-  flex-shrink:0;width:36px;height:36px;
-  display:flex;align-items:center;justify-content:center;
-  border:1px solid rgba(28,21,16,.12);
-}
-.tema-ico svg{width:16px;height:16px;stroke:var(--terra);fill:none;stroke-width:1.5}
-.tema h4{font-size:.9rem;font-weight:500;color:var(--text-main);margin-bottom:.2rem}
-.tema p{font-size:.82rem;color:var(--fog);line-height:1.6}
+    .btn-nav:hover {
+      background: var(--terra);
+      color: #fff
+    }
 
-@media(max-width:768px){
-  .tabs{grid-template-columns:1fr}
-  .mod-panel.active{grid-template-columns:1fr}
-}
+    @media(max-width:768px) {
 
-/* ─── CTA / FORM ─── */
-.cta-s{
-  position:relative;overflow:hidden;
-  background:var(--text-main);
-  padding:clamp(5rem,12vw,10rem) clamp(2rem,8vw,7rem);
-  text-align:center;
-  color: var(--cream);
-}
-.cta-big{
-  font-family:var(--ff-d);
-  font-size:clamp(3.5rem,8vw,7rem);
-  font-weight:300;line-height:.95;
-  color:var(--cream);margin-bottom:2rem;
-}
-.cta-big em{font-style:italic;color:var(--gold)}
-.cta-sub{font-size:1.1rem;color:var(--sand);max-width:50ch;margin:0 auto 3rem;line-height:1.8;font-weight:300}
+      .nav-links,
+      .nav-back {
+        display: none
+      }
+    }
 
-/* FAQ */
-.faq-wrap{border-top:1px solid rgba(28,21,16,.1)}
-.faq-item{border-bottom:1px solid rgba(28,21,16,.1)}
-.faq-q{
-  width:100%;background:none;border:none;cursor:none;
-  padding:1.75rem 0;text-align:left;
-  display:flex;justify-content:space-between;align-items:center;gap:2rem;
-  font-family:var(--ff-b);font-size:.95rem;font-weight:400;
-  color:var(--text-main);transition:color .2s;
-}
-.faq-q:hover{color:var(--terra)}
-.faq-cross{
-  flex-shrink:0;width:28px;height:28px;
-  border:1px solid rgba(28,21,16,.15);border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  transition:all .35s;
-}
-.faq-cross svg{width:12px;height:12px;stroke:var(--terra);fill:none;stroke-width:2}
-.faq-item.open .faq-cross{background:var(--terra);border-color:var(--terra)}
-.faq-item.open .faq-cross svg{transform:rotate(45deg);stroke:#fff}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
-.faq-a-inner{padding:0 0 1.75rem;font-size:.88rem;color:var(--fog);line-height:1.8;max-width:72ch}
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 10fr 12fr;
+      position: relative;
+      overflow: hidden;
+    }
 
-footer{
-  background:var(--deep);
-  border-top:1px solid rgba(28,21,16,.08);
-  padding:2.5rem clamp(2rem,8vw,7rem);
-  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;
-}
-</style>
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(7rem, 14vw, 12rem) clamp(2rem, 6vw, 5rem) clamp(4rem, 8vw, 7rem);
+      position: relative;
+      z-index: 2;
+      background: var(--ink);
+    }
+
+    .hero-eyebrow {
+      font-size: .7rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--terra)
+    }
+
+    .hero-h1 {
+      font-family: var(--ff-d);
+      font-size: clamp(4.5rem, 8vw, 8rem);
+      font-weight: 300;
+      line-height: .95;
+      color: var(--text-main);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-h1 span {
+      display: block
+    }
+
+    .hero-h1 em {
+      font-style: italic;
+      color: var(--terra)
+    }
+
+    .hero-h1 .outline {
+      -webkit-text-stroke: 1.5px var(--terra);
+      color: transparent;
+    }
+
+    .hero-lead {
+      font-size: 1.1rem;
+      color: var(--fog);
+      line-height: 1.8;
+      max-width: 42ch;
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap
+    }
+
+    .btn-primary {
+      background: var(--terra);
+      color: #fff;
+      padding: .9rem 2.2rem;
+      border-radius: 1px;
+      text-decoration: none;
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      transition: all .25s;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .btn-primary:hover {
+      background: var(--text-main);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(28, 21, 16, .2);
+      color: var(--text-main);
+      padding: .9rem 2.2rem;
+      border-radius: 1px;
+      text-decoration: none;
+      font-size: .8rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      transition: border-color .25s, color .25s, background .25s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--text-main);
+      background: rgba(28, 21, 16, 0.03);
+    }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, var(--ink) 0%, transparent 25%, transparent 75%, rgba(253, 249, 243, .3) 100%);
+      z-index: 1;
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(1.05) contrast(1.02);
+    }
+
+    .hero-pills {
+      position: absolute;
+      bottom: clamp(2rem, 5vw, 4rem);
+      right: clamp(2rem, 5vw, 5rem);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+      align-items: flex-end;
+    }
+
+    .pill {
+      border: 1px solid rgba(28, 21, 16, .1);
+      padding: .35rem .9rem;
+      font-size: .7rem;
+      letter-spacing: .1em;
+      color: var(--text-main);
+      background: rgba(255, 255, 255, .6);
+      backdrop-filter: blur(8px);
+      border-radius: 1px;
+      font-weight: 500;
+    }
+
+    .hero-number {
+      position: absolute;
+      bottom: clamp(2rem, 5vw, 4rem);
+      left: clamp(2rem, 6vw, 5rem);
+      z-index: 10;
+      font-family: var(--ff-d);
+      font-size: clamp(6rem, 15vw, 14rem);
+      font-weight: 300;
+      color: rgba(28, 21, 16, .03);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    @media(max-width:900px) {
+      .hero {
+        grid-template-columns: 1fr
+      }
+
+      .hero-right {
+        display: none
+      }
+    }
+
+    /* ─── MARQUEE ─── */
+    .marquee-wrap {
+      border-top: 1px solid rgba(28, 21, 16, .08);
+      border-bottom: 1px solid rgba(28, 21, 16, .08);
+      overflow: hidden;
+      padding: .9rem 0;
+      background: var(--deep);
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 0;
+      white-space: nowrap;
+      animation: marquee 28s linear infinite;
+    }
+
+    .marquee-track span {
+      font-family: var(--ff-d);
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--text-main);
+      padding: 0 2.5rem;
+      border-right: 1px solid rgba(28, 21, 16, .1);
+    }
+
+    .marquee-track span em {
+      color: var(--terra);
+      font-style: normal
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0)
+      }
+
+      to {
+        transform: translateX(-50%)
+      }
+    }
+
+    /* ─── SECTIONS ─── */
+    .s {
+      padding: clamp(5rem, 12vw, 10rem) clamp(2rem, 8vw, 7rem)
+    }
+
+    .s--alt {
+      background: var(--deep)
+    }
+
+    .s-label {
+      font-size: .7rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+
+    .s-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--terra)
+    }
+
+    h2 {
+      font-family: var(--ff-d);
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--text-main);
+      margin-bottom: 1rem;
+    }
+
+    h2 em {
+      font-style: italic;
+      color: var(--terra)
+    }
+
+    .s-lead {
+      font-size: 1.05rem;
+      color: var(--fog);
+      max-width: 54ch;
+      margin-bottom: clamp(3rem, 6vw, 5rem);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none
+    }
+
+    /* ─── TABS ─── */
+    .tabs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid rgba(28, 21, 16, .1);
+      margin-bottom: 4rem
+    }
+
+    .tab {
+      padding: 2rem 1.5rem;
+      cursor: pointer;
+      border-right: 1px solid rgba(28, 21, 16, .1);
+      transition: background .3s;
+      position: relative;
+    }
+
+    .tab:last-child {
+      border-right: none
+    }
+
+    .tab .tab-num {
+      font-family: var(--ff-d);
+      font-size: .8rem;
+      letter-spacing: .15em;
+      color: var(--fog);
+      margin-bottom: .6rem;
+      text-transform: uppercase;
+    }
+
+    .tab h3 {
+      font-family: var(--ff-d);
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--text-main);
+      margin-bottom: .3rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .tab h3 svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.5;
+      color: var(--fog)
+    }
+
+    .tab p {
+      font-size: .8rem;
+      color: var(--fog)
+    }
+
+    .tab::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--terra);
+      transform: scaleX(0);
+      transition: transform .3s;
+    }
+
+    .tab.active {
+      background: rgba(196, 81, 31, .08)
+    }
+
+    .tab.active::after {
+      transform: scaleX(1)
+    }
+
+    .tab.active .tab-num {
+      color: var(--terra)
+    }
+
+    .tab.active h3 {
+      color: var(--text-main)
+    }
+
+    .mod-panel {
+      display: none
+    }
+
+    .mod-panel.active {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      align-items: start
+    }
+
+    .mod-head h3 {
+      font-family: var(--ff-d);
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--text-main);
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+
+    .mod-head p {
+      font-size: .95rem;
+      color: var(--fog);
+      line-height: 1.8
+    }
+
+    .temas {
+      display: grid;
+      gap: 0;
+      border: 1px solid rgba(28, 21, 16, .1)
+    }
+
+    .tema {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid rgba(28, 21, 16, .08);
+      transition: background .25s;
+    }
+
+    .tema:last-child {
+      border-bottom: none
+    }
+
+    .tema:hover {
+      background: rgba(28, 21, 16, .03)
+    }
+
+    .tema-ico {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(28, 21, 16, .12);
+    }
+
+    .tema-ico svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--terra);
+      fill: none;
+      stroke-width: 1.5
+    }
+
+    .tema h4 {
+      font-size: .9rem;
+      font-weight: 500;
+      color: var(--text-main);
+      margin-bottom: .2rem
+    }
+
+    .tema p {
+      font-size: .82rem;
+      color: var(--fog);
+      line-height: 1.6
+    }
+
+    @media(max-width:768px) {
+      .tabs {
+        grid-template-columns: 1fr
+      }
+
+      .mod-panel.active {
+        grid-template-columns: 1fr
+      }
+    }
+
+    /* ─── CTA / FORM ─── */
+    .cta-s {
+      position: relative;
+      overflow: hidden;
+      background: var(--text-main);
+      padding: clamp(5rem, 12vw, 10rem) clamp(2rem, 8vw, 7rem);
+      text-align: center;
+      color: var(--cream);
+    }
+
+    .cta-big {
+      font-family: var(--ff-d);
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      font-weight: 300;
+      line-height: .95;
+      color: var(--cream);
+      margin-bottom: 2rem;
+    }
+
+    .cta-big em {
+      font-style: italic;
+      color: var(--gold)
+    }
+
+    .cta-sub {
+      font-size: 1.1rem;
+      color: var(--sand);
+      max-width: 50ch;
+      margin: 0 auto 3rem;
+      line-height: 1.8;
+      font-weight: 300
+    }
+
+    /* FAQ */
+    .faq-wrap {
+      border-top: 1px solid rgba(28, 21, 16, .1)
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(28, 21, 16, .1)
+    }
+
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      cursor: none;
+      padding: 1.75rem 0;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      font-family: var(--ff-b);
+      font-size: .95rem;
+      font-weight: 400;
+      color: var(--text-main);
+      transition: color .2s;
+    }
+
+    .faq-q:hover {
+      color: var(--terra)
+    }
+
+    .faq-cross {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border: 1px solid rgba(28, 21, 16, .15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .35s;
+    }
+
+    .faq-cross svg {
+      width: 12px;
+      height: 12px;
+      stroke: var(--terra);
+      fill: none;
+      stroke-width: 2
+    }
+
+    .faq-item.open .faq-cross {
+      background: var(--terra);
+      border-color: var(--terra)
+    }
+
+    .faq-item.open .faq-cross svg {
+      transform: rotate(45deg);
+      stroke: #fff
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s ease
+    }
+
+    .faq-a-inner {
+      padding: 0 0 1.75rem;
+      font-size: .88rem;
+      color: var(--fog);
+      line-height: 1.8;
+      max-width: 72ch
+    }
+
+    footer {
+      background: var(--deep);
+      border-top: 1px solid rgba(28, 21, 16, .08);
+      padding: 2.5rem clamp(2rem, 8vw, 7rem);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="cursor" id="cur"></div>
-<div class="cursor-ring" id="ring"></div>
+  <div class="cursor" id="cur"></div>
+  <div class="cursor-ring" id="ring"></div>
 
-<!-- NAV -->
-<nav>
-  <a href="index.html" class="nav-logo">FCH</a>
-  <ul class="nav-links">
-    <li><a href="#estructura">Estructura</a></li>
-    <li><a href="#agenda">Agenda</a></li>
-    <li><a href="#inversion">Inversión</a></li>
-    <li><a href="#preguntas">FAQs</a></li>
-  </ul>
-  <div class="nav-cta-wrap">
-    <a href="index.html" class="nav-back">← Regresar</a>
-    <a href="#cta" class="btn-nav">Inscribirme</a>
-  </div>
-</nav>
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">FCH</a>
+    <ul class="nav-links">
+      <li><a href="#estructura">Estructura</a></li>
+      <li><a href="#agenda">Agenda</a></li>
+      <li><a href="#inversion">Inversión</a></li>
+      <li><a href="#preguntas">FAQs</a></li>
+    </ul>
+    <div class="nav-cta-wrap">
+      <a href="index.html" class="nav-back">← Regresar</a>
+      <a href="#cta" class="btn-nav">Inscribirme</a>
+    </div>
+  </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-left">
-    <p class="hero-eyebrow">Palermo · Proceso presencial</p>
-    <h1 class="hero-h1">
-      <span>El</span>
-      <span class="outline">Salto</span>
-      <span>de <em>tu</em></span>
-      <span>Vida.</span>
-    </h1>
-    <p class="hero-lead">
-      Para quienes ya saben qué necesitan cambiar pero no encuentran
-      la estructura ni la comunidad para sostenerlo.
-      Cupo limitado de 25 personas.
-    </p>
-    <div class="hero-actions">
-      <a href="#cta" class="btn-primary">Inscribirme ahora</a>
-      <a href="#estructura" class="btn-outline">Ver programa</a>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Palermo · Proceso presencial</p>
+      <h1 class="hero-h1">
+        <span>El</span>
+        <span class="outline">Salto</span>
+        <span>de <em>tu</em></span>
+        <span>Vida.</span>
+      </h1>
+      <p class="hero-lead">
+        Para quienes ya saben qué necesitan cambiar pero no encuentran
+        la estructura ni la comunidad para sostenerlo.
+        Cupo limitado de 25 personas.
+      </p>
+      <div class="hero-actions">
+        <a href="#cta" class="btn-primary">Inscribirme ahora</a>
+        <a href="#estructura" class="btn-outline">Ver programa</a>
+      </div>
+      <div class="hero-number">I</div>
     </div>
-    <div class="hero-number">I</div>
-  </div>
-  <div class="hero-right">
-    <img class="hero-img" src="img/elsalto-hero.png" alt="Espacio de trabajo premium" id="heroImg"/>
-    <div class="hero-pills">
-      <span class="pill">Marzo - Diciembre 2026</span>
-      <span class="pill">Grupo de 25 personas</span>
-      <span class="pill">Palermo, CABA</span>
+    <div class="hero-right">
+      <img class="hero-img" src="img/elsalto-hero.png" alt="Espacio de trabajo premium" id="heroImg" />
+      <div class="hero-pills">
+        <span class="pill">Marzo - Diciembre 2026</span>
+        <span class="pill">Grupo de 25 personas</span>
+        <span class="pill">Palermo, CABA</span>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- MARQUEE -->
-<div class="marquee-wrap">
-  <div class="marquee-track">
-    <span>Consciencia <em>→</em></span>
-    <span>Claridad interna</span>
-    <span>Camino Personal <em>→</em></span>
-    <span>Acción sostenida</span>
-    <span>Conversaciones valientes <em>→</em></span>
-    <span>Comunidad real</span>
-    <span>Plan 90 días <em>→</em></span>
-    <span>Expansión</span>
-    <span>Consciencia <em>→</em></span>
-    <span>Claridad interna</span>
-    <span>Camino Personal <em>→</em></span>
-    <span>Acción sostenida</span>
-    <span>Conversaciones valientes <em>→</em></span>
-    <span>Comunidad real</span>
-    <span>Plan 90 días <em>→</em></span>
-    <span>Expansión</span>
-  </div>
-</div>
-
-<!-- ESTRUCTURA DEL PROGRAMA -->
-<section class="s s--alt" id="estructura">
-  <p class="s-label">Cómo se organiza</p>
-  <h2 class="reveal">Estructura del<br/><em>programa</em></h2>
-  <p class="s-lead reveal">Tres etapas progresivas. Un camino claro con propósito en cada paso.</p>
-  
-  <div class="tabs reveal">
-    <div class="tab active" onclick="setTab(0,this)">
-      <div class="tab-num">Módulo I</div>
-      <h3>Despertar</h3>
-      <p>Claridad interna</p>
-    </div>
-    <div class="tab" onclick="setTab(1,this)">
-      <div class="tab-num">Módulo II</div>
-      <h3>Camino Personal</h3>
-      <p>Acción sostenida</p>
-    </div>
-    <div class="tab" onclick="setTab(2,this)">
-      <div class="tab-num">Módulo III</div>
-      <h3>Expansión</h3>
-      <p>Impacto real</p>
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span>Consciencia <em>→</em></span>
+      <span>Claridad interna</span>
+      <span>Camino Personal <em>→</em></span>
+      <span>Acción sostenida</span>
+      <span>Conversaciones valientes <em>→</em></span>
+      <span>Comunidad real</span>
+      <span>Plan 90 días <em>→</em></span>
+      <span>Expansión</span>
+      <span>Consciencia <em>→</em></span>
+      <span>Claridad interna</span>
+      <span>Camino Personal <em>→</em></span>
+      <span>Acción sostenida</span>
+      <span>Conversaciones valientes <em>→</em></span>
+      <span>Comunidad real</span>
+      <span>Plan 90 días <em>→</em></span>
+      <span>Expansión</span>
     </div>
   </div>
 
-  <div class="mod-panel active" id="mod-0">
-    <div class="mod-head reveal">
-      <h3>Módulo I<br/>Despertar</h3>
-      <p>Ordenar el mundo interno para tomar decisiones con verdad. Trabajamos sobre creencias, miedos y patrones invisibles.</p>
-    </div>
-    <div class="temas reveal">
-      <div class="tema"><div class="tema-ico">1</div><div><h4>Punto Cero</h4><p>Diagnóstico honesto inicial.</p></div></div>
-      <div class="tema"><div class="tema-ico">2</div><div><h4>Historia Invisible</h4><p>Patrones que gobiernan tus decisiones.</p></div></div>
-      <div class="tema"><div class="tema-ico">3</div><div><h4>Lo que Te Frena</h4><p>Miedos y autosabotajes.</p></div></div>
-    </div>
-  </div>
+  <!-- ESTRUCTURA DEL PROGRAMA -->
+  <section class="s s--alt" id="estructura">
+    <p class="s-label">Cómo se organiza</p>
+    <h2 class="reveal">Estructura del<br /><em>programa</em></h2>
+    <p class="s-lead reveal">Tres etapas progresivas. Un camino claro con propósito en cada paso.</p>
 
-  <div class="mod-panel" id="mod-1">
-    <div class="mod-head reveal">
-      <h3>Módulo II<br/>Camino Personal</h3>
-      <p>De la comprensión a la acción real. Sostener el cambio en el tiempo con estructura propia.</p>
+    <div class="tabs reveal">
+      <div class="tab active" onclick="setTab(0,this)">
+        <div class="tab-num">Módulo I</div>
+        <h3>Despertar</h3>
+        <p>Claridad interna</p>
+      </div>
+      <div class="tab" onclick="setTab(1,this)">
+        <div class="tab-num">Módulo II</div>
+        <h3>Camino Personal</h3>
+        <p>Acción sostenida</p>
+      </div>
+      <div class="tab" onclick="setTab(2,this)">
+        <div class="tab-num">Módulo III</div>
+        <h3>Expansión</h3>
+        <p>Impacto real</p>
+      </div>
     </div>
-    <div class="temas reveal">
-      <div class="tema"><div class="tema-ico">1</div><div><h4>Sistema de Acción</h4><p>Hábitos y disciplina consciente.</p></div></div>
-      <div class="tema"><div class="tema-ico">2</div><div><h4>Conversaciones Pendientes</h4><p>Claridad y firmeza en los vínculos.</p></div></div>
-    </div>
-  </div>
 
-  <div class="mod-panel" id="mod-2">
-    <div class="mod-head reveal">
-      <h3>Módulo III<br/>Expansión</h3>
-      <p>Consolidar la identidad y proyectar impacto. Coherencia interna para rediseñar vínculos y proyectos.</p>
+    <div class="mod-panel active" id="mod-0">
+      <div class="mod-head reveal">
+        <h3>Módulo I<br />Despertar</h3>
+        <p>Ordenar el mundo interno para tomar decisiones con verdad. Trabajamos sobre creencias, miedos y patrones
+          invisibles.</p>
+      </div>
+      <div class="temas reveal">
+        <div class="tema">
+          <div class="tema-ico">1</div>
+          <div>
+            <h4>Punto Cero</h4>
+            <p>Diagnóstico honesto inicial.</p>
+          </div>
+        </div>
+        <div class="tema">
+          <div class="tema-ico">2</div>
+          <div>
+            <h4>Historia Invisible</h4>
+            <p>Patrones que gobiernan tus decisiones.</p>
+          </div>
+        </div>
+        <div class="tema">
+          <div class="tema-ico">3</div>
+          <div>
+            <h4>Lo que Te Frena</h4>
+            <p>Miedos y autosabotajes.</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="temas reveal">
-      <div class="tema"><div class="tema-ico">1</div><div><h4>Liderarte Primero</h4><p>Coherencia interna continua.</p></div></div>
-      <div class="tema"><div class="tema-ico">2</div><div><h4>Plan 90 Días</h4><p>Hoja de ruta concreta pos-programa.</p></div></div>
-    </div>
-  </div>
-</section>
 
-<!-- AGENDA -->
-<section class="s" id="agenda" style="background: var(--ink);">
-  <p class="s-label">Agenda 2026</p>
-  <h2 class="reveal">Fechas y<br/><em>horarios</em></h2>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;" class="reveal">
-    <div style="background: #fff; padding: 3rem; border: 1px solid rgba(28,21,16,0.06);">
-      <h3 style="font-family: var(--ff-d); font-size: 1.8rem; margin-bottom: 1rem;">Grupo 1 · Martes</h3>
-      <p style="color: var(--terra); font-weight: 500; margin-bottom: 1.5rem;">Marzo a Diciembre</p>
-      <div style="font-size: 1.1rem; margin-bottom: 2rem;">19:00 a 21:00 hs</div>
-      <button onclick="scrollToCTA()" class="btn-primary" style="width: 100%; border:none;">Inscribirme al Grupo 1</button>
+    <div class="mod-panel" id="mod-1">
+      <div class="mod-head reveal">
+        <h3>Módulo II<br />Camino Personal</h3>
+        <p>De la comprensión a la acción real. Sostener el cambio en el tiempo con estructura propia.</p>
+      </div>
+      <div class="temas reveal">
+        <div class="tema">
+          <div class="tema-ico">1</div>
+          <div>
+            <h4>Sistema de Acción</h4>
+            <p>Hábitos y disciplina consciente.</p>
+          </div>
+        </div>
+        <div class="tema">
+          <div class="tema-ico">2</div>
+          <div>
+            <h4>Conversaciones Pendientes</h4>
+            <p>Claridad y firmeza en los vínculos.</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div style="background: #fff; padding: 3rem; border: 1px solid rgba(28,21,16,0.06);">
-      <h3 style="font-family: var(--ff-d); font-size: 1.8rem; margin-bottom: 1rem;">Grupo 2 · Jueves</h3>
-      <p style="color: var(--terra); font-weight: 500; margin-bottom: 1.5rem;">Marzo a Diciembre</p>
-      <div style="font-size: 1.1rem; margin-bottom: 2rem;">19:00 a 21:00 hs</div>
-      <button onclick="scrollToCTA()" class="btn-primary" style="width: 100%; border:none;">Inscribirme al Grupo 2</button>
+
+    <div class="mod-panel" id="mod-2">
+      <div class="mod-head reveal">
+        <h3>Módulo III<br />Expansión</h3>
+        <p>Consolidar la identidad y proyectar impacto. Coherencia interna para rediseñar vínculos y proyectos.</p>
+      </div>
+      <div class="temas reveal">
+        <div class="tema">
+          <div class="tema-ico">1</div>
+          <div>
+            <h4>Liderarte Primero</h4>
+            <p>Coherencia interna continua.</p>
+          </div>
+        </div>
+        <div class="tema">
+          <div class="tema-ico">2</div>
+          <div>
+            <h4>Plan 90 Días</h4>
+            <p>Hoja de ruta concreta pos-programa.</p>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- INVERSIÓN -->
-<section class="s s--alt" id="inversion">
-  <p class="s-label">Inversión</p>
-  <h2 class="reveal">Aranceles y<br/><em>pagos</em></h2>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 3rem;" class="reveal">
-    <div style="background: var(--ink); padding: 2rem; border-top: 2px solid var(--sand);">
-      <h4 style="font-family: var(--ff-d); margin-bottom: 1rem;">Módulo I</h4>
-      <div style="font-size: 1.6rem; font-weight: 600;">$ 100.000 <span style="font-size: 0.8rem;">ARS</span></div>
+  <!-- AGENDA -->
+  <section class="s" id="agenda" style="background: var(--ink);">
+    <p class="s-label">Agenda 2026</p>
+    <h2 class="reveal">Fechas y<br /><em>horarios</em></h2>
+    <!-- COHORTE 1 -->
+    <div class="reveal" style="margin-top: 3rem;">
+      <h3 style="font-family: var(--ff-d); font-size: 2rem; margin-bottom: 2rem; color: var(--terra);">Cohorte 1 · Abril
+        a Julio 2026</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        <!-- Grupo Semilla -->
+        <div
+          style="background: #fff; padding: 2.5rem; border: 1px solid rgba(28,21,16,0.06); border-radius: 4px; position: relative;">
+          <span
+            style="position: absolute; top: 1rem; right: 1rem; font-size: 0.65rem; background: var(--terra); color: #fff; padding: 0.2rem 0.6rem; border-radius: 20px;">Cupo
+            25</span>
+          <h4 style="font-family: var(--ff-d); font-size: 1.6rem; margin-bottom: 0.5rem;">Grupo Semilla</h4>
+          <p style="font-size: 0.85rem; color: var(--fog); margin-bottom: 1.5rem;">Martes 19:00 – 21:00 · Programa
+            completo</p>
+          <div style="font-size: 0.9rem; margin-bottom: 2rem; border-top: 1px solid #eee; padding-top: 1rem;">
+            <div style="margin-bottom: 0.5rem;"><strong>Inicio:</strong> 7 de Abril</div>
+            <div><strong>Cierre:</strong> 14 de Julio</div>
+          </div>
+          <button onclick="scrollToCTA()" class="btn-primary" style="width: 100%; border:none;">Sumarme al programa
+            completo</button>
+        </div>
+        <!-- Grupo Horizonte -->
+        <div
+          style="background: #fff; padding: 2.5rem; border: 1px solid rgba(28,21,16,0.06); border-radius: 4px; position: relative;">
+          <span
+            style="position: absolute; top: 1rem; right: 1rem; font-size: 0.65rem; background: var(--terra); color: #fff; padding: 0.2rem 0.6rem; border-radius: 20px;">Cupo
+            25</span>
+          <h4 style="font-family: var(--ff-d); font-size: 1.6rem; margin-bottom: 0.5rem;">Grupo Horizonte</h4>
+          <p style="font-size: 0.85rem; color: var(--fog); margin-bottom: 1.5rem;">Jueves 19:00 – 21:00 · Programa
+            completo</p>
+          <div style="font-size: 0.9rem; margin-bottom: 2rem; border-top: 1px solid #eee; padding-top: 1rem;">
+            <div style="margin-bottom: 0.5rem;"><strong>Inicio:</strong> 9 de Abril</div>
+            <div><strong>Cierre:</strong> 16 de Julio</div>
+          </div>
+          <button onclick="scrollToCTA()" class="btn-primary" style="width: 100%; border:none;">Sumarme al programa
+            completo</button>
+        </div>
+        <!-- Grupo Extra -->
+        <div
+          style="background: var(--deep); padding: 2.5rem; border: 1px solid var(--sand); border-radius: 4px; position: relative;">
+          <span
+            style="position: absolute; top: 1rem; right: 1rem; font-size: 0.65rem; background: var(--gold); color: #fff; padding: 0.2rem 0.6rem; border-radius: 20px;">Solo
+            Mód. I</span>
+          <h4 style="font-family: var(--ff-d); font-size: 1.6rem; margin-bottom: 0.5rem;">Semilla · Módulo I Extra</h4>
+          <p style="font-size: 0.85rem; color: var(--fog); margin-bottom: 1.5rem;">Sábados 10:00 – 13:00 · 5 Clases</p>
+          <div
+            style="font-size: 0.9rem; margin-bottom: 1rem; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 1rem;">
+            <div style="margin-bottom: 0.5rem;"><strong>Inicio:</strong> 11 de Abril</div>
+            <div><strong>Cierre:</strong> 9 de Mayo</div>
+          </div>
+          <p style="font-size: 0.75rem; color: var(--terra); font-style: italic; margin-bottom: 1.5rem;">Nota: Tendrás
+            prioridad para sumarte al programa completo según disponibilidad.</p>
+          <button onclick="scrollToCTA()" class="btn-primary"
+            style="width: 100%; border:none; background: var(--gold);">Sumarme al Módulo I</button>
+        </div>
+      </div>
     </div>
-    <div style="background: var(--ink); padding: 2rem; border-top: 2px solid var(--sand);">
-      <h4 style="font-family: var(--ff-d); margin-bottom: 1rem;">Módulo II</h4>
-      <div style="font-size: 1.6rem; font-weight: 600;">$ 120.000 <span style="font-size: 0.8rem;">ARS</span></div>
+
+    <!-- COHORTE 2 -->
+    <div class="reveal" style="margin-top: 4rem;">
+      <h3 style="font-family: var(--ff-d); font-size: 2rem; margin-bottom: 2rem; color: var(--terra);">Cohorte 2 ·
+        Agosto a Noviembre 2026</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        <!-- Grupo Evolución -->
+        <div
+          style="background: #fff; padding: 2.5rem; border: 1px solid rgba(28,21,16,0.06); border-radius: 4px; position: relative;">
+          <span
+            style="position: absolute; top: 1rem; right: 1rem; font-size: 0.65rem; background: var(--terra); color: #fff; padding: 0.2rem 0.6rem; border-radius: 20px;">Cupo
+            25</span>
+          <h4 style="font-family: var(--ff-d); font-size: 1.6rem; margin-bottom: 0.5rem;">Grupo Evolución</h4>
+          <p style="font-size: 0.85rem; color: var(--fog); margin-bottom: 1.5rem;">Martes 19:00 – 21:00 · Programa
+            completo</p>
+          <div style="font-size: 0.9rem; margin-bottom: 2rem; border-top: 1px solid #eee; padding-top: 1rem;">
+            <div style="margin-bottom: 0.5rem;"><strong>Inicio:</strong> 4 de Agosto</div>
+            <div><strong>Cierre:</strong> 10 de Noviembre</div>
+          </div>
+          <button onclick="scrollToCTA()" class="btn-primary" style="width: 100%; border:none;">Sumarme al programa
+            completo</button>
+        </div>
+        <!-- Grupo Proyección -->
+        <div
+          style="background: #fff; padding: 2.5rem; border: 1px solid rgba(28,21,16,0.06); border-radius: 4px; position: relative;">
+          <span
+            style="position: absolute; top: 1rem; right: 1rem; font-size: 0.65rem; background: var(--terra); color: #fff; padding: 0.2rem 0.6rem; border-radius: 20px;">Cupo
+            25</span>
+          <h4 style="font-family: var(--ff-d); font-size: 1.6rem; margin-bottom: 0.5rem;">Grupo Proyección</h4>
+          <p style="font-size: 0.85rem; color: var(--fog); margin-bottom: 1.5rem;">Jueves 19:00 – 21:00 · Programa
+            completo</p>
+          <div style="font-size: 0.9rem; margin-bottom: 2rem; border-top: 1px solid #eee; padding-top: 1rem;">
+            <div style="margin-bottom: 0.5rem;"><strong>Inicio:</strong> 6 de Agosto</div>
+            <div><strong>Cierre:</strong> 12 de Noviembre</div>
+          </div>
+          <button onclick="scrollToCTA()" class="btn-primary" style="width: 100%; border:none;">Sumarme al programa
+            completo</button>
+        </div>
+      </div>
     </div>
-    <div style="background: var(--ink); padding: 2rem; border-top: 2px solid var(--sand);">
-      <h4 style="font-family: var(--ff-d); margin-bottom: 1rem;">Módulo III</h4>
-      <div style="font-size: 1.6rem; font-weight: 600;">$ 140.000 <span style="font-size: 0.8rem;">ARS</span></div>
+  </section>
+
+  <!-- INVERSIÓN -->
+  <section class="s s--alt" id="inversion">
+    <p class="s-label">Inversión</p>
+    <h2 class="reveal">Aranceles y<br /><em>pagos</em></h2>
+    <div
+      style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 3rem;"
+      class="reveal">
+      <div style="background: var(--ink); padding: 2rem; border-top: 2px solid var(--sand);">
+        <h4 style="font-family: var(--ff-d); margin-bottom: 1rem;">Módulo I</h4>
+        <div style="font-size: 1.6rem; font-weight: 600;">$ 100.000 <span style="font-size: 0.8rem;">ARS</span></div>
+      </div>
+      <div style="background: var(--ink); padding: 2rem; border-top: 2px solid var(--sand);">
+        <h4 style="font-family: var(--ff-d); margin-bottom: 1rem;">Módulo II</h4>
+        <div style="font-size: 1.6rem; font-weight: 600;">$ 120.000 <span style="font-size: 0.8rem;">ARS</span></div>
+      </div>
+      <div style="background: var(--ink); padding: 2rem; border-top: 2px solid var(--sand);">
+        <h4 style="font-family: var(--ff-d); margin-bottom: 1rem;">Módulo III</h4>
+        <div style="font-size: 1.6rem; font-weight: 600;">$ 140.000 <span style="font-size: 0.8rem;">ARS</span></div>
+      </div>
+      <div style="background: var(--terra); color: #fff; padding: 2rem;">
+        <h4 style="font-family: var(--ff-d); margin-bottom: 1rem;">Combo Completo</h4>
+        <div style="font-size: 1.8rem; font-weight: 700;">$ 300.000 <span style="font-size: 0.8rem;">ARS</span></div>
+        <p style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.9;">Pago único de los 3 módulos.</p>
+      </div>
     </div>
-    <div style="background: var(--terra); color: #fff; padding: 2rem;">
-      <h4 style="font-family: var(--ff-d); margin-bottom: 1rem;">Combo Completo</h4>
-      <div style="font-size: 1.8rem; font-weight: 700;">$ 300.000 <span style="font-size: 0.8rem;">ARS</span></div>
-      <p style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.9;">Pago único de los 3 módulos.</p>
+
+    <div style="margin-top: 4rem; text-align: center;" class="reveal">
+      <p
+        style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--fog); margin-bottom: 2rem;">
+        Medios de Pago</p>
+      <div
+        style="display: flex; gap: 3rem; justify-content: center; align-items: center; filter: grayscale(1); opacity: 0.4;">
+        <span style="font-weight: 800;">VISA</span>
+        <span style="font-weight: 800;">MASTERCARD</span>
+        <span style="font-weight: 800;">MPAGO</span>
+        <span style="font-weight: 800;">TRANSF</span>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <div style="margin-top: 4rem; text-align: center;" class="reveal">
-    <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--fog); margin-bottom: 2rem;">Medios de Pago</p>
-    <div style="display: flex; gap: 3rem; justify-content: center; align-items: center; filter: grayscale(1); opacity: 0.4;">
-      <span style="font-weight: 800;">VISA</span>
-      <span style="font-weight: 800;">MASTERCARD</span>
-      <span style="font-weight: 800;">MPAGO</span>
-      <span style="font-weight: 800;">TRANSF</span>
+  <!-- UBICACIÓN -->
+  <section class="s" id="ubicacion" style="background: var(--ink);">
+    <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: center;">
+      <div class="reveal">
+        <p class="s-label">Dónde estamos</p>
+        <h2>Palermo<br /><em>y Chacarita</em></h2>
+        <p class="s-lead">Av. Córdoba y Federico Lacroze. Un espacio diseñado para la pausa y el encuentro real.</p>
+      </div>
+      <div class="reveal" style="height: 400px; border: 1px solid rgba(28,21,16,0.1); overflow: hidden;">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.854089069137!2d-58.4468644!3d-34.5826978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb5973e72895d%3A0x673c68383e230986!2sAv.%20C%C3%B3rdoba%20%26%20Av.%20Federico%20Lacroze%2C%20C1427%20CABA!5e0!3m2!1ses!2sar!4v1709491234567"
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- UBICACIÓN -->
-<section class="s" id="ubicacion" style="background: var(--ink);">
-  <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: center;">
-    <div class="reveal">
-      <p class="s-label">Dónde estamos</p>
-      <h2>Palermo<br/><em>y Chacarita</em></h2>
-      <p class="s-lead">Av. Córdoba y Federico Lacroze. Un espacio diseñado para la pausa y el encuentro real.</p>
+  <!-- CTA FORM -->
+  <section class="cta-s" id="cta">
+    <h2 class="cta-big reveal">Comenzá tu<br /><em>Salto</em></h2>
+    <p class="cta-sub reveal">Cupo limitado de 25 personas por grupo. Completá tus datos para iniciar el proceso.</p>
+
+    <form style="max-width: 500px; margin: 0 auto; text-align: left;" class="reveal">
+      <input type="text" placeholder="Nombre completo"
+        style="width: 100%; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); background: none; color: #fff; padding: 1rem 0; margin-bottom: 2rem; font-family: var(--ff-b);">
+      <input type="email" placeholder="Email institucional o personal"
+        style="width: 100%; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); background: none; color: #fff; padding: 1rem 0; margin-bottom: 2rem; font-family: var(--ff-b);">
+      <select
+        style="width: 100%; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); background: none; color: #fff; padding: 1rem 0; margin-bottom: 3rem; font-family: var(--ff-b);">
+        <option value="" disabled selected style="color:#000;">Seleccionar Grupo / Cohorte...</option>
+        <optgroup label="Cohorte 1 (Abril - Julio)" style="color:#000;">
+          <option value="c1-semilla">Grupo Semilla · Martes 19hs</option>
+          <option value="c1-horizonte">Grupo Horizonte · Jueves 19hs</option>
+          <option value="c1-extra">Semilla · Solo Módulo I (Sáb 10hs)</option>
+        </optgroup>
+        <optgroup label="Cohorte 2 (Agosto - Noviembre)" style="color:#000;">
+          <option value="c2-evolucion">Grupo Evolución · Martes 19hs</option>
+          <option value="c2-proyeccion">Grupo Proyección · Jueves 19hs</option>
+        </optgroup>
+      </select>
+      <button type="submit" class="btn-primary"
+        style="width: 100%; background: var(--gold); border: none; cursor:pointer;">ENVIAR INSCRIPCIÓN</button>
+    </form>
+  </section>
+
+  <footer>
+    <div>
+      <p style="font-family: var(--ff-d); font-weight:600; font-size:1.1rem; color: var(--text-main);">FCH</p>
+      <p>© 2026 · Fundación Consciencia Humana</p>
     </div>
-    <div class="reveal" style="height: 400px; border: 1px solid rgba(28,21,16,0.1); overflow: hidden;">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.854089069137!2d-58.4468644!3d-34.5826978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb5973e72895d%3A0x673c68383e230986!2sAv.%20C%C3%B3rdoba%20%26%20Av.%20Federico%20Lacroze%2C%20C1427%20CABA!5e0!3m2!1ses!2sar!4v1709491234567" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-    </div>
-  </div>
-</section>
+  </footer>
 
-<!-- CTA FORM -->
-<section class="cta-s" id="cta">
-  <h2 class="cta-big reveal">Comenzá tu<br/><em>Salto</em></h2>
-  <p class="cta-sub reveal">Cupo limitado de 25 personas por grupo. Completá tus datos para iniciar el proceso.</p>
-  
-  <form style="max-width: 500px; margin: 0 auto; text-align: left;" class="reveal">
-    <input type="text" placeholder="Nombre completo" style="width: 100%; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); background: none; color: #fff; padding: 1rem 0; margin-bottom: 2rem; font-family: var(--ff-b);">
-    <input type="email" placeholder="Email institucional o personal" style="width: 100%; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); background: none; color: #fff; padding: 1rem 0; margin-bottom: 2rem; font-family: var(--ff-b);">
-    <select style="width: 100%; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); background: none; color: #fff; padding: 1rem 0; margin-bottom: 3rem; font-family: var(--ff-b);">
-      <option value="" disabled selected style="color:#000;">Elegir grupo...</option>
-      <option value="g1" style="color:#000;">Grupo 1 · Martes 19hs</option>
-      <option value="g2" style="color:#000;">Grupo 2 · Jueves 19hs</option>
-    </select>
-    <button type="submit" class="btn-primary" style="width: 100%; background: var(--gold); border: none; cursor:pointer;">ENVIAR INSCRIPCIÓN</button>
-  </form>
-</section>
+  <script>
+    const cur = document.getElementById('cur'), ring = document.getElementById('ring');
+    document.addEventListener('mousemove', e => {
+      cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px';
+      setTimeout(() => { ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px' }, 60);
+    });
 
-<footer>
-  <div>
-    <p style="font-family: var(--ff-d); font-weight:600; font-size:1.1rem; color: var(--text-main);">FCH</p>
-    <p>© 2026 · Fundación Consciencia Humana</p>
-  </div>
-</footer>
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target) } });
+    }, { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-<script>
-const cur=document.getElementById('cur'),ring=document.getElementById('ring');
-document.addEventListener('mousemove',e=>{
-  cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';
-  setTimeout(()=>{ring.style.left=e.clientX+'px';ring.style.top=e.clientY+'px'},60);
-});
+    function setTab(i, el) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      el.classList.add('active');
+      document.querySelectorAll('.mod-panel').forEach((p, j) => {
+        p.classList.toggle('active', i === j);
+      });
+    }
 
-const obs=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
-},{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-
-function setTab(i,el){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  el.classList.add('active');
-  document.querySelectorAll('.mod-panel').forEach((p,j)=>{
-    p.classList.toggle('active',i===j);
-  });
-}
-
-function scrollToCTA() {
-  document.getElementById('cta').scrollIntoView({ behavior: 'smooth' });
-}
-</script>
+    function scrollToCTA() {
+      document.getElementById('cta').scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
 </body>
+
 </html>
