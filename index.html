@@ -1099,30 +1099,10 @@
             right: 0;
         }
 
-        .journal-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
 
-        .journal-card {
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            transition: 0.3s;
-        }
-
-        .journal-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        }
 
         @media (max-width: 768px) {
-            .journal-grid {
-                grid-template-columns: 1fr;
-            }
+
 
             .widget-panel {
                 width: 100%;
@@ -1315,7 +1295,6 @@
 
             <ul class="navbar-links">
                 <li><a href="#proposito">Misión</a></li>
-                <li><a href="bitacora.html">Bitácora</a></li>
                 <li><a href="#conversacion">Nuestra Mirada</a></li>
                 <li><a href="#experiencias">Verticales</a></li>
                 <li><a href="#el-salto">El Salto</a></li>
@@ -1340,7 +1319,6 @@
             <i class="ph-bold ph-x"></i>
         </button>
         <a href="#proposito" onclick="closeMobileMenu()">Misión</a>
-        <a href="bitacora.html" onclick="closeMobileMenu()">Bitácora</a>
         <a href="#conversacion" onclick="closeMobileMenu()">Nuestra Mirada</a>
         <a href="#experiencias" onclick="closeMobileMenu()">Verticales</a>
         <a href="#el-salto" onclick="closeMobileMenu()">El Salto</a>
@@ -1854,75 +1832,7 @@
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════
-          SECCIÓN: BITÁCORA TEASER
-          ═══════════════════════════════════════ -->
-    <style>
-        @media (min-width: 768px) {
-            .teaser-grid {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-    </style>
-    <section class="section section-dark" id="journal-teaser" style="background:#FDF9F3; color:var(--texto);">
-        <div class="section-inner">
-            <div class="teaser-grid" style="display: flex; flex-direction: column; gap: 4rem; align-items: center;">
-                <div class="reveal">
-                    <span class="section-tag">Contenido de Valor</span>
-                    <h2 class="section-title" style="font-family:'Poppins';">Bitácora de Consciencia</h2>
-                    <p class="section-subtitle" style="margin-bottom: 2rem;">
-                        No es solo un blog. Es un espacio de profundidad donde cruzamos neurociencia, liderazgo y
-                        reflexiones para quienes ya no se conforman con funcionar en automático.
-                    </p>
-                    <div style="display: grid; gap: 1.5rem; margin-bottom: 2.5rem;">
-                        <div style="display: flex; gap: 1rem; align-items: flex-start;">
-                            <i class="ph-bold ph-newspaper-clipping text-fch-pink" style="font-size: 1.5rem;"></i>
-                            <div>
-                                <h4 style="font-weight: 700;">Lectura para tu actualización</h4>
-                                <p style="font-size: 0.9rem; opacity: 0.7;">Reflexiones breves y contundentes sobre los
-                                    desafíos de hoy.</p>
-                            </div>
-                        </div>
-                        <div style="display: flex; gap: 1rem; align-items: flex-start;">
-                            <i class="ph-bold ph-lightning text-fch-pink" style="font-size: 1.5rem;"></i>
-                            <div>
-                                <h4 style="font-weight: 700;">Evidencia y Práctica</h4>
-                                <p style="font-size: 0.9rem; opacity: 0.7;">Herramientas accionables respaldadas por
-                                    ciencia y experiencia.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="bitacora.html" class="btn-hero"
-                        style="background:var(--texto); color:white; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
-                        Entrar a la Bitácora
-                    </a>
-                </div>
-                <div class="reveal" style="position: relative;">
-                    <div
-                        style="background: white; padding: 2.5rem; border-radius: 2rem; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 20px 50px rgba(0,0,0,0.05);">
-                        <span
-                            style="font-size: 0.7rem; font-weight: 800; color: var(--rosa); letter-spacing: 0.1em; text-transform: uppercase;">Última
-                            Reflexión</span>
-                        <h3 style="margin: 1rem 0; font-family: 'Poppins'; line-height: 1.3;">El agotamiento de viejas
-                            estructuras de hacer y ser</h3>
-                        <p style="font-size: 0.95rem; opacity: 0.7; margin-bottom: 2rem;">
-                            "Hay un tipo de cansancio que no se resuelve con vacaciones. Es el agotamiento que aparece
-                            cuando seguís haciendo 'lo correcto' pero internamente algo se vacía..."
-                        </p>
-                        <a href="bitacora.html?id=agotamiento-estructuras"
-                            style="font-weight: 700; color: var(--texto); display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
-                            Leer más <i class="ph-bold ph-arrow-right"></i>
-                        </a>
-                    </div>
-                    <div
-                        style="position: absolute; -right: 1rem; -bottom: -1rem; background: var(--amarillo); padding: 1rem 1.5rem; border-radius: 1rem; box-shadow: 0 10px 30px rgba(253, 203, 110, 0.4); font-weight: 800; transform: rotate(5deg);">
-                        NUEVO 🚀
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- ═══════════════════════════════════════
          SECCIÓN 7: CTA FINAL / FOOTER
