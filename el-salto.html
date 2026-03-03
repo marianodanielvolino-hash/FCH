@@ -1517,12 +1517,13 @@
     <h2 class="cta-big reveal">Comenzá tu<br /><em>Salto</em></h2>
     <p class="cta-sub reveal">Cupo limitado de 25 personas por grupo. Completá tus datos para iniciar el proceso.</p>
 
-    <form style="max-width: 500px; margin: 0 auto; text-align: left;" class="reveal">
-      <input type="text" placeholder="Nombre completo"
+    <form action="mailto:contacto@conscienciahumana.com" method="post" enctype="text/plain"
+      style="max-width: 500px; margin: 0 auto; text-align: left;" class="reveal">
+      <input type="text" name="Nombre" placeholder="Nombre completo"
         style="width: 100%; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); background: none; color: #fff; padding: 1rem 0; margin-bottom: 2rem; font-family: var(--ff-b);">
-      <input type="email" placeholder="Email institucional o personal"
+      <input type="email" name="Email" placeholder="Email institucional o personal"
         style="width: 100%; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); background: none; color: #fff; padding: 1rem 0; margin-bottom: 2rem; font-family: var(--ff-b);">
-      <select
+      <select name="Grupo"
         style="width: 100%; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); background: none; color: #fff; padding: 1rem 0; margin-bottom: 3rem; font-family: var(--ff-b);">
         <option value="" disabled selected style="color:var(--text-main);">Seleccionar Grupo / Cohorte...</option>
         <optgroup label="Cohorte 1 (Abril - Julio)" style="color:var(--text-main);">
