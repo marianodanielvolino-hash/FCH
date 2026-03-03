@@ -3020,8 +3020,9 @@
                     <p style="font-size:0.8rem; text-align:center; margin-top:1.5rem; color:var(--texto-muted);">Repetí este Cuaderno en 30 días y compará tu evolución.</p>
                 </div>
 
-                <div style="text-align:center; margin-top:4rem;">
+                <div style="text-align:center; margin-top:4rem; display:flex; justify-content:center; gap:1.5rem; flex-wrap:wrap;">
                     <a href="#experiencias" class="btn-outline-white" style="color:var(--violeta-mid); border-color:var(--violeta-mid);">Explorar experiencias</a>
+                    <button onclick="resetCuaderno()" class="btn-hero" style="background:var(--texto-muted); border:none; padding: 1rem 2rem;">Reiniciar diagnóstico</button>
                 </div>
             `;
 
@@ -3043,6 +3044,18 @@
             };
             localStorage.setItem('cuaderno_plan', JSON.stringify(plan));
             alert('¡Plan guardado localmente con éxito! Te esperamos en 30 días para revisar tu evolución.');
+        }
+
+        function resetCuaderno() {
+            if (confirm('¿Estás seguro de que querés borrar tus respuestas y empezar de nuevo?')) {
+                // Clear state
+                for (let prop in cuadernoAnswers) { delete cuadernoAnswers[prop]; }
+                localStorage.removeItem('cuaderno_answers');
+
+                // Reset UI
+                renderWizardSteps();
+                goToWizardStep(0);
+            }
         }
 
         // Initialize LocalStorage check
