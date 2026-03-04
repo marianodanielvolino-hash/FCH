@@ -12,3 +12,6 @@ node_modules/
 
 # Logs
 *.log
+
+# Backups
+index.backup.html
